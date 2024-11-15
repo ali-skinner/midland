@@ -1,0 +1,96 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!--links to other pages-->
+  <header class=header>
+    <h1>Have a Question?</h1>
+  </header>
+
+  <nav class="nav-container">
+    <div class="nav-box"><a href="index.html">About Us</a></div>
+    <div class="nav-box"><a href="items-for-sale.html">Sale Items</a></div>
+    <div class="nav-box""><a href=" contact-us.html">Contact Us</a></div>
+  </nav>
+  
+
+  <main>
+    <hr>
+    <section id="contact-us">
+      <h1>We are here for you.</h1>
+      <p>Do you have questions? Do you need to talk to an expert?
+      <p>Complete this form and a team representative will follow up with you.</p>
+    </section>
+
+    <section id="form">
+      <form action="/fakeurltoserver.fake" id="customer-inquiry">
+        <h2>Tell Us More...</h2>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" placeholder="Name"><br>
+
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" placeholder="Surname"><br>
+
+        <!-- can i put parameter on phn# to 10chars max? add hyphens automatically? -->
+        <label for="phone number">Phone:</label>
+        <input type="number" id="phn number" name="phn number" placeholder="Your digits"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email address"><br>
+
+
+        <p>How do you prefer we contact you? <em>Please select best method.</em></p>
+        <input type="radio" id="contact-choice1" name="contact" value="Email" />
+        <label for="contact-choice1">Email</label>
+
+        <input type="radio" id="contact-choice2" name="contact" value="Phone" />
+        <label for="contact-choice2">Phone</label>
+
+        <input type="radio" id="contact-choice3" name="contact" value="Send the pigeons" />
+        <label for="contact-choice3">Pigeons</label>
+
+        <p>Areas of interest: <em>Select all that apply.</em></p>
+        <input type="checkbox" id="checkbox-ch1" name="interest" value="Upcoming sales" />
+        <label for="checkbox-ch1">Upcoming sales</label>
+
+        <input type="checkbox" id="checkbox-ch2" name="interest" value="Sell items" />
+        <label for="checkbox-ch2">Sell items</label>
+
+        <input type="checkbox" id="checkbox-ch3" name="interest" value="Product inquiry" />
+        <label for="checkbox-ch3">Product inquiry</label>
+
+        <input type="checkbox" id="checkbox-ch4" name="interest" value="Art shows" />
+        <label for="checkbox-ch4">Art shows</label>
+
+        <input type="checkbox" id="checkbox-ch5" name="interest" value="Trail mix" />
+        <label for="checkbox-ch4">Trail mix</label>
+
+        <p>Anything else to share? Please leave a comment.</p>
+        <textarea name="comment" form="customer-inquiry">Enter text here...</textarea>
+        <br>
+        <br>
+
+        <div class="submit-container">
+          <input type="submit" class="submit" value="Submit Your Soul">
+        </div>
+      </form>
+    </section>
+  </main>
+
+    <footer class="footer">
+      <div class ="footer-row">
+          <div class="footer-content"> Wacky Haven Inc. | 1701 Northshore Drive | New Haven, CT
+              <p><a href="contact-us.html">Questions?</a></p>
+              <p>Need more? | Call +1-just-google-it</p>
+              <p>Copyright 2024</p>
+          </div>
+      </div>
+    </footer>
+  </body>
+</html>
