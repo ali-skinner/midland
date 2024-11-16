@@ -23,16 +23,17 @@
   <main>
     <hr>
     <section id="contact-us">
-      <h1>We are here for you.</h1>
-      <p>Do you have questions? Do you need to talk to an expert?
-      <p>Complete this form and a team representative will follow up with you.</p>
+      <div><h1>We are here for you.</h1>
+        <p>Do you have questions? Do you need to talk to an expert?
+        <p>Complete this form and a team representative will follow up with you.</p>
+      </div>
     </section>
 
     <section id="form">
       <form action="/fakeurltoserver.fake" id="customer-inquiry">
         <h2>Tell Us More...</h2>
         <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname" placeholder="Name"><br>
+        <input type="text" id="fname" name="fname" placeholder="Name"><br></div>
 
         <label for="lname">Last name:</label>
         <input type="text" id="lname" name="lname" placeholder="Surname"><br>
@@ -71,8 +72,8 @@
         <input type="checkbox" id="checkbox-ch5" name="interest" value="Trail mix" />
         <label for="checkbox-ch4">Trail mix</label>
 
-        <p>Anything else to share? Please leave a comment.</p>
-        <textarea name="comment" form="customer-inquiry">Enter text here...</textarea>
+        <div></div><p><label for="comment">Anything else to share? Please leave a comment.</label></p>
+        <textarea id="comment" name="comment" form="customer-inquiry" rows="12" cols="40" placeholder="List your wishes here..." maxlength="1000" resize=none></textarea>
         <br>
         <br>
 
