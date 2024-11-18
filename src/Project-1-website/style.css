@@ -187,10 +187,9 @@ a:hover {
     width: 100px;
     height:100px;
     display: flex;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
     padding: 20px;
-    justify-content: center;
-    align-items: center;
+    text-wrap: wrap;
   }
 
 .product-img:hover{
@@ -354,7 +353,7 @@ textarea{
     margin-top: 40px;
     justify-content: space-between;
     padding: 10px;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .menu-container{
@@ -377,7 +376,7 @@ textarea{
     border-style: solid;
     border-color: rgba(5, 8, 104, 0.641);
     border-radius: 10px;
-    margin:4px;
+    margin: 4px;
 }
 
 .menu-font{
@@ -389,47 +388,33 @@ textarea{
 .image-circle-container{
     display: flex;
     flex-wrap: wrap;
-    padding: 2px;
-    background-color: cornflowerblue;
     text-wrap: wrap;
     color: black;
     margin-left: 30px;
     margin-right: 15px;
     font-size: 14px;
 }
+
 .image-circle-container2{
     display: flex;
     flex-wrap: wrap;
-    padding: 2px;
-    background-color: cornflowerblue;
     text-wrap: wrap;
     color: black;
+    font-size: 14px;
 }
 .image-circle-box{
     display: flex;
     padding: 12px;
-    /* justify-content: center;
-    align-items: center; */
-    text-wrap: wrap;
-    flex: 1 1 200px; /* Grow, shrink, basis */
-    min-width: 200px;
-    border: 1px solid #ccc;
-}
-.text-wrap {
-    overflow: hidden;
+    border: #fde0b4 6px solid;
+    margin-bottom: 20;
+    background-color: cornflowerblue;
+    
 }
 
-.text-wrap img {
-    float: left;
-    margin: ;
-    width: 100px;
-    height: auto;
-}
 .image-circle-box h3{
     color: rgb(135, 83, 15);
     font-weight: bolder;
 }
-
 
 
 
@@ -464,6 +449,7 @@ textarea{
     .yellow-box {
      flex-basis: 45%;
   }
+
 
  /* @keyframes example {
     0%   {background-color: red;}
