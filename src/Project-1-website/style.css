@@ -40,11 +40,12 @@ hr {
 
 .footer{
     position: relative;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(4, 31, 72);
     color: rgb(183, 119, 1);
     background: blanchedalmond;
     width: 100%;
-    padding: 10px 5px;
+    padding: 5px 5px;
     background: url("images/wave-texture-white.jpeg");
     background-size: cover;
     background-repeat: repeat-y;
@@ -64,7 +65,8 @@ hr {
 
 .footer-content{
     align-items: flex-start;
-    padding: 20px 10px;
+    padding: 15px 10px;
+    font-size: 12px
 }
 /* .overlay{
     position: relative;
