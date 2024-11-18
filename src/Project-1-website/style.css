@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
-    
+
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -28,9 +31,9 @@ hr {
     font-family: "Gowun Dodum", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
-.header{
+}
+
+.header {
     color: black;
     background: goldenrod;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -38,7 +41,7 @@ hr {
     text-align: center;
 }
 
-.footer{
+.footer {
     position: relative;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(4, 31, 72);
@@ -52,7 +55,7 @@ hr {
     border-top: 2px solid rgb(218, 143, 36);
 }
 
-.footer-row{
+.footer-row {
     display: flex;
     flex: 1;
     align-items: center;
@@ -63,11 +66,12 @@ hr {
 
 }
 
-.footer-content{
+.footer-content {
     align-items: flex-start;
     padding: 15px 10px;
     font-size: 12px
 }
+
 /* .overlay{
     position: relative;
     background-image: url("./images/blue-pattern.jpg");
@@ -95,20 +99,20 @@ hr {
 
 @media screen and (max-width: 500px) {
     .footer {
-      font-size: 15px;
-      width: 100%;
+        font-size: 15px;
+        width: 100%;
     }
 }
 
 @media screen and (max-width: 350px) {
     .footer {
-      font-size: 14px;
-      width: 100%;
+        font-size: 14px;
+        width: 100%;
     }
 }
 
 .nav-container {
-    display: flex; 
+    display: flex;
     flex-direction: row;
     padding: 5px;
 }
@@ -121,12 +125,12 @@ hr {
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding: 7px;
     border-radius: 20px;
 }
 
-.nav-container a{
+.nav-container a {
     width: 100%;
     text-align: center;
     text-decoration: none;
@@ -138,7 +142,7 @@ hr {
     cursor: pointer;
 }
 
-nav a:hover{
+nav a:hover {
     color: rgb(255, 252, 252);
 }
 
@@ -148,7 +152,7 @@ nav a:hover{
 
 a:hover {
     color: rgb(193, 127, 5);
-} 
+}
 
 /* .nav-container a:active{
    background-color: black;
@@ -157,23 +161,23 @@ a:hover {
 /* a:link {
     color: blue;
   } */
-  /* Visited links */
-  /* a:visited {
+/* Visited links */
+/* a:visited {
     color: purple;
   } */
-  /* Hovered links */
-  /* a:hover {
+/* Hovered links */
+/* a:hover {
     background: yellow;
   } */
-  /* Active links */
-  /* a:active {
+/* Active links */
+/* a:active {
     color: red;
   } */
-  
-  /* Active paragraphs */
-  /* p:active {
+
+/* Active paragraphs */
+/* p:active {
     background: #eee;
-  } */ 
+  } */
 
 /* .nav-box:active {
     background-color: rgb(14, 198, 201);
@@ -185,14 +189,15 @@ a:hover {
     border-radius: 50%;
     /* max-height: fit-content; */
     width: 100px;
-    height:100px;
+    height: 100px;
     display: flex;
-    /* flex-shrink: 0; */
+    flex-wrap: wrap;
+    float: left;
     padding: 20px;
     text-wrap: wrap;
-  }
+}
 
-.product-img:hover{
+.product-img:hover {
     transform: scale(1.75);
 }
 
@@ -203,8 +208,8 @@ a:hover {
 }
 
 #items-for-sale {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:rgb(19, 90, 203);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(19, 90, 203);
     font-family: "Gowun Dodum";
     font-weight: bold;
     margin: 50px;
@@ -212,7 +217,7 @@ a:hover {
 
 #contact-us {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:rgb(59, 204, 248);
+    color: rgb(59, 204, 248);
     background-color: rgb(4, 31, 72);
     border-radius: 25px;
     padding: 20px;
@@ -227,7 +232,7 @@ a:hover {
     text-wrap: wrap;
 } */
 
-#form{
+#form {
     border: 10px;
     background-color: rgba(59, 204, 248, 0.958);
     border-radius: 20px;
@@ -240,66 +245,82 @@ a:hover {
 }
 
 @media screen and (max-width: 350px) {
-    #form{
-    margin: 15px;
-    padding: 10px;
+    #form {
+        margin: 15px;
+        padding: 10px;
     }
-} 
+}
 
-input[type=text], [type=number], [type=email] {
+input[type=text],
+[type=number],
+[type=email] {
     width: 75%;
 }
-textarea{
+
+
+@media screen and (min-width: 775px) {
+
+    input[type=text],
+    [type=number],
+    [type=email] {
+        width: 50%;
+    }
+}
+
+
+textarea {
     resize: none;
     width: 100%
 }
- .submit{
+
+.submit {
     background-color: rgb(4, 31, 72);
     color: rgb(247, 248, 249);
     border-radius: 20px;
     padding: 5px;
     width: 25%;
- }
+}
 
- .submit-container{
+.submit-container {
     text-align: right;
- }
+}
 
- .submit:hover {
+.submit:hover {
     color: orange;
- }
+}
 
 @media screen and (max-width: 800px) {
-    .submit{
-    font-size: 15px;
-    width: 50%;
+    .submit {
+        font-size: 15px;
+        width: 50%;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .submit{
-    font-size: 15px;
-    width: 75%;
+    .submit {
+        font-size: 15px;
+        width: 75%;
     }
 }
+
 @media screen and (max-width: 350px) {
-    .submit{
-    font-size: 15px;
-    width: 100%;
+    .submit {
+        font-size: 15px;
+        width: 100%;
     }
-} 
+}
 
 
 /* ABOUT US -- HOME PAGE */
 
-.container-main{
+.container-main {
     display: flex;
     /* justify-content: space-between; */
     margin: 15px;
     flex-grow: 1;
 }
 
-.container-yellow{
+.container-yellow {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -307,9 +328,9 @@ textarea{
     justify-content: flex-start;
 }
 
-.yellow-box{
+.yellow-box {
     /* display: flex; */
-    background-color:#13a3c3;
+    background-color: #13a3c3;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     flex-wrap: wrap;
     flex-basis: 30%;
@@ -319,12 +340,13 @@ textarea{
     border-radius: 15px;
     border: 1.8px solid rgb(255, 170, 0)
 }
-.yellow-box p{
+
+.yellow-box p {
     font-size: smaller;
     padding: 4px;
 }
 
-.container-green{
+.container-green {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -333,7 +355,7 @@ textarea{
     margin-left: 15px;
 }
 
-.green-box{
+.green-box {
     display: flex;
     background-color: rgb(18, 75, 173);
     color: antiquewhite;
@@ -346,9 +368,10 @@ textarea{
     justify-content: flex-start;
     align-items: center;
 }
+
 /* SALE ITEAM page images */
 
-.menu-parent-container{
+.menu-parent-container {
     display: flex;
     margin-top: 40px;
     justify-content: space-between;
@@ -356,7 +379,7 @@ textarea{
     /* background-color: black; */
 }
 
-.menu-container{
+.menu-container {
     display: flex;
     flex-direction: column;
     flex-basis: 50%;
@@ -365,9 +388,10 @@ textarea{
     /* justify-content:start; */
     padding: 20px;
     height: 75%;
+    margin-bottom: 25px;
 }
 
-.menu-box{
+.menu-box {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -379,13 +403,13 @@ textarea{
     margin: 4px;
 }
 
-.menu-font{
+.menu-font {
     color: rgb(127, 111, 39);
     color: navy;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.image-circle-container{
+.image-circle-container {
     display: flex;
     flex-wrap: wrap;
     text-wrap: wrap;
@@ -395,23 +419,24 @@ textarea{
     font-size: 14px;
 }
 
-.image-circle-container2{
+.image-circle-container2 {
     display: flex;
     flex-wrap: wrap;
     text-wrap: wrap;
     color: black;
     font-size: 14px;
 }
-.image-circle-box{
+
+.image-circle-box {
     display: flex;
     padding: 12px;
     border: #fde0b4 6px solid;
     margin-bottom: 20;
     background-color: cornflowerblue;
-    
+
 }
 
-.image-circle-box h3{
+.image-circle-box h3 {
     color: rgb(135, 83, 15);
     font-weight: bolder;
 }
@@ -424,34 +449,41 @@ textarea{
       font-size: 80px;
     }
   } */
-  
-  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-  @media screen and (max-width: 650px) {
-    .menu-parent-container, .image-circle-container, .container-main, .container-yellow, .image-circle-box {
-      font-size: 16px;
-      flex-direction: column;
-    }
-  }
 
-  @media screen and (max-width: 650px) {
-    .image-circle-container {
-    margin: 0px;
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 680px) {
+
+    .menu-parent-container,
+    .image-circle-container,
+    .container-main,
+    .container-yellow,
+    .image-circle-box,
+    .image-circle-container2 {
+        font-size: 16px;
+        flex-direction: column;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .image-circle-container {
+        margin: 0px;
+    }
+}
+
 @media screen and (max-width: 650px) {
     .container-green {
-      margin-top: 10px;
-      margin-right: 15px;
+        margin-top: 10px;
+        margin-right: 15px;
     }
-  }
+}
 
-  @media screen and (max-width: 885px) {
+@media screen and (max-width: 885px) {
     .yellow-box {
-     flex-basis: 45%;
-  }
+        flex-basis: 45%;
+    }
 
 
- /* @keyframes example {
+    /* @keyframes example {
     0%   {background-color: red;}
     25%  {background-color: yellow;}
     50%  {background-color: blue;}
@@ -459,10 +491,10 @@ textarea{
   }
   
   /* The element to apply the animation to */
-  /* div {
+    /* div {
     width: 100px;
     height: 100px; */
     /* background-color: red;
     animation-name: example;
     animation-duration: 4s; */
-  /*
+    /*
