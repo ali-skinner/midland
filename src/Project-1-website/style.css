@@ -148,10 +148,9 @@ a:hover {
     color: rgb(193, 127, 5);
 } 
 
-/* a:active{
-    color: rgb(23, 141, 174);
+/* .nav-container a:active{
+   background-color: black;
 } */
-
 /* Unvisited links */
 /* a:link {
     color: blue;
@@ -207,7 +206,7 @@ a:hover {
     color:rgb(19, 90, 203);
     font-family: "Gowun Dodum";
     font-weight: bold;
-    margin: 20px;
+    margin: 50px;
 }
 
 #contact-us {
@@ -304,20 +303,24 @@ textarea{
     flex-direction: row;
     flex-wrap: wrap;
     flex-basis: 65%;
-    text-align: start;
     justify-content: flex-start;
 }
 
 .yellow-box{
-    display: flex;
-    background-color: yellow;
+    /* display: flex; */
+    background-color:#13a3c3;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     flex-wrap: wrap;
     flex-basis: 30%;
     margin: 2px;
-    justify-content: center;
-    align-items: center;
-    padding: 2px;
-    /* height: 150px; */
+    align-content: flex-start;
+    padding: 6px;
+    border-radius: 15px;
+    border: 1.8px solid rgb(255, 170, 0)
+}
+.yellow-box p{
+    font-size: smaller;
+    padding: 4px;
 }
 
 .container-green{
@@ -326,25 +329,27 @@ textarea{
     flex-wrap: wrap;
     flex-basis: 35%;
     align-content: center;
-    text-align: center;
-    justify-content: space-evenly;
-    
+    margin-left: 15px;
 }
 
 .green-box{
     display: flex;
-    background-color: green;
-    margin: 2px;
+    background-color: rgb(18, 75, 173);
+    color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px 5px 10px;
+    padding: 10px;
     width: 100%;
     min-height: 50px;
-    align-content: center;
-    text-align: center;
+    border-radius: 15px;
+    justify-content: flex-start;
+    align-items: center;
 }
 /* SALE ITEAM page images */
 
 .menu-parent-container{
     display: flex;
-    margin: 2px;
+    margin-top: 40px;
     justify-content: space-between;
     padding: 10px;
     background-color: black;
@@ -401,14 +406,30 @@ textarea{
 .image-circle-box{
     display: flex;
     padding: 12px;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     text-wrap: wrap;
+    flex: 1 1 200px; /* Grow, shrink, basis */
+    min-width: 200px;
+    border: 1px solid #ccc;
+}
+.text-wrap {
+    overflow: hidden;
+}
+
+.text-wrap img {
+    float: left;
+    margin: ;
+    width: 100px;
+    height: auto;
 }
 .image-circle-box h3{
     color: rgb(135, 83, 15);
     font-weight: bolder;
 }
+
+
+
 
 /* If the screen size is 601px wide or more, set the font-size of <div> to 80px
 @media screen and (min-width: 501px) {
@@ -430,7 +451,17 @@ textarea{
     margin: 0px;
     }
 }
+@media screen and (max-width: 650px) {
+    .container-green {
+      margin-top: 10px;
+      margin-right: 15px;
+    }
+  }
 
+  @media screen and (max-width: 885px) {
+    .yellow-box {
+     flex-basis: 45%;
+  }
 
  /* @keyframes example {
     0%   {background-color: red;}
