@@ -79,11 +79,13 @@
 const playerName = prompt("Welcome to the Adventure. What's your name?");
 let playerClass = prompt("Choose your character class. Do you want to be a Warrior, a Rogue, or a Princess?");
 
-if (playerClass !== "Warrior" && playerClass !== "Rogue" && playerClass !== "Princess" ) {
-    playerClass = prompt("I didn't understand your selection. Please choose Warrior, Rogue or Princess.")
-}
+while (playerClass.toLowerCase() !== "warrior" && playerClass.toLowerCase() !== "rogue" && playerClass.toLowerCase() !== "princess") {
+    playerClass = prompt("I didn't understand your selection. Please choose Warrior, Rogue or Princess.");
+} 
+ alert(`You have chosen wisely. ${playerClass} is a strong force to be reckoned with.`);
 
- let playerCharacter = {
+
+const playerCharacter = {
     firstName: playerName,
     characterClass: playerClass,
 }
@@ -92,10 +94,10 @@ if (playerClass !== "Warrior" && playerClass !== "Rogue" && playerClass !== "Pri
 // while class not one of the ones i want
 
 
-let isGoodClass = false;
-if is warrior
- set true
- if is warrior
- set true
- if is warrior
- set true
+// let isGoodClass = false;
+// if is warrior
+//  set true
+// if is warrior
+//  set true
+// if is warrior
+//  set true
