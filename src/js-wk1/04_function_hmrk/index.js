@@ -90,17 +90,17 @@ console.log(geometryRecall);
 function battleRoyale(battle1, health) {
     let survival = "";
     let damageTotal = 0; 
-    let h = health;
+
 
     for (let b = 0; b < battle1.length; b++) {
         damageTotal += battle1[b];
+    }
 
-        if ((h - damageTotal) > 0) {
+        if ((health - damageTotal) > 0) {
             survival = "YOU LIVE";
         } else {
             survival = "welcome to death";
         }
-    }
     return survival;
 }
 
