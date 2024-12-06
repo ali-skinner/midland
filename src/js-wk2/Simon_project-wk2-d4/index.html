@@ -12,18 +12,17 @@
     
     <h2>It's the memory game you know and love.</h2>
     <h3 style=" margin: 20px;">Ready to test your skills? Hit Start and begin the fun.</h3> 
-
-    <div>
         <div>
             <button id="startButton">Start</button> <!--this button starts the gm-->
         </div>
 
-    <div>
+    <div class="flexContainerGameButton">
         <!--lights up its color for 1-2 seconds-->
-        <div><button id="greenButton" class="gameButton">Green</button></div>
-        <div><button id="redButton" class="gameButton">Red</button></div>
-        <div><button id="blueButton" class="gameButton">Blue</button></div>
-        <div><button id="yellowButton" class="gameButton">Yellow</button></div>
+
+        <div class="topContainer"><button id="greenButton" class="gameButton">Green</button></div>
+        <div class="topContainer"><button id="redButton" class="gameButton">Red</button></div>
+        <div class="bottomContainer"><button id="blueButton" class="gameButton">Blue</button></div>
+        <div class="bottomContainer"><button id="yellowButton" class="gameButton">Yellow</button></div>
     </div>
     
     <!-- transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay]; -->
