@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete JavaScript Quiz Flashcards</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #979494;
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            color: #2d3748;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .flashcard {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .flashcard:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .answer {
+            display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+            font-family: monospace;
+            white-space: pre-wrap;
+            color: #555;
+        }
+
+        .flashcard.active .answer {
+            display: block;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .flashcard.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .instructions {
+            color: #666;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        code {
+            background: #f7f7f7;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete JavaScript Quiz Flashcards</h1>
+    <p class="instructions">Click on a card to reveal its answer</p>
+    <div id="flashcards"></div>
+
+    <script>
+        const flashcards = {
+            'JavaScript Basics': [
+                {
+                    question: "How would you declare a variable in JavaScript?",
+                    answer: "Three ways to declare variables:\n\n1. let variableName = value;    // Block-scoped, reassignable\n2. const constantName = value;  // Block-scoped, not reassignable\n3. var oldWay = value;         // Function-scoped (not recommended)"
+                },
+                {
+                    question: "What is the difference between == and ===?",
+                    answer: "== (loose equality):\n- Performs type coercion before comparison\n- Example: '5' == 5 is true\n\n=== (strict equality):\n- Compares both value and type without coercion\n- Example: '5' === 5 is false"
+                },
+                {
+                    question: "Name all the main primitive types",
+                    answer: "1. String\n2. Number\n3. Boolean\n4. Undefined\n5. Null\n6. Symbol\n7. BigInt"
+                },
+                {
+                    question: "What will the value of x be after: let x = [1,2,3,4,5]; let y = x; y[0] = 0;",
+                    answer: "x will be [0,2,3,4,5]\n\nExplanation:\n- Arrays are reference types\n- When y = x is executed, both variables point to the same array in memory\n- Changing y also changes x because they reference the same array"
+                },
+                {
+                    question: "What is the basic structure of a for loop?",
+                    answer: "for (initialization; condition; increment/decrement) {\n    // code block to be executed\n}\n\nExample:\nfor (let i = 0; i < 5; i++) {\n    console.log(i);\n}"
+                },
+                {
+                    question: "What does 'use strict' do?",
+                    answer: "'use strict' enables strict mode which:\n- Prevents use of undeclared variables\n- Makes silent errors throw exceptions\n- Prevents duplicate parameter names\n- Makes it impossible to delete core language features\n- Disables confusing or poorly thought-out features\n- Makes code more secure"
+                },
+                {
+                    question: "How would you access user's dog's name from: let user = { name: 'Billy', petDog: { name: 'Roger' } };",
+                    answer: "Two ways to access:\n\n1. Dot notation:\nuser.petDog.name\n\n2. Bracket notation:\nuser['petDog']['name']"
+                },
+                {
+                    question: "What is '2' + '3' in javascript?",
+                    answer: "'23'\n\nExplanation:\n- When + operator is used with strings, it performs concatenation\n- Both operands are strings, so they are joined together\n- To add them as numbers, you would need to convert: Number('2') + Number('3')"
+                },
+                {
+                    question: "What is the preferred way to include variables in a string?",
+                    answer: "Template literals using backticks (`) and ${expression} syntax:\n\nlet userName = 'Frank';\nconsole.log(`Hello, ${userName}!`);"
+                },
+                {
+                    question: "How would you have functionality run after one second? What about run EVERY second?",
+                    answer: "// Run once after one second:\nsetTimeout(() => {\n    // your code here\n}, 1000);\n\n// Run every second:\nsetInterval(() => {\n    // your code here\n}, 1000);"
+                }
+            ],
+            'Functions and Scope': [
+                {
+                    question: "What is scope and what problems can it solve and/or fix?",
+                    answer: "Scope determines the accessibility of variables and functions in code:\n\n- Global scope: Variables accessible everywhere\n- Function scope: Variables accessible only inside function\n- Block scope: Variables accessible only inside block\n\nBenefits:\n- Prevents naming conflicts\n- Reduces global namespace pollution\n- Enables data privacy\n- Makes code more maintainable"
+                },
+                {
+                    question: "How would you declare a function and then invoke it?",
+                    answer: "// Function Declaration\nfunction greet(name) {\n    return `Hello, ${name}!`;\n}\n\n// Function Expression\nconst greet = function(name) {\n    return `Hello, ${name}!`;\n};\n\n// Arrow Function\nconst greet = (name) => `Hello, ${name}!`;\n\n// Invocation\ngreet('John');"
+                },
+                {
+                    question: "What are parameters and arguments?",
+                    answer: "Parameters:\n- Variables listed as part of function definition\n- Placeholders for values the function expects\n\nArguments:\n- Actual values passed to the function when called\n- Values that parameters receive\n\nExample:\nfunction greet(name) {  // name is parameter\n    return `Hello, ${name}`;\n}\n\ngreet('John');  // 'John' is argument"
+                }
+            ],
+            'DOM Manipulation': [
+                {
+                    question: "What is the DOM?",
+                    answer: "The Document Object Model (DOM) is:\n- A programming interface for HTML/XML documents\n- Represents page as a tree structure of objects\n- Allows JavaScript to:\n  * Access and change document content\n  * Change document structure\n  * Change document styling\n  * React to document events"
+                },
+                {
+                    question: "How would you select any element with a class of 'class1'?",
+                    answer: "Multiple ways:\n\n// Modern methods:\ndocument.querySelector('.class1')      // Returns first match\ndocument.querySelectorAll('.class1')   // Returns all matches\n\n// Traditional method:\ndocument.getElementsByClassName('class1')"
+                },
+                {
+                    question: "How would you change the style of an element with JavaScript?",
+                    answer: "Multiple approaches:\n\n// Direct style manipulation\nelement.style.backgroundColor = 'red';\nelement.style.fontSize = '16px';\n\n// Using classes\nelement.classList.add('highlight');\nelement.classList.remove('hidden');\nelement.classList.toggle('active');"
+                },
+                {
+                    question: "How do you create and add a new element to the page with JavaScript?",
+                    answer: "// Create new element\nconst newElement = document.createElement('div');\n\n// Add content/attributes\nnewElement.textContent = 'Hello World';\nnewElement.className = 'new-class';\n\n// Add to page\ndocument.body.appendChild(newElement);\n// or\nparentElement.appendChild(newElement);"
+                },
+                {
+                    question: "How do you get the element that fired an event callback?",
+                    answer: "In event handler, use:\n\n1. event.target - Element that triggered the event\n2. event.currentTarget - Element that listener is attached to\n\nExample:\nelement.addEventListener('click', (event) => {\n    console.log(event.target);        // Clicked element\n    console.log(event.currentTarget); // Element with listener\n});"
+                }
+            ],
+            'Array Methods': [
+                {
+                    question: "How would you turn an array into a string or vice versa?",
+                    answer: "Array to String:\narray.join(',')     // With specific separator\narray.toString()    // With comma separator\n\nString to Array:\nstring.split(',')   // Split by specific separator\nArray.from(string)  // Split into characters"
+                },
+                {
+                    question: "How would you generate a random number?",
+                    answer: "Math.random()                  // Random number between 0 and 1\n\n// Random integer between min and max (inclusive):\nMath.floor(Math.random() * (max - min + 1)) + min"
+                },
+                {
+                    question: "How would you loop through all elements in an array and add 1 to each of them?",
+                    answer: "// Using map\narray = array.map(num => num + 1);\n\n// Using forEach\narray.forEach((num, index) => {\n    array[index] = num + 1;\n});\n\n// Using for loop\nfor (let i = 0; i < array.length; i++) {\n    array[i] += 1;\n}"
+                },
+                {
+                    question: "How would you remove all elements that are less than 4 from an array?",
+                    answer: "// Using filter\narray = array.filter(num => num >= 4);\n\n// Using reduce\narray = array.reduce((acc, num) => {\n    if (num >= 4) acc.push(num);\n    return acc;\n}, []);"
+                },
+                {
+                    question: "How would you make all letters in a string lower case?",
+                    answer: "string = string.toLowerCase();\n\nExample:\nlet text = 'Hello World';\ntext = text.toLowerCase();  // 'hello world'"
+                },
+                {
+                    question: "How would you add new elements to the start or end of an array?",
+                    answer: "Add to start:\narray.unshift(element)    // Returns new length\n\nAdd to end:\narray.push(element)       // Returns new length\n\nExample:\nlet arr = [1, 2, 3];\narr.unshift(0);     // arr is [0, 1, 2, 3]\narr.push(4);       // arr is [0, 1, 2, 3, 4]"
+                },
+                {
+                    question: "How and why would you make a shallow copy of an array?",
+                    answer: "Methods to make a shallow copy:\n\n1. Spread operator:\nlet copy = [...original];\n\n2. Slice:\nlet copy = original.slice();\n\n3. Array.from:\nlet copy = Array.from(original);\n\nWhy?\n- To avoid modifying original array\n- When working with state in frameworks\n- When you need independent copies\n\nNote: Shallow copy only creates new array for top level elements"
+                }
+            ]
+        };
+
+        const container = document.getElementById('flashcards');
+
+        Object.entries(flashcards).forEach(([category, cards]) => {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'category';
+            
+            const categoryTitle = document.createElement('h2');
+            categoryTitle.className = 'category-title';
+            categoryTitle.textContent = category;
+            categoryDiv.appendChild(categoryTitle);
+
+            cards.forEach(card => {
+                const flashcard = document.createElement('div');
+                flashcard.className = 'flashcard';
+                
+                const question = document.createElement('div');
+                question.className = 'question';
+                question.innerHTML = `
+                    ${card.question}
+                    <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                `;
+
+                const answer = document.createElement('div');
+                answer.className = 'answer';
+                answer.textContent = card.answer;
+
+                flashcard.appendChild(question);
+                flashcard.appendChild(answer);
+
+                flashcard.addEventListener('click', () => {
+                    flashcard.classList.toggle('active');
+                });
+
+                categoryDiv.appendChild(flashcard);
+            });
+
+            container.appendChild(categoryDiv);
+        });
+    </script>
+</body>
+</html>
