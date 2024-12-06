@@ -36,16 +36,9 @@ h2 {
 
 .flexContainerGameButton {
     display: flex;
-    flex-grow: 1;
-    margin: 50px;
-}
-
-.topContainer {
-    display: flex;
-}
-
-.bottomContainer {
-    display: flex;
+    /* flex-grow: 1; */
+    margin-left: 150px;
+    
 }
 
 .gameButton {
