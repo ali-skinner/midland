@@ -1,0 +1,57 @@
+/* /* button style needs to be a circle */
+body {
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    color: rgb(151, 37, 153);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: rgb(241, 220, 30);
+    padding: 25px;
+
+}
+
+h2 {
+    color: rgb(100, 14, 147);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: -10px;
+    font-style: italic;
+    margin-left: 20px;
+}
+#startButton {
+    margin-left: 20px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(117, 9, 120);
+    color: antiquewhite;
+    border-color: rgb(20, 220, 113);
+    font-size: 150%;
+}
+.button {
+    height: 300px;
+    width: 320px;
+    postion on screen transition
+}
+
+/* use button ids to establish button colors */
+#greenButton {
+    background-color: rgb(34, 194, 34);
+    border-radius: 60% 0% 0%;
+}
+
+#blueButton {
+    background-color: rgb(44, 103, 241);
+}
+
+#redButton {
+    background-color: red;
+    border-radius: 0% 60% 0% 0%;
+}
+
+#yellowButton {
+    background-color: yellow;
+}
