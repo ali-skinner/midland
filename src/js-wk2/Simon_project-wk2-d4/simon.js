@@ -1,19 +1,29 @@
 "use strict";
 
 // make a button that starts a Game
-const startButton ();
+// const startButton ();
 
 // lights up its color for 1-2 seconds
 const redButton = document.getElementById("redButton");
 const blueButton = document.getElementById("blueButton");
 const greenButton = document.getElementById("greenButton");
 const yellowButton = document.getElementById("yellowButton");
-
 const gameButtonArray = [redButton, blueButton, greenButton, yellowButton];
 
-const lightUpGameButton() => {
-    document.getElementsByClassName("gameButton");
-};
+
+const lightUpGameButton = document.getElementsByClassName("gameButton");
+for (let l = 0; l < lightUpGameButton.length; l++) {
+
+    lightUpGameButton[l].addEventListener("click", () => {
+        lightUpGameButton[l].classList.add("gameButtonBright");
+
+        setTimeout(() => {
+            lightUpGameButton[l].classList.remove("gameButtonBright");
+        }, 2000);
+    });
+}
+
+// or get elements by tag and say not start button?
 // document.getElementById("myBtn").addEventListener("click", displayDate);
 // document.getElementByTag("myBtn").addEventListener("click", displayDate);
 // <button onclick="myFunction()">display txt if i wanna</button> 
@@ -22,7 +32,7 @@ const lightUpGameButton() => {
 // Pattern for setInterval (does something repeatedly after the delay time)
 let intervalRef = setInterval(() => {
     // What to do repeatedly after the interval time
-  }, 1000); // Time in miliseconds
+}, 1000); // Time in miliseconds
 
 
 
