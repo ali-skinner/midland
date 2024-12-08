@@ -4,7 +4,7 @@
 const startButton ();
 
 // lights up its color for 1-2 seconds
-const lightUpColorButton() => {
+const lightUpGameButton() => {
     document.getElementsByClassName("gameButton");
 };
 // document.getElementById("myBtn").addEventListener("click", displayDate);

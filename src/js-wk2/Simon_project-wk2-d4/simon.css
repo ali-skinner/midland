@@ -36,9 +36,7 @@ h2 {
 
 .flexContainerGameButton {
     display: flex;
-    /* flex-grow: 1; */
-    margin-left: 150px;
-    
+    justify-content: center;
 }
 
 .gameButton {
@@ -47,6 +45,10 @@ h2 {
     align-items: center;
     justify-content: center;
     border: 5px solid black;
+}
+
+.gameButtonBright{
+    filter: brightness(150%);
 }
 
 #startButton:hover {
