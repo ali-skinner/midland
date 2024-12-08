@@ -4,6 +4,13 @@
 const startButton ();
 
 // lights up its color for 1-2 seconds
+const redButton = document.getElementById("redButton");
+const blueButton = document.getElementById("blueButton");
+const greenButton = document.getElementById("greenButton");
+const yellowButton = document.getElementById("yellowButton");
+
+const gameButtonArray = [redButton, blueButton, greenButton, yellowButton];
+
 const lightUpGameButton() => {
     document.getElementsByClassName("gameButton");
 };
