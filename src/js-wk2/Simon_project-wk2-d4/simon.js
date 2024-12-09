@@ -1,11 +1,6 @@
 "use strict";
 
-// make a button that starts a Game
-// const startButton ();
-
-// lights up its color for 1-2 seconds
-
-// when user hits the start button, the "computer" should light up a random game button. need to record the users clicks. capture the computers pattern and compare to the users clicks. if patterns dont match = alert/WRONG Game Over. Clear out the user clicks and reset the game.
+// need to record the users clicks. capture the computers pattern and compare to the users clicks. if patterns dont match = alert/WRONG Game Over. Clear out the user clicks and reset the game.
 
 // use this random number to illuminate a gameButton [0/red, 1/blue, 2/green, 3/yellow]
 // record this number and add it to a variable - .pop?
@@ -14,54 +9,99 @@
 // if computerGame !== userGame alert("WRONG sequence. You lose. Hit Start to begin a new game.")
 // if computerGame === userGame alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.")
 
+
+//variables
 const redButton = document.getElementById("redButton");
 const blueButton = document.getElementById("blueButton");
 const greenButton = document.getElementById("greenButton");
 const yellowButton = document.getElementById("yellowButton");
 const gameButtonArray = [redButton, blueButton, greenButton, yellowButton];
 
-let gameCount = 0;
-const userGame = [];
-const computerGame = [];
+let gameCount = 0; //should this start at 1 for round 1 or sit at 0 until pass through the loop hmmm... OR as soon ast start is pushed, make this go to 1, but then reset after an alert is called.
+let gameMessage = "";
+let gm = 0;
+const userGame = []; //this array is capurting the user choice/color from userChoice and is being populated by .push
+const computerGame = []; //this array is capturing the random choice/color from computerChoice and is being populated by .push
 
+
+//start the game
 const startGame = document.getElementById("startButton");
 startGame.addEventListener("click", () => {
     const computerChoice = Math.floor(Math.random() * 4);
     computerGame.push(computerChoice);
+    lightItUp(computerChoice);
 
-    gameButtonArray[computerChoice].classList.add("gameButtonBright");
+    // gameButtonArray[computerChoice].classList.add("gameButtonBright");
 
-    setTimeout(() => {
-        gameButtonArray[computerChoice].classList.remove("gameButtonBright");
-    }, 2000);
-
+    // setTimeout(() => {
+    //     gameButtonArray[computerChoice].classList.remove("gameButtonBright");
+    // }, 1250);
 });
 
 
+//light up a button
+function lightItUp (digit) {
+    gameButtonArray[digit].classList.add("gameButtonBright");
+    
+            setTimeout(() => {
+                gameButtonArray[digit].classList.remove("gameButtonBright");
+            }, 1250);
+}
+
+// function brightButton () {
     const lightUpGameButton = document.getElementsByClassName("gameButton");
     for (let l = 0; l < lightUpGameButton.length; l++) {
-
+    
         lightUpGameButton[l].addEventListener("click", () => {
             lightUpGameButton[l].classList.add("gameButtonBright");
-
+    
             setTimeout(() => {
                 lightUpGameButton[l].classList.remove("gameButtonBright");
-            }, 2000);
+            }, 1250);
         });
     }
+// }
+
+// from here down, the code is bad and doesnt work :(
+// need to rewrite the lightupButton and make it a function.
+
+// 
 
 
-    // start button needs abosulte (or is it fixed) positioning to make it centered on the game buttons
-    // array of numbs 0 - 3; funct to change color shed a timeout to change it and change back transtions color and track array, user click me aray, when numbs dont match, compare it, add subtract
-    // if nums dont match, do this
+// function brightButton () {
+// }
+        
+   
+
+// for (computuerGame === userGame) {
+//     let matchCount = 1;
+//     gameCount++;
+//     // need to stop this loop after 5 matches and alert Winner
+// } else {
+//     alert("WRONG. You lose. Hit Start to try your luck again.");
+// // reset gameCount to 0;
+// };
+
+// while (gameCount<6){
+//     gameMessage += "Game Count is: " + gameCount;
+//     gameCount++;
+//     };
+
+//     document.getElementById("gameCounter").innerHTML = gameMessage;
+
+// start button needs abosulte (or is it fixed) positioning to make it centered on the game buttons
+// array of numbs 0 - 3; funct to change color shed a timeout to change it and change back transtions color and track array, user click me aray, when numbs dont match, compare it, add subtract
+// if nums dont match, do this
 
 
 
-    // document.getElementById("myBtn").addEventListener("click", displayDate);
-    // document.getElementByTag("myBtn").addEventListener("click", displayDate);
-    // <button onclick="myFunction()">display txt if i wanna</button> 
+// document.getElementById("myBtn").addEventListener("click", displayDate);
+// document.getElementByTag("myBtn").addEventListener("click", displayDate);
+// <button onclick="myFunction()">display txt if i wanna</button> 
 
-    // Pattern for setInterval (does something repeatedly after the delay time)
-    let intervalRef = setInterval(() => {
-        // What to do repeatedly after the interval time
-    }, 1000); // Time in miliseconds
+// Pattern for setInterval (does something repeatedly after the delay time)
+// let intervalRef = setInterval(() => {
+// What to do repeatedly after the interval time
+// }, 1000); // Time in miliseconds
+
+
