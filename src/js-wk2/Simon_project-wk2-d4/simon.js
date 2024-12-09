@@ -27,21 +27,15 @@ const computerGame = [];
 const startGame = document.getElementById("startButton");
 startGame.addEventListener("click", () => {
     const computerChoice = Math.floor(Math.random() * 4);
-    console.log(computerChoice);
+    computerGame.push(computerChoice);
 
     gameButtonArray[computerChoice].classList.add("gameButtonBright");
 
     setTimeout(() => {
         gameButtonArray[computerChoice].classList.remove("gameButtonBright");
     }, 2000);
+
 });
-
-
-
-    // if it picks 0 = display redButton
-    // picks 1 = blueButton
-    // pick 2 = greenButton
-    // pick 3 = yellowButton
 
 
     const lightUpGameButton = document.getElementsByClassName("gameButton");
