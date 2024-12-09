@@ -45,12 +45,12 @@ h2 {
     justify-content: center;
     border: 5px solid black;
     font-family: Arial, Helvetica, sans-serif; 
-    transition: filter .5s ease-in-out;
+    transition: .5s ease-in-out;
 }
 
 .gameButtonBright{
-    filter: brightness(150%);
-    
+    filter: brightness(300%);
+    border: 10px solid black;
 }
 
 #startButton:hover {
@@ -65,7 +65,7 @@ h2 {
 }
 
 #blueButton {
-    background-color: rgba(1, 28, 179, 0.995);
+    background-color: rgb(2, 33, 207);
     border-radius: 0% 0% 0% 60%;
 }
 
