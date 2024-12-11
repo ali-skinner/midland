@@ -67,9 +67,13 @@ function lightItUp (digit) {
     }
 // }
 
+// capture computerChoice/index
+// Capture INDEX VALUE (stored in computerGame[] array)
+
+//         
 
 // capture userChoice/index
-// Capture BY INDEX VALUE (stored in userGame[] array)
+// Capture INDEX VALUE (stored in userGame[] array)
 
 // const userChoice = document.getElementsByClassName("gameButton");
 // for (let i = 0; i < userChoice.length; i++) {
@@ -99,6 +103,11 @@ function lightItUp (digit) {
 
 // fuction gameOver () {
 // alert("WRONG. You lose. Hit Start to try your luck again.");
+//  gameCount = 0;
+// };
+
+// fuction gameWinner () {
+// alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
 //  gameCount = 0;
 // };
 
