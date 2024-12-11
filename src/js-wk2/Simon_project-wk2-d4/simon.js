@@ -19,15 +19,15 @@ const yellowButton = document.getElementById("yellowButton");
 const gameButtonArray = [redButton, blueButton, greenButton, yellowButton];
 // [0/red, 1/blue, 2/green, 3/yellow]
 
-let gameCount = 0; //should this start at 1 for round 1 or sit at 0 until pass through the loop hmmm... OR as soon ast start is pushed, make this go to 1, but then reset after an alert is called.
-let gameMessage = "";
-let gm = 0;
 const userGame = []; //this array is capurting the user choice/color from userChoice and is being populated by .push
 const computerGame = []; //this array is capturing the random choice/color from computerChoice and is being populated by .push
 
 const compareGames = [] //need to write a function to compare userGame sequence to computerGame sequnce.
 // dont 4get! .length starts at 1 and index starts at 0. need to .length - 1 in the function to compare proper positions of the two arrays.
 
+let gameCount = 0; //should this start at 1 for round 1 or sit at 0 until pass through the loop hmmm... OR as soon ast start is pushed, make this go to 1, but then reset after an alert is called.
+let gameMessage = "";
+let gm = 0;
 
 //start the game
 const startGame = document.getElementById("startButton");
@@ -67,7 +67,51 @@ function lightItUp (digit) {
     }
 // }
 
-// from here down, the code is bad and doesnt work :(
+
+// capture userChoice/index
+// Capture BY INDEX VALUE (stored in userGame[] array)
+
+// const userChoice = document.getElementsByClassName("gameButton");
+// for (let i = 0; i < userChoice.length; i++) {
+//     userChoice[i].addEventListener("click", () => {
+
+    // userGame.push(userChoice);
+
+    // lightItUp(userChoice);
+    
+    // checkUserChoice(userChoice);
+// };
+//         
+
+
+//check userChoice
+// function checkUserChoice(clickedIndexButton) {
+// const currentSelection = userGame.length - 1;
+// if (clickedIndexButton !== computerGame[currentSelection]) {
+// gameOver();
+// } else if (userGame.length === computerGame.length) {
+// setTimout (() => {
+    // addToComputerSequence ();
+    // }, 1000);
+    // }
+// } 
+
+
+// fuction gameOver () {
+// alert("WRONG. You lose. Hit Start to try your luck again.");
+//  gameCount = 0;
+// };
+
+// while (gameCount<6){
+//     gameMessage += "Game Count is: " + gameCount;
+//     gameCount++;
+//     };
+
+// document.getElementById("gameCounter").innerHTML = gameMessage;
+
+
+
+// !from here down, the code is in draft or copy/ premilminary thought/ and doesnt work :(
 // need to rewrite the lightupButton and make it a function.
 
 // const userChoice = document.getElementsByClassName("gameButton");
@@ -179,15 +223,3 @@ function lightItUp (digit) {
 
 //     document.getElementById("gameCounter").innerHTML = gameMessage;
 
-// // start button needs abosulte (or is it fixed) positioning to make it centered on the game buttons
-// // array of numbs 0 - 3; funct to change color shed a timeout to change it and change back transtions color and track array, user click me aray, when numbs dont match, compare it, add subtract
-// // if nums dont match, do this
-
-// // document.getElementById("myBtn").addEventListener("click", displayDate);
-// // document.getElementByTag("myBtn").addEventListener("click", displayDate);
-// // <button onclick="myFunction()">display txt if i wanna</button> 
-
-// // Pattern for setInterval (does something repeatedly after the delay time)
-// // let intervalRef = setInterval(() => {
-// //     // What to do repeatedly after the interval time
-// // }, 1000); // Time in miliseconds
