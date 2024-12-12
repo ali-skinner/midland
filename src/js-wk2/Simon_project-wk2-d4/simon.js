@@ -35,6 +35,7 @@ startGame.addEventListener("click", () => {
     const computerChoice = Math.floor(Math.random() * 4);
     computerGame.push(computerChoice);
     lightItUp(computerChoice);
+    gameCount = 1;
 
     // gameButtonArray[computerChoice].classList.add("gameButtonBright");
 
@@ -50,22 +51,28 @@ startGame.addEventListener("click", () => {
 // after the userChoice is evaluted, and a valid/correct click is confirmed, the correct click is added to userGame.
 // i think i need to run a function for the computer to replay all the choices in the computerGame array. hmm... how to make it cycle through the array and then add new. play computerGame array and then us the math.random to .push the new index/color into the computerGame array.
 
-function nextComputerColor() {
+function addToComputerSequence() {
     const choosingColors = document.getElementById("gameButton");
     choosingColors.addEventListener("click", () => {
         const newColor = Math.floor(Math.random() * 4);
         computerGame.push(newColor);
         lightItUp(newColor);
+        gameCount++;
+        playComputerSequence(computerGame);
     });
 };
 
-// gameButtonArray[computerChoice].classList.add("gameButtonBright");
+// play computerGame array #FIX THIS 
+//  should i be calling th button so then the class property/gm bttn Bright activates?
+// for each ? loop through this series so that each button/array indice is called?
+function playComputerSequence() {
+    const activateButton = document.getElementById("gameButton");
+    activateButton.classList.add("gameButtonBright");
 
-// setTimeout(() => {
-//     gameButtonArray[computerChoice].classList.remove("gameButtonBright");
-// }, 1250);
-// });
-// }
+    setTimeout(() => {
+        activateButton.classList.remove("gameButtonBright");
+    }, 1250);
+};
 
 //light up a button
 function lightItUp(digit) {
@@ -102,36 +109,36 @@ for (let i = 0; i < userChoice.length; i++) {
 
         checkUserChoice(userChoice);
     }
-)
-};      
+    )
+};
 
 // check userChoice
 function checkUserChoice(clickedIndexButton) {
-const currentSelection = userGame.length - 1;
-if (clickedIndexButton !== computerGame[currentSelection]) {
-gameOver();
-} else if (userGame.length === computerGame.length) {
-setTimout (() => {
-addToComputerSequence ();
-}, 1000);
-}
-}; 
-
-
-function gameOver () {
-alert("WRONG. You lose. Hit Start to try your luck again.");
- gameCount = 0;
+    const currentSelection = userGame.length - 1;
+    if (clickedIndexButton !== computerGame[currentSelection]) {
+        gameOver();
+    } else if (userGame.length === computerGame.length) {
+        setTimout(() => {
+            addToComputerSequence();
+        }, 1000);
+    }
 };
 
-function gameWinner () {
-alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
- gameCount = 0;
+
+function gameOver() {
+    alert("WRONG. You lose. Hit Start to try your luck again.");
+    gameCount = 0;
 };
 
-while (gameCount<6){
+function gameWinner() {
+    alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
+    gameCount = 0;
+};
+
+while (gameCount < 6) {
     gameMessage += "Game Count is: " + gameCount;
     gameCount++;
-    };
+};
 
 document.getElementById("gameCounter").innerHTML = gameMessage;
 
