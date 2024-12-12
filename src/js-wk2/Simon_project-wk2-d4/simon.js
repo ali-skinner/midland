@@ -44,79 +44,96 @@ startGame.addEventListener("click", () => {
 });
 
 
-//light up a button
-function lightItUp (digit) {
-    gameButtonArray[digit].classList.add("gameButtonBright");
-    
-            setTimeout(() => {
-                gameButtonArray[digit].classList.remove("gameButtonBright");
-            }, 1250);
-}
 
-// function brightButton () {
-    const lightUpGameButton = document.getElementsByClassName("gameButton");
-    for (let l = 0; l < lightUpGameButton.length; l++) {
-    
-        lightUpGameButton[l].addEventListener("click", () => {
-            lightUpGameButton[l].classList.add("gameButtonBright");
-    
-            setTimeout(() => {
-                lightUpGameButton[l].classList.remove("gameButtonBright");
-            }, 1250);
-        });
-    }
+//computerGame Sequence capture
+// Capture INDEX VALUE (stored in computerGame[] array)
+// after the userChoice is evaluted, and a valid/correct click is confirmed, the correct click is added to userGame.
+// i think i need to run a function for the computer to replay all the choices in the computerGame array. hmm... how to make it cycle through the array and then add new. play computerGame array and then us the math.random to .push the new index/color into the computerGame array.
+
+function nextComputerColor() {
+    const choosingColors = document.getElementById("gameButton");
+    choosingColors.addEventListener("click", () => {
+        const newColor = Math.floor(Math.random() * 4);
+        computerGame.push(newColor);
+        lightItUp(newColor);
+    });
+};
+
+// gameButtonArray[computerChoice].classList.add("gameButtonBright");
+
+// setTimeout(() => {
+//     gameButtonArray[computerChoice].classList.remove("gameButtonBright");
+// }, 1250);
+// });
 // }
 
-// capture computerChoice/index
-// Capture INDEX VALUE (stored in computerGame[] array)
+//light up a button
+function lightItUp(digit) {
+    gameButtonArray[digit].classList.add("gameButtonBright");
 
-//         
+    setTimeout(() => {
+        gameButtonArray[digit].classList.remove("gameButtonBright");
+    }, 1250);
+}
+
+// function brightButton (gameArrayButton???) {
+const lightUpGameButton = document.getElementsByClassName("gameButton");
+for (let l = 0; l < lightUpGameButton.length; l++) {
+
+    lightUpGameButton[l].addEventListener("click", () => {
+        lightUpGameButton[l].classList.add("gameButtonBright");
+
+        setTimeout(() => {
+            lightUpGameButton[l].classList.remove("gameButtonBright");
+        }, 1250);
+    });
+}
 
 // capture userChoice/index
 // Capture INDEX VALUE (stored in userGame[] array)
 
-// const userChoice = document.getElementsByClassName("gameButton");
-// for (let i = 0; i < userChoice.length; i++) {
-//     userChoice[i].addEventListener("click", () => {
+const userChoice = document.getElementsByClassName("gameButton");
+for (let i = 0; i < userChoice.length; i++) {
+    userChoice[i].addEventListener("click", () => {
 
-    // userGame.push(userChoice);
+        userGame.push(userChoice);
 
-    // lightItUp(userChoice);
-    
-    // checkUserChoice(userChoice);
-// };
-//         
+        lightItUp(userChoice);
+
+        checkUserChoice(userChoice);
+    }
+)
+};      
+
+// check userChoice
+function checkUserChoice(clickedIndexButton) {
+const currentSelection = userGame.length - 1;
+if (clickedIndexButton !== computerGame[currentSelection]) {
+gameOver();
+} else if (userGame.length === computerGame.length) {
+setTimout (() => {
+addToComputerSequence ();
+}, 1000);
+}
+}; 
 
 
-//check userChoice
-// function checkUserChoice(clickedIndexButton) {
-// const currentSelection = userGame.length - 1;
-// if (clickedIndexButton !== computerGame[currentSelection]) {
-// gameOver();
-// } else if (userGame.length === computerGame.length) {
-// setTimout (() => {
-    // addToComputerSequence ();
-    // }, 1000);
-    // }
-// } 
+function gameOver () {
+alert("WRONG. You lose. Hit Start to try your luck again.");
+ gameCount = 0;
+};
 
+function gameWinner () {
+alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
+ gameCount = 0;
+};
 
-// fuction gameOver () {
-// alert("WRONG. You lose. Hit Start to try your luck again.");
-//  gameCount = 0;
-// };
+while (gameCount<6){
+    gameMessage += "Game Count is: " + gameCount;
+    gameCount++;
+    };
 
-// fuction gameWinner () {
-// alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
-//  gameCount = 0;
-// };
-
-// while (gameCount<6){
-//     gameMessage += "Game Count is: " + gameCount;
-//     gameCount++;
-//     };
-
-// document.getElementById("gameCounter").innerHTML = gameMessage;
+document.getElementById("gameCounter").innerHTML = gameMessage;
 
 
 
