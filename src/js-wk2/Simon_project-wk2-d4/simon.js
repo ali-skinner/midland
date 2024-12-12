@@ -66,6 +66,7 @@ function addToComputerSequence() {
 //  should i be calling th button so then the class property/gm bttn Bright activates?
 // for each ? loop through this series so that each button/array indice is called?
 function playComputerSequence() {
+    for each item in the Array
     const activateButton = document.getElementById("gameButton");
     activateButton.classList.add("gameButtonBright");
 
