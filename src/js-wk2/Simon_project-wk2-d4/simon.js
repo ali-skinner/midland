@@ -35,6 +35,7 @@ startGame.addEventListener("click", () => {
 
 // add to computerSequence
 function generateNextSequence() {
+    setGameCounter(`You are in round ${gameCount+1}.`);
     const computerChoice = Math.floor(Math.random() * 4);
     computerGame.push(computerChoice);
     setTimeout(()=>lightThemUp(computerGame), 3000);
@@ -49,16 +50,35 @@ function setEventListeners() {
 
             const indexPosition = userGame.length - 1;
             if (userGame[indexPosition] !== computerGame[indexPosition]) {
-                alert("WRONG. You loseR. Hit Start to begin a new game....if you dare.")
+                setGameCounter(`YOU ARE A LOSER.
+                    <br> Hit Start to try again.`)
+                // alert("WRONG. You loseR. Hit Start to begin a new game....if you dare.")
             } else {
                 if (userGame.length === computerGame.length) {
                     userGame = [];
-                    generateNextSequence();
+                    gameCount++;
+                    console.log({gameCount});
+                    if(gameCount<5) {
+                        generateNextSequence();
+                    } else{
+                        setGameCounter("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
+                        resetGame();
+                    };
                 };
             };
         }
         )
     };
+}
+
+//game counter
+function setGameCounter (gameMessage) {
+    document.getElementById("gameCounter").innerHTML = gameMessage;
+}
+
+//reset Game
+function resetGame () {
+    console.log("Reset Game pls.");
 }
 
 //lightThemUp
@@ -170,7 +190,7 @@ function lightItUp(digit) {
 //     gameCount++;
 // };
 
-// document.getElementById("gameCounter").innerHTML = gameMessage;
+
 
 
 
