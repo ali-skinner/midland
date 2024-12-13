@@ -24,41 +24,53 @@ let computerGame = []; //this array is capturing the random choice/color from co
 let gameCount = 0; //should this start at 1 for round 1 or sit at 0 until pass through the loop hmmm... OR as soon ast start is pushed, make this go to 1, but then reset after an alert is called.
 let gameMessage = "";
 let continueGame = true;
+let waitingForUser = false;
 
 //start the game
 const startGame = document.getElementById("startButton");
 startGame.addEventListener("click", () => {
-    // setTimeout (() => {}, 1000);
-    setEventListeners ();
-    while (gameCount < 5 && continueGame === true) {
-        const computerChoice = Math.floor(Math.random() * 4);
-        gameCount++;
-        computerGame.push(computerChoice);
-        lightThemUp(computerGame);
-        // getUserClicks ();
-    }
-    // gameCount = 0;
-    // computerGame = [];
-    // userGame = [];
+    setEventListeners();
+    generateNextSequence();
+    
 });
 
-// UserGame Sequence Capture
+// add to computerSequence
+function generateNextSequence() {
+    const computerChoice = Math.floor(Math.random() * 4);
+    computerGame.push(computerChoice);
+    lightThemUp(computerGame);
+}
+
+
 function setEventListeners() {
 
     for (let i = 0; i < gameButtonArray.length; i++) {
         gameButtonArray[i].addEventListener("click", () => {
 
             userGame.push(i);
-
             lightItUp(i);
-
             // checkUserChoice(i);
-            console.log(userGame);
-            console.log(computerGame);
+            console.log("computerGame: " + computerGame);
+            console.log("userGame: " + userGame);
+            
 
-            computerGame.forEach ((computerRandomChoice, index) => {
-                console.log(computerRandomChoice === userGame [index]);
-            })
+            if (computerGame.length === userGame.length) {
+                let arraysMatch = true;
+                computerGame.forEach((computerRandomChoice, index) => {
+                    if (computerRandomChoice !== userGame[index]) {
+                        arraysMatch = false;
+                    }
+                });
+                console.log(arraysMatch);
+                
+                if (!arraysMatch) {
+                    alert("WRONG sequence. You loseR. Hit Start to begin a new game....if you dare.")
+                } else {
+                    userGame = [];
+                    generateNextSequence ();
+                };
+            }
+
         }
         )
     };
