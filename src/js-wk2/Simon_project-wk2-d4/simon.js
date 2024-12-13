@@ -19,61 +19,54 @@ const yellowButton = document.getElementById("yellowButton");
 const gameButtonArray = [redButton, blueButton, greenButton, yellowButton];
 // [0/red, 1/blue, 2/green, 3/yellow]
 
-const userGame = []; //this array is capurting the user choice/color from userChoice and is being populated by .push
-const computerGame = []; //this array is capturing the random choice/color from computerChoice and is being populated by .push
-
-const compareGames = [] //need to write a function to compare userGame sequence to computerGame sequnce.
-// dont 4get! .length starts at 1 and index starts at 0. need to .length - 1 in the function to compare proper positions of the two arrays.
-
+let userGame = []; //this array is capurting the user choice/color from userChoice and is being populated by .push
+let computerGame = []; //this array is capturing the random choice/color from computerChoice and is being populated by .push
 let gameCount = 0; //should this start at 1 for round 1 or sit at 0 until pass through the loop hmmm... OR as soon ast start is pushed, make this go to 1, but then reset after an alert is called.
 let gameMessage = "";
-let gm = 0;
+let continueGame = true;
 
 //start the game
 const startGame = document.getElementById("startButton");
 startGame.addEventListener("click", () => {
-    const computerChoice = Math.floor(Math.random() * 4);
-    computerGame.push(computerChoice);
-    lightItUp(computerChoice);
-    gameCount = 1;
-
-    // gameButtonArray[computerChoice].classList.add("gameButtonBright");
-
-    // setTimeout(() => {
-    //     gameButtonArray[computerChoice].classList.remove("gameButtonBright");
-    // }, 1250);
+    // setTimeout (() => {}, 1000);
+    while (gameCount < 5 && continueGame === true) {
+        const computerChoice = Math.floor(Math.random() * 4);
+        gameCount++;
+        computerGame.push(computerChoice);
+        lightThemUp(computerGame);
+        getUserClicks ();
+    }
+    gameCount = 0;
+    computerGame = [];
+    userGame = [];
 });
 
+// UserGame Sequence Capture
+function getUserClicks() {
 
+    for (let i = 0; i < gameButtonArray.length; i++) {
+        gameButtonArray[i].addEventListener("click", () => {
 
-//computerGame Sequence capture
-// Capture INDEX VALUE (stored in computerGame[] array)
-// after the userChoice is evaluted, and a valid/correct click is confirmed, the correct click is added to userGame.
-// i think i need to run a function for the computer to replay all the choices in the computerGame array. hmm... how to make it cycle through the array and then add new. play computerGame array and then us the math.random to .push the new index/color into the computerGame array.
+            userGame.push(i);
 
-function addToComputerSequence() {
-    const choosingColors = document.getElementById("gameButton");
-    choosingColors.addEventListener("click", () => {
-        const newColor = Math.floor(Math.random() * 4);
-        computerGame.push(newColor);
-        lightItUp(newColor);
-        gameCount++;
-        playComputerSequence(computerGame);
+            lightItUp(i);
+
+            // checkUserChoice(i);
+            console.log(userGame);
+        }
+        )
+    };
+
+}
+
+//lightThemUp
+function lightThemUp(digitArray) {
+    digitArray.forEach((digit, index) => {
+        setTimeout(() => {
+            lightItUp(digit);
+        }, 2000 * index);
     });
-};
-
-// play computerGame array #FIX THIS 
-//  should i be calling th button so then the class property/gm bttn Bright activates?
-// for each ? loop through this series so that each button/array indice is called?
-function playComputerSequence() {
-    for each item in the Array
-    const activateButton = document.getElementById("gameButton");
-    activateButton.classList.add("gameButtonBright");
-
-    setTimeout(() => {
-        activateButton.classList.remove("gameButtonBright");
-    }, 1250);
-};
+}
 
 //light up a button
 function lightItUp(digit) {
@@ -84,64 +77,81 @@ function lightItUp(digit) {
     }, 1250);
 }
 
-// function brightButton (gameArrayButton???) {
-const lightUpGameButton = document.getElementsByClassName("gameButton");
-for (let l = 0; l < lightUpGameButton.length; l++) {
+//computerGame Sequence capture
+// Capture INDEX VALUE (stored in computerGame[] array)
+// after the userChoice is evaluted, and a valid/correct click is confirmed, the correct click is added to userGame.
+// i think i need to run a function for the computer to replay all the choices in the computerGame array. hmm... how to make it cycle through the array and then add new. play computerGame array and then us the math.random to .push the new index/color into the computerGame array.
 
-    lightUpGameButton[l].addEventListener("click", () => {
-        lightUpGameButton[l].classList.add("gameButtonBright");
+// function addToComputerSequence() {
+//     const choosingColors = document.getElementById("gameButton");
+//     choosingColors.addEventListener("click", () => {
+//         const newColor = Math.floor(Math.random() * 4);
+//         computerGame.push(newColor);
+//         lightItUp(newColor);
+//         gameCount++;
+//         playComputerSequence(computerGame);
+//     });
+// };
 
-        setTimeout(() => {
-            lightUpGameButton[l].classList.remove("gameButtonBright");
-        }, 1250);
-    });
-}
+// play computerGame array #FIX THIS 
+//  should i be calling th button so then the class property/gm bttn Bright activates?
+// for each ? loop through this series so that each button/array indice is called?
+// function playComputerSequence() {
+//     // for each item in the Array
+//     const activateButton = document.getElementById("gameButton");
+//     activateButton.classList.add("gameButtonBright");
 
-// capture userChoice/index
-// Capture INDEX VALUE (stored in userGame[] array)
-
-const userChoice = document.getElementsByClassName("gameButton");
-for (let i = 0; i < userChoice.length; i++) {
-    userChoice[i].addEventListener("click", () => {
-
-        userGame.push(userChoice);
-
-        lightItUp(userChoice);
-
-        checkUserChoice(userChoice);
-    }
-    )
-};
-
-// check userChoice
-function checkUserChoice(clickedIndexButton) {
-    const currentSelection = userGame.length - 1;
-    if (clickedIndexButton !== computerGame[currentSelection]) {
-        gameOver();
-    } else if (userGame.length === computerGame.length) {
-        setTimout(() => {
-            addToComputerSequence();
-        }, 1000);
-    }
-};
+//     setTimeout(() => {
+//         activateButton.classList.remove("gameButtonBright");
+//     }, 1250);
+// };
 
 
-function gameOver() {
-    alert("WRONG. You lose. Hit Start to try your luck again.");
-    gameCount = 0;
-};
 
-function gameWinner() {
-    alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
-    gameCount = 0;
-};
+// // function brightButton (gameArrayButton???) {
+// const lightUpGameButton = document.getElementsByClassName("gameButton");
+// for (let l = 0; l < lightUpGameButton.length; l++) {
 
-while (gameCount < 6) {
-    gameMessage += "Game Count is: " + gameCount;
-    gameCount++;
-};
+//     lightUpGameButton[l].addEventListener("click", () => {
+//         lightUpGameButton[l].classList.add("gameButtonBright");
 
-document.getElementById("gameCounter").innerHTML = gameMessage;
+//         setTimeout(() => {
+//             lightUpGameButton[l].classList.remove("gameButtonBright");
+//         }, 1250);
+//     });
+// }
+
+
+
+// // check userChoice
+// function checkUserChoice(clickedIndexButton) {
+//     const currentSelection = userGame.length - 1;
+//     if (clickedIndexButton !== computerGame[currentSelection]) {
+//         gameOver();
+//     } else if (userGame.length === computerGame.length) {
+//         setTimout(() => {
+//             addToComputerSequence();
+//         }, 1000);
+//     }
+// };
+
+
+// function gameOver() {
+//     alert("WRONG. You lose. Hit Start to try your luck again.");
+//     gameCount = 0;
+// };
+
+// function gameWinner() {
+//     alert("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
+//     gameCount = 0;
+// };
+
+// while (gameCount < 6) {
+//     gameMessage += "Game Count is: " + gameCount;
+//     gameCount++;
+// };
+
+// document.getElementById("gameCounter").innerHTML = gameMessage;
 
 
 
