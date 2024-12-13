@@ -29,20 +29,21 @@ let continueGame = true;
 const startGame = document.getElementById("startButton");
 startGame.addEventListener("click", () => {
     // setTimeout (() => {}, 1000);
+    setEventListeners ();
     while (gameCount < 5 && continueGame === true) {
         const computerChoice = Math.floor(Math.random() * 4);
         gameCount++;
         computerGame.push(computerChoice);
         lightThemUp(computerGame);
-        getUserClicks ();
+        // getUserClicks ();
     }
-    gameCount = 0;
-    computerGame = [];
-    userGame = [];
+    // gameCount = 0;
+    // computerGame = [];
+    // userGame = [];
 });
 
 // UserGame Sequence Capture
-function getUserClicks() {
+function setEventListeners() {
 
     for (let i = 0; i < gameButtonArray.length; i++) {
         gameButtonArray[i].addEventListener("click", () => {
@@ -53,10 +54,14 @@ function getUserClicks() {
 
             // checkUserChoice(i);
             console.log(userGame);
+            console.log(computerGame);
+
+            computerGame.forEach ((computerRandomChoice, index) => {
+                console.log(computerRandomChoice === userGame [index]);
+            })
         }
         )
     };
-
 }
 
 //lightThemUp
