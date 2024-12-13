@@ -31,46 +31,31 @@ const startGame = document.getElementById("startButton");
 startGame.addEventListener("click", () => {
     setEventListeners();
     generateNextSequence();
-    
 });
 
 // add to computerSequence
 function generateNextSequence() {
     const computerChoice = Math.floor(Math.random() * 4);
     computerGame.push(computerChoice);
-    lightThemUp(computerGame);
+    setTimeout(()=>lightThemUp(computerGame), 3000);
 }
-
-
 function setEventListeners() {
-
     for (let i = 0; i < gameButtonArray.length; i++) {
         gameButtonArray[i].addEventListener("click", () => {
-
             userGame.push(i);
             lightItUp(i);
-            // checkUserChoice(i);
             console.log("computerGame: " + computerGame);
             console.log("userGame: " + userGame);
-            
 
-            if (computerGame.length === userGame.length) {
-                let arraysMatch = true;
-                computerGame.forEach((computerRandomChoice, index) => {
-                    if (computerRandomChoice !== userGame[index]) {
-                        arraysMatch = false;
-                    }
-                });
-                console.log(arraysMatch);
-                
-                if (!arraysMatch) {
-                    alert("WRONG sequence. You loseR. Hit Start to begin a new game....if you dare.")
-                } else {
+            const indexPosition = userGame.length - 1;
+            if (userGame[indexPosition] !== computerGame[indexPosition]) {
+                alert("WRONG. You loseR. Hit Start to begin a new game....if you dare.")
+            } else {
+                if (userGame.length === computerGame.length) {
                     userGame = [];
-                    generateNextSequence ();
+                    generateNextSequence();
                 };
-            }
-
+            };
         }
         )
     };
@@ -81,7 +66,7 @@ function lightThemUp(digitArray) {
     digitArray.forEach((digit, index) => {
         setTimeout(() => {
             lightItUp(digit);
-        }, 2000 * index);
+        }, 1000 * index);
     });
 }
 
@@ -91,13 +76,30 @@ function lightItUp(digit) {
 
     setTimeout(() => {
         gameButtonArray[digit].classList.remove("gameButtonBright");
-    }, 1250);
+    }, 500);
 }
 
 //computerGame Sequence capture
 // Capture INDEX VALUE (stored in computerGame[] array)
 // after the userChoice is evaluted, and a valid/correct click is confirmed, the correct click is added to userGame.
 // i think i need to run a function for the computer to replay all the choices in the computerGame array. hmm... how to make it cycle through the array and then add new. play computerGame array and then us the math.random to .push the new index/color into the computerGame array.
+ 
+       // if (computerGame.length === userGame.length) {
+            //     let arraysMatch = true;
+            //     computerGame.forEach((computerRandomChoice, index) => {
+            //         if (computerRandomChoice !== userGame[index]) {
+            //             arraysMatch = false;
+            //         }
+            //     });
+            //     console.log(arraysMatch);
+
+            //     if (!arraysMatch) {
+            //         alert("WRONG. You loseR. Hit Start to begin a new game....if you dare.")
+            //     } else {
+            //         userGame = [];
+            //         generateNextSequence();
+            //     };
+            // }
 
 // function addToComputerSequence() {
 //     const choosingColors = document.getElementById("gameButton");
@@ -199,7 +201,7 @@ function lightItUp(digit) {
 //     document.getElementById("gameCounter").innerHTML = gameMessage;
 
 // start button needs absolute (or is it fixed) positioning to make it centered on the game buttons
-// array of numbs 0 - 3; funct to change color shed a timeout to change it and change back transtions color and track array, user click me aray, when numbs dont match, compare it, add subtract
+// array of numbs 0 - 3; funct to change color sched a timeout to change it and change back transtions color and track array, user click me aray, when numbs dont match, compare it, add subtract
 // if nums dont match, do this
 
 
