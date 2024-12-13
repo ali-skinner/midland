@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Searchin'</title>
+    <link rel="stylesheet" href="./api-movieDatabase.css">
+</head>
+<body>
+    <h1>~~~ Welcome ~~~<br>Are you curious what to watch tonight?</h1>
+    <h2>Use this searchable site of fun to embark on your next cinematographic journey.</h2>
+    <br>
+    
+    <div><p><label for="search">Help us help you.<br> Please describe your fancy. Enter keywords, searchable title, actor name, specific subject or topic, theme, director name.</label></p>
+        <textarea id="search" name="search" form="search" rows="3" cols="40"
+          placeholder="List your wishes here..." maxlength="100" resize=none></textarea></div>
+          <br>
+    <div><Button>Search!</Button></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <p id="show type choices">What type of viusal entertainment is this? <em>Please select best description.</em></p>
+        <input type="radio" id="show type-choice1" name="show type" value="Movie" />
+        <label for="contact-choice1">Movie</label>
+
+        <input type="radio" id="show type-choice2" name="show type" value="Series" />
+        <label for="show type-choice2">Series</label>
+
+        <input type="radio" id="show type-choice3" name="show type" value="Episode" />
+        <label for="show type-choice3">Episode</label>
+
+    <p>You will be taking what you have learned so far this week to build a mobile responsive movie database search engine. Taking the following steps, allow for a user to search for a movie on OMDB to see what movies share that title.
+
+<p>- Come up with layout
+    - Build elements / containers / etc
+    - Event listener to submit button to do the things
+    - Count amount of letters they input and do appropriate action
+    - Read API Documentation to see what format you will get a response in / what you need to send
+    - Fetch data from the API
+    - Display error message to DOM if something went wrong
+    - Use data to display to DOM<br></p>
+
+---more -- >
+        - Sign up for a personal API key from OMDBAPI
+        - Utilize the information on the page to see what kind of format a request needs to be made in to return correct information.
+         -Create a simple search box that allows for the user to search for a movie. They should be able to enter ANY of the following information but a search field is required for you to send a request to the API:
+        - Search Field (title) - Do not allow for an API call without at least 3 characters in this field
+        - Type (Make a select box for this)
+        - Year - Your choice of input type
+        - If an error occurred, let the user know. Otherwise display the data to the page.
+        - Since only 10 items are returned, figure out how many items WOULD have been sent and let the user know.
+    optional: Let the user pick a page out of that many to select to. This will be a lesson in the wonders / frustrations of pagination.
+    Add styling and additional functionality as time permits.</p>
+
+<script src="./api-movieDatabase.js">
+
+</script>
+</body>
+</html>
