@@ -22,9 +22,6 @@ const gameButtonArray = [redButton, blueButton, greenButton, yellowButton];
 let userGame = []; //this array is capurting the user choice/color from userChoice and is being populated by .push
 let computerGame = []; //this array is capturing the random choice/color from computerChoice and is being populated by .push
 let gameCount = 0; //should this start at 1 for round 1 or sit at 0 until pass through the loop hmmm... OR as soon ast start is pushed, make this go to 1, but then reset after an alert is called.
-let gameMessage = "";
-let continueGame = true;
-let waitingForUser = false;
 
 //start the game
 const startGame = document.getElementById("startButton");
@@ -40,36 +37,51 @@ function generateNextSequence() {
     computerGame.push(computerChoice);
     setTimeout(()=>lightThemUp(computerGame), 3000);
 }
+
+// removing Event listener
+function removeListeners() {
+    for (let i = 0; i < gameButtonArray.length; i++) {
+       gameButtonArray[i].removeEventListener("click", handleClick); 
+    }
+}
 function setEventListeners() {
     for (let i = 0; i < gameButtonArray.length; i++) {
-        gameButtonArray[i].addEventListener("click", () => {
-            userGame.push(i);
-            lightItUp(i);
-            console.log("computerGame: " + computerGame);
-            console.log("userGame: " + userGame);
-
-            const indexPosition = userGame.length - 1;
-            if (userGame[indexPosition] !== computerGame[indexPosition]) {
-                setGameCounter(`YOU ARE A LOSER.
-                    <br> Hit Start to try again.`)
-                // alert("WRONG. You loseR. Hit Start to begin a new game....if you dare.")
-            } else {
-                if (userGame.length === computerGame.length) {
-                    userGame = [];
-                    gameCount++;
-                    console.log({gameCount});
-                    if(gameCount<5) {
-                        generateNextSequence();
-                    } else{
-                        setGameCounter("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
-                        resetGame();
-                    };
-                };
-            };
-        }
-        )
+        gameButtonArray[i].addEventListener("click", handleClick )
     };
 }
+function handleClick(event) {
+    const index = gameButtonArray.indexOf(event.currentTarget);
+    handleIt(index);
+}
+
+//handle user clicks
+function handleIt(i) {
+    userGame.push(i);
+    lightItUp(i);
+    console.log("computerGame: " + computerGame);
+    console.log("userGame: " + userGame);
+
+    const indexPosition = userGame.length - 1;
+    if (userGame[indexPosition] !== computerGame[indexPosition]) {
+        setGameCounter(`YOU ARE A LOSER.
+            <br> Hit Start to try again.`);
+            resetGame();                    
+        // alert("WRONG. You loseR. Hit Start to begin a new game....if you dare.")
+    } else {
+        if (userGame.length === computerGame.length) {
+            userGame = [];
+            gameCount++;
+            console.log({gameCount});
+            if(gameCount<5) {
+                generateNextSequence();
+            } else{
+                setGameCounter("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
+                resetGame();
+            };
+        };
+    };
+}
+
 
 //game counter
 function setGameCounter (gameMessage) {
@@ -79,6 +91,10 @@ function setGameCounter (gameMessage) {
 //reset Game
 function resetGame () {
     console.log("Reset Game pls.");
+    removeListeners();
+    userGame = []; 
+    computerGame = [];
+    gameCount = 0; 
 }
 
 //lightThemUp
@@ -99,6 +115,33 @@ function lightItUp(digit) {
     }, 500);
 }
 
+
+// {
+//     userGame.push(i);
+//     lightItUp(i);
+//     console.log("computerGame: " + computerGame);
+//     console.log("userGame: " + userGame);
+
+//     const indexPosition = userGame.length - 1;
+//     if (userGame[indexPosition] !== computerGame[indexPosition]) {
+//         setGameCounter(`YOU ARE A LOSER.
+//             <br> Hit Start to try again.`);
+//             resetGame();                    
+//         // alert("WRONG. You loseR. Hit Start to begin a new game....if you dare.")
+//     } else {
+//         if (userGame.length === computerGame.length) {
+//             userGame = [];
+//             gameCount++;
+//             console.log({gameCount});
+//             if(gameCount<5) {
+//                 generateNextSequence();
+//             } else{
+//                 setGameCounter("WINNER WINNER CHICKEN DINNER! Hit Start to begin a new game.");
+//                 resetGame();
+//             };
+//         };
+//     };
+// }
 //computerGame Sequence capture
 // Capture INDEX VALUE (stored in computerGame[] array)
 // after the userChoice is evaluted, and a valid/correct click is confirmed, the correct click is added to userGame.
