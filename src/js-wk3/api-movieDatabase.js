@@ -1,5 +1,10 @@
 "use strict";
 
+// send data requests to http://www.omdbapi.com/?apikey=[yourkey]&
+// Poster API requests http://img.omdbapi.com/?apikey=[yourkey]&
+// apikey=c52d83f7
+
+
 fetch(api.link) // This returns a promise - an object that represents the eventual completion (or failure) of an operation
     .then((response) => { // This handles the promise from the fetch request
         if (!response.ok) { // If the promise fails... (usually a 4xx or 5xx status code)
