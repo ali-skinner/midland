@@ -19,10 +19,19 @@ div {
     margin-left: 10px;
 }
 
+.resultsDiv {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: antiquewhite;
+    border: 5px solid grey;
+    color: rgb(209, 27, 222);
+    font-size: 16px;
+}
+
 .searchButton {
     background-color: darkorchid;
     border-radius: 20%;
     padding: 10px;
-    margin-top: 10px;
+    margin: 10px;
     border: 1px solid grey;
 }

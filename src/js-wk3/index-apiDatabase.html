@@ -8,26 +8,55 @@
 </head>
 
 <body>
+    <!-- into -->
     <h1>Welcome!<br>Are you curious what to watch tonight?</h1>
     <h2 style="margin-left: 15px; color: rgb(49, 212, 190);">Use this searchable site of fun to embark on your next
         cinematographic journey.</h2>
 
-
+    <!-- search box -->
     <div>
-        <p><label for="search">Help us help you.<br> Please describe your fancy. Enter keywords, searchable title, actor
-                name, specific subject or topic, theme, director name.</label></p>
-        <input type="search" id="search-box" name="search-box" placeholder="List your wishes here.." />
+        <div>
+            <p>
+                <label for="search">Help us help you.<br> Please describe your fancy. Enter keywords, searchable title,
+                    actor name, specific subject or topic, theme, director name.
+                </label>
+            </p>
+        </div>
+        <div>
+            <input type="search" id="search-box" name="search-box" placeholder="List your wishes here.." />
+        </div>
     </div>
 
+    <!-- submit button -->
     <div>
         <button class="searchButton" type="submit" id="submit">Submit My Search!</button>
     </div>
-    <div id="answer"></div>
-    <div></div>
-    <br>
-    <br>
 
-    <!-- this needs to flip to <SELECT> <OPTION>? make a dropdown box
+    <!-- display movie cards/posters -->
+   
+    <div class="resultsDiv">Result 1</div>
+    <div class="resultsDiv">res 2</div>
+    <div class="resultsDiv">res 3</div>
+    <div class="resultsDiv">res 4</div>
+    <div class="resultsDiv"></div>
+    <div class="resultsDiv"></div>
+    <div class="resultsDiv"></div>
+    <div class="resultsDiv"></div>
+    <div class="resultsDiv"></div>
+    <div class="resultsDiv"></div>
+
+
+    <!-- js file -->
+    <script src="./api-movieDatabase.js">
+    </script>
+
+</body>
+
+</html>
+
+
+
+<!-- this needs to flip to <SELECT> <OPTION>? make a dropdown box
     <div><p id="show type choices">What type of viusal entertainment is this? <em>Please select best description.</em></p>
     <input type="radio" id="show type-choice1" name="show type" value="Movie" />
     <label for="contact-choice1">Movie</label>
@@ -38,9 +67,9 @@
     <input type="radio" id="show type-choice3" name="show type" value="Episode" />
     <label for="show type-choice3">Episode</label></div> -->
 
-    
 
-    <!-- <p>You will be taking what you have learned so far this week to build a mobile responsive movie database search
+
+<!-- <p>You will be taking what you have learned so far this week to build a mobile responsive movie database search
         engine. Taking the following steps, allow for a user to search for a movie on OMDB to see what movies share that
         title.
 
@@ -65,9 +94,3 @@
     - If an error occurred, let the user know. Otherwise display the data to the page.
     - Since only 10 items are returned, figure out how many items WOULD have been sent and let the user know.
    </p>  -->
-
-    <script src="./api-movieDatabase.js">
-    </script>
-</body>
-
-</html>
