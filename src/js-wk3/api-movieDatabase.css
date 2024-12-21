@@ -35,3 +35,7 @@ div {
     margin: 10px;
     border: 1px solid grey;
 }
+
+.searchBox {
+    width: 100;
+}
