@@ -10,24 +10,21 @@ document.getElementById("submit").addEventListener("click", searchResults);
 function searchResults () {
     const userSearch = document.getElementById("search-box").value;
      
-    fetch('http://www.omdbapi.com/?s=${userSearch}&apikey=c52d83f7')
-    // This returns a promise - an object that represents the eventual completion (or failure) of an operation
-    .then((response) => { // This handles the promise from the fetch request
-        if (!response.ok) { // If the promise fails... (usually a 4xx or 5xx status code)
-        // Do something if the promise does not succeed
+    fetch(`http://www.omdbapi.com/?s=${userSearch}&apikey=c52d83f7`)
+    .then((response) => {
+        if (!response.ok) {
         const errorMessage = "500 Internal Server Error."
         console.log(errorMessage);
         throw new Error(errorMessage);
         }
-        // Processes the successful response (usually a 2xx status code)
         const successMessage = "202 Accepted"
         console.log(successMessage);
-        return response.json(); // This also returns a promise that resolves to the JSON object when parsing is complete
+        return response.json();
     })
     .then((data) => {
         // handles the promise that was given by the return statement
-        console.log(data)
-        document.getElementsByClassName("resultsDivs")[0].innerHTML = data.Title
+        console.log(data);
+        // document.getElementsByClassName("resultsDivs")[0].innerHTML = data.Title
     })
    .catch(error => {
     console.error('Error:', error);
@@ -127,3 +124,34 @@ function searchResults () {
     //       })
     //       .then((res) => console.log(res)); // handles the promise given by the return statement
     //   });
+
+
+    //Copy of the code 12/21 w/commented notes from the lesson //
+//     document.getElementById("submit").addEventListener("click", searchResults);
+
+// function searchResults () {
+//     const userSearch = document.getElementById("search-box").value;
+     
+//     fetch('http://www.omdbapi.com/?s=${userSearch}&apikey=c52d83f7')
+//     // This returns a promise - an object that represents the eventual completion (or failure) of an operation
+//     .then((response) => { // This handles the promise from the fetch request
+//         if (!response.ok) { // If the promise fails... (usually a 4xx or 5xx status code)
+//         // Do something if the promise does not succeed
+//         const errorMessage = "500 Internal Server Error."
+//         console.log(errorMessage);
+//         throw new Error(errorMessage);
+//         }
+//         // Processes the successful response (usually a 2xx status code)
+//         const successMessage = "202 Accepted"
+//         console.log(successMessage);
+//         return response.json(); // This also returns a promise that resolves to the JSON object when parsing is complete
+//     })
+//     .then((data) => {
+//         // handles the promise that was given by the return statement
+//         console.log(data)
+//         document.getElementsByClassName("resultsDivs")[0].innerHTML = data.Title
+//     })
+//    .catch(error => {
+//     console.error('Error:', error);
+//    });
+// }
