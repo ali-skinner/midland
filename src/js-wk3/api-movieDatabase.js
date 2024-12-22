@@ -24,19 +24,36 @@ function searchResults () {
     .then((data) => {
         // handles the promise that was given by the return statement
         console.log(data);
-        // document.getElementsByClassName("resultsDivs")[0].innerHTML = data.Title
+       const resultsPost = document.getElementById("totalResults");
+       const searchLength = data.totalResults;
+       console.log(`Total search results: ${searchLength}`);
+       resultsPost.innerHTML = `Total search results: ${searchLength}`;
+       
+
+
+
+
+
+       const resultsContainer = document.querySelector(".resultsDiv")
+
+       if (data.Search && data.Search.length > 0) {
+          data.Search.forEach(movie => {
+        const movieHtml = `
+        <div class="movie-card">
+        `
+       })
+       }
     })
    .catch(error => {
     console.error('Error:', error);
    });
 }
-
 // !below is from cluade to make full search work BLEOW DONW
 // adding this starting at line 27, last "then" stmnt
 // .then((data) => {
 //     console.log(data); // Check what the API returns
         
-//     const resultsContainer = document.querySelector(".resultsDivs");
+//     const resultsContainer = document.querySelector(".resultsDiv");
 //     resultsContainer.innerHTML = ''; // Clear previous results
     
 //     // Check if we got results
