@@ -31,16 +31,21 @@ function searchResults () {
        
 
 
-
-
-
-       const resultsContainer = document.querySelector(".resultsDiv")
+       const resultsContainer = document.querySelector(".resultsDiv");
+       resultsContainer.innerHTML = ''; // Clear previous results
 
        if (data.Search && data.Search.length > 0) {
           data.Search.forEach(movie => {
         const movieHtml = `
-        <div class="movie-card">
-        `
+            <div class="movie-card">
+              <h2>${movie.Title}</h2>
+                <img src= "${movie.Poster}">
+                <p>Year: ${movie.Year}</p>
+                <p>Type: ${movie.Type}</p>
+                <p>IMDB ID: ${movie.imdbID}</p>
+            </div>
+        `;
+        resultsContainer.innerHTML += movieHtml;
        })
        }
     })
