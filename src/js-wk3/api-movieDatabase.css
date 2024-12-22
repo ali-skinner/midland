@@ -11,47 +11,55 @@ h1 {
     color: darkviolet
 }
 
-p {
+/* p {
     padding: 5px;
-}
+} */
 
-div {
+/* div {
     margin-left: 10px;
-}
+} */
 
 .resultsDiv {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
     padding: 10px;
-    background-color: antiquewhite;
-    border: 5px solid grey;
+    background-color: rgb(5, 5, 5);
+    border: 2px solid grey;
     color: rgb(209, 27, 222);
     font-size: 14px;
 }
 
-#totalResults {
-font-size: 20px;
-color:black;
-background-color: aqua;
+#total-results {
+    /* margin: 10px; */
+    padding: 15px;
+    font-size: 20px;
+    color: black;
+    background-color: aqua;
+}
+
+.search-container {
+    margin: 50px;
 }
 
 .searchButton {
     background-color: darkorchid;
+    color: beige;
     border-radius: 20%;
     padding: 10px;
-    margin: 10px;
+    margin-top: 20px;
     border: 1px solid grey;
 }
 
 .searchBox {
-   font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .movie-card {
     display: flex;
     flex-direction: column;
-    border: 1px solid #ccc;
+    border: 5px solid #ccc;
+    background-color: blanchedalmond;
     padding: 15px;
     margin: 10px;
     border-radius: 5px;

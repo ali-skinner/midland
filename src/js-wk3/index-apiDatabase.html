@@ -7,39 +7,36 @@
     <link rel="stylesheet" href="./api-movieDatabase.css">
 </head>
 
-<body>
-    <!-- into -->
+<body> <!-- into -->
     <h1>Welcome!<br>Are you curious what to watch tonight?</h1>
     <h2 style="margin-left: 15px; color: rgb(49, 212, 190);">Use this searchable site of fun to embark on your next
         cinematographic journey.</h2>
 
-    <!-- search box -->
-    <div>
+
+    <div class="search-container"> <!-- search box -->
         <div>
-            <p><label for="search"> Describe your fancy. Enter keywords, searchable title, actor name, specific subject or topic, theme, director name.</label></p>
+            <p><label for="search">Enter movie keywords or movie title. <i>Coming soon: Enter actor name, specific subject
+                    or topic, theme, director name.</i></label></p>
         </div>
         <div class="search-box">
-            <input id="search-box" type="text" name="search-box" placeholder="List search wishes..." maxlength="100" size="40"/>
+            <input id="search-box" type="text" name="search-box" placeholder="List search wishes..." maxlength="100"
+                size="40" />
         </div>
+        <div> <!-- submit button -->
+            <button id="submit" class="searchButton" type="submit">Submit My Search!</button>
+        </div>
+        <!-- <div>Need a DROP DOWN MENU FOR GENRE / check hmwrk criteria</div> -->
     </div>
 
-    <!-- submit button -->
-    <div>
-        <button id="submit" class="searchButton" type="submit">Submit My Search!</button>
-    </div>
+
 
     <!-- display movie cards/posters -->
-   <div id="totalResults">Is this working?</div>
+    <div id="total-results">Is this working?</div>
     <div class="resultsDiv">Result 1</div>
-    <div class="resultsDiv">result 2</div>
-    <div class="resultsDiv">result 3</div>
-    <div class="resultsDiv">result 4</div>
-    <div class="resultsDiv">5</div>
-    <div class="resultsDiv">6</div>
-    <div class="resultsDiv">7</div>
-    <div class="resultsDiv">8</div>
-    <div class="resultsDiv">9</div>
-    <div class="resultsDiv">10</div>
+    <div class="resultsDiv">Result 2</div>
+    <div class="resultsDiv">Result 3</div>
+    <div class="resultsDiv">Result 4</div>
+
 
 
     <!-- js file -->

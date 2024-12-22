@@ -24,10 +24,10 @@ function searchResults () {
     .then((data) => {
         // handles the promise that was given by the return statement
         console.log(data);
-       const resultsPost = document.getElementById("totalResults");
+       const resultsPost = document.getElementById("total-results");
        const searchLength = data.totalResults;
-       console.log(`Total search results: ${searchLength}`);
-       resultsPost.innerHTML = `Total search results: ${searchLength}`;
+       console.log(`Total Search Results: ${searchLength}`);
+       resultsPost.innerHTML = `Total Search Results: ${searchLength}`;
        
 
 
@@ -36,13 +36,15 @@ function searchResults () {
 
        if (data.Search && data.Search.length > 0) {
           data.Search.forEach(movie => {
+        
+        // need to add no poster error/display instructon/grab a diff image ?
         const movieHtml = `
             <div class="movie-card">
               <h2>${movie.Title}</h2>
                 <img src= "${movie.Poster}">
-                <p>Year: ${movie.Year}</p>
-                <p>Type: ${movie.Type}</p>
-                <p>IMDB ID: ${movie.imdbID}</p>
+                <p><b>Year:</b> ${movie.Year}</p>
+                <p><b>Type:</b> ${movie.Type}</p>
+                <p><b>IMDB ID:</b>${movie.imdbID}</p>
             </div>
         `;
         resultsContainer.innerHTML += movieHtml;
