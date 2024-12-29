@@ -3,17 +3,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style-blackjack.css">
-    <script src="./js-blackjack/script-blackjack.js"> </script>
+    <script src="./script-blackjack.js"> </script>
     <title>Game on! Jacks of Black</title>
 </head>
 <body>
     <!-- need age verification prompt for 16+ -->
     <h2><span id=dealer-total>Dealer:</span></h2>
-    <div id="dealer-cards"></div>
+    <div id="dealer-cards">
+        <div class="card"></div>
+        <div class="card"></div>
+        <!-- <img src="back of card">
+        <img src="front of card"> -->
+    </div>
 
     <!-- if time allows include player name promt? -->
     <h2><span id=player-total>Player:</span></h2>
-    <div id="player-cards"></div>
+    <div id="player-cards">
+        <div class="card"></div>
+        <div class="card"></div>
+        <!-- <img src="back of card">
+        <img src="front of card"> -->
+    </div>
+
+    <br>
+    <!-- Buttons and Results -->
+    <button id="hit" class="button">Hit me!</button>
+    <button id="stay" class="button">Stay - I'm good!</button>
+    <p id="results">Results: Are you a WINNER or LOSER!?!</p>
+    <p id="round">Round: #</p>
     
 </body>
 </html>

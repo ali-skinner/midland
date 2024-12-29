@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card{
+    display: flex;
+    height: 150px;
+    width: 125px;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 2px;
+    margin: 10px;
+   
+}
+
+#dealer-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#player-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    background-color: black;
+    color: aquamarine;
+    height: 50px;
+    border-radius: 5px;
+    font-size: x-large;
+}
