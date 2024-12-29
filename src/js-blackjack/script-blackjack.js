@@ -16,3 +16,18 @@ function cardValue(card) {
     }
     return parseInt(card);
 }
+
+function aceValue(card, playerSum) {
+    if (card === "A") {
+        if (playerSum > 21) {
+            return 1;
+        } else {
+            return 11;
+        }
+    }
+    return parseInt(card);
+}
+
+function playerSum () {
+
+}
