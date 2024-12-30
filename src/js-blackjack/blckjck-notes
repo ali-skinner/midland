@@ -14,6 +14,6 @@ print cards on screen - use the pngs?
 
 countRounds - cound rounds played
 
-startGame - use a start button? use window event?
+startGame - use a start button? use window event? on this event, deal 2 cards to each player and dealer; player are face up; dealer first card = hidden
 
 annimate shuffling?
