@@ -8,16 +8,23 @@ console.log(ranks)
 const playerSum = [];
 const dealerSum = [];
 const hiddenDealer = "";
-const fullDeck = [];
+let fullDeck = [];
 
+buildDeck()
 
 function buildDeck() {
+    fullDeck = []; //to reset deck each hand
     suits.forEach((suit) => {
         ranks.forEach((rank) => {
-            const card =
+            let card = {
+                suit: suit,
+                value: rank
+            };
+            fullDeck.push(card);
         });
 
     });
+    console.log(fullDeck);
 }
 
 
@@ -30,9 +37,9 @@ function buildDeck() {
 
 
 
-function generateRandomCard() {
+function drawCard() {
     const randomCard = (Math.floor(Math.random) * 52)
-    //    grab a card from the deck
+    //    grab a card from the deck; should this be SHUFFLE?
 }
 
 
