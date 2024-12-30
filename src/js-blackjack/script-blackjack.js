@@ -10,7 +10,18 @@ const dealerSum = [];
 const hiddenDealer = "";
 let fullDeck = [];
 
-buildDeck()
+buildDeck();
+shuffle(fullDeck);
+
+
+function shuffle(deck) {
+    for (let i = deck.length - 1; i > 0; i--) {
+        const random = Math.floor(Math.random() * (i + 1));
+
+        [deck[i], deck[random]] = [deck[random], deck[i]]
+    }
+}
+
 
 function buildDeck() {
     fullDeck = []; //to reset deck each hand
@@ -29,16 +40,8 @@ function buildDeck() {
 
 
 
-
-
-
-
-
-
-
-
 function drawCard() {
-    const randomCard = (Math.floor(Math.random) * 52)
+    let randomCard = (Math.floor(Math.random) * 52)
     //    grab a card from the deck; should this be SHUFFLE?
 }
 
@@ -53,24 +56,24 @@ function calcPlayerSum() {
 
 
 function getCardValue(card) {
-    if (isNaN(card)) {
-        if (card === "A") {
+    if (isNaN(card.value)) {
+        if (card.value === "A") {
             return 11;
         } else {
             return 10;
         }
     }
-    return parseInt(card);
+    return parseInt(card.value);
 }
 
 function aceValue(card, playerSum) {
-    if (card === "A") {
+    if (card.value === "A") {
         if (playerSum > 21) {
             return 1;
         } else {
             return 11;
         }
     }
-    return parseInt(card);
+    return parseInt(card.value);
 }
 
