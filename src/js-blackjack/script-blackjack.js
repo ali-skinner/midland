@@ -1,16 +1,51 @@
 "use strict";
 
-const suit = ["♥", "♦", "♣", "♠"];
-console.log(suit)
-const value = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-console.log(value)
+const suits = ["♥", "♦", "♣", "♠"];
+console.log(suits)
+const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+console.log(ranks)
 
-const playerSum = []
-const dealerSum = []
-const hidden = dealerSum[0]
+const playerSum = [];
+const dealerSum = [];
+const hiddenDealer = "";
+const fullDeck = [];
 
 
-function cardValue(card) {
+function buildDeck() {
+    suits.forEach((suit) => {
+        ranks.forEach((rank) => {
+            const card =
+        });
+
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+function generateRandomCard() {
+    const randomCard = (Math.floor(Math.random) * 52)
+    //    grab a card from the deck
+}
+
+
+
+
+function calcPlayerSum() {
+
+
+}
+
+
+
+function getCardValue(card) {
     if (isNaN(card)) {
         if (card === "A") {
             return 11;
@@ -32,6 +67,3 @@ function aceValue(card, playerSum) {
     return parseInt(card);
 }
 
-function playerSum () {
-
-}
