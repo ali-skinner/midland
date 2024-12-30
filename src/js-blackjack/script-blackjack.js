@@ -14,6 +14,30 @@ buildDeck();
 shuffle(fullDeck);
 
 
+
+
+
+
+function drawCard() {
+    let randomCard = (Math.floor(Math.random) * 52)
+    //    grab a card from the deck;
+}
+
+
+
+
+function calcPlayerSum() {
+
+
+}
+
+function calcDealerSum() {
+
+
+}
+
+
+
 function shuffle(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
         const random = Math.floor(Math.random() * (i + 1));
@@ -21,7 +45,6 @@ function shuffle(deck) {
         [deck[i], deck[random]] = [deck[random], deck[i]]
     }
 }
-
 
 function buildDeck() {
     fullDeck = []; //to reset deck each hand
@@ -37,23 +60,6 @@ function buildDeck() {
     });
     console.log(fullDeck);
 }
-
-
-
-function drawCard() {
-    let randomCard = (Math.floor(Math.random) * 52)
-    //    grab a card from the deck; should this be SHUFFLE?
-}
-
-
-
-
-function calcPlayerSum() {
-
-
-}
-
-
 
 function getCardValue(card) {
     if (isNaN(card.value)) {
