@@ -1,4 +1,4 @@
-dealerDrawCard funct - similiar to hit me funct; but the goal is so use the guts of this funct to eval the dealer hand too. this funct needs the ace value rendering funct, add to dealerSum, if else stmnt if dealerSum over 21 = bust alert; if under 21 just add card.value to the dealerSum array; dealer hits at 17; need the hidden card syntax at some point.
+dealerDrawCard funct - similiar to hit me funct; but the goal is so use the guts of this funct to eval the dealer hand too. this funct needs the ace value rendering funct, add to dealerSum, if else stmnt if dealerSum over 21 = bust alert; if under 21 just add card.value to the dealerSum array; dealer STAYS on 17; need the hidden card syntax at some point.
 
     hiddenDealerCard - dont show the face of the first card UNTIL some one busts?
 

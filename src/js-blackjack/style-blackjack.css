@@ -1,10 +1,10 @@
-body{
+body {
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: rgb(64, 165, 64);
 }
 
-.card{
+.card {
     display: flex;
     height: 150px;
     width: 125px;
@@ -13,22 +13,23 @@ body{
     padding: 2px;
     margin: 10px;
     background-color: rgb(202, 205, 201);
-   
+    box-shadow: 5px 6px 3px rgb(49, 19, 19);
+
 }
 
-#dealer-cards{
+#dealer-cards {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#player-cards{
+#player-cards {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.button{
+.button {
     background-color: rgb(49, 19, 19);
     color: rgb(255, 127, 172);
     height: 50px;

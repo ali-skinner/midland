@@ -11,34 +11,33 @@ const dealerSum = [];
 let fullDeck = [];
 
 buildDeck();
+console.log(fullDeck);
 shuffleDeck(fullDeck);
 drawCard(fullDeck);
 
 
-//grab a card from the deck;
+function dealOutAHand() {
+const deal = document.getElementById("startButton").addEventListener("click", () => {
+ //display two cards for players & 2 cards for dealer
+ //push 2cards into the playerHand array
+ //loop until playerSum count = 2
+ //dealer player 1 card; dealer 1 card, player 2nd car, dealer 2nd card facedown   
+});
+}
+
+
+
 function drawCard(deck) {
     if (deck.length > 0) {
         const randomDraw = Math.floor(Math.random() * deck.length);
         return deck.splice(randomDraw, 1) [0];
-
+// do i need to add a display card function here?
     } else {
         buildDeck();
         shuffleDeck();
         return drawCard(deck);
     }
 }
-
-    function calcPlayerSum() {
-
-
-    }
-
-    function calcDealerSum() {
-
-
-    }
-
-
 
     function shuffleDeck(deck) {
         for (let i = deck.length - 1; i > 0; i--) {
@@ -60,7 +59,7 @@ function drawCard(deck) {
             });
 
         });
-        console.log(fullDeck);
+        // console.log(fullDeck);
     }
 
     function getCardValue(card) {
