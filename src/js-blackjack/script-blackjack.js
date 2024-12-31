@@ -2,10 +2,10 @@
 
 const suits = ["♥", "♦", "♣", "♠"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-const playerHand = [];
-const dealerHand = [];
-const playerSum = [];
-const dealerSum = [];
+let playerHand = [];
+let dealerHand = [];
+let playerSum = [];
+let dealerSum = [];
 let fullDeck = [];
 
 
@@ -14,6 +14,10 @@ dealOutFirstHand();
 
 function dealOutFirstHand() {
     document.getElementById("startButton").addEventListener("click", () => {
+        playerSum = [];  // or should this be the first step in another funct?
+        dealerSum = [];  // or should this be the first step in another funct?
+        playerHand = [];
+        dealerHand = [];
         buildDeck();
         shuffleDeck(fullDeck);
         //push this card into the playerHand array & DISPLAY IT
