@@ -30,12 +30,18 @@ const deal = document.getElementById("startButton").addEventListener("click", ()
 function drawCard(deck) {
     if (deck.length > 0) {
         const randomDraw = Math.floor(Math.random() * deck.length);
-        return deck.splice(randomDraw, 1) [0];
+        // return deck.splice(randomDraw, 1) [0];
+        const showMethisCard = deck.splice(randomDraw, 1) [0];
+        console.log(`Your card is: ${JSON.stringify(showMethisCard)}`);
+        return showMethisCard;
 // do i need to add a display card function here?
     } else {
         buildDeck();
         shuffleDeck();
-        return drawCard(deck);
+        const showMethisOtherCard = drawCard(deck);
+        console.log(showMethisOtherCard);
+        return showMethisOtherCard;
+        //return drawCard(deck);
     }
 }
 
