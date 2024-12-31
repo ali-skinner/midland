@@ -9,16 +9,25 @@ let dealerSum = [];
 let fullDeck = [];
 
 
+
+//step #1
 dealOutFirstHand();
 
-function displayCard() {
-    const card = ;
 
-    
-        if (card.suit === "♥" || card.suit === "♦") {
-            // call the red class
-        }
+// dev area
+function displayPlayerCard(card) {
+    const viewCard = document.createElement("div");
+    viewCard.innerHTML = card.suit + card.value;
+    if (card.suit === "♥" || card.suit === "♦") {
+        // call the red class
     }
+    document.getElementById("player-cards").appendChild(viewCard);
+    // #dealer-cards is the html id
+    // #player-cards is the html id
+
+
+    return viewCard;
+}
 
 
 
@@ -31,15 +40,20 @@ function dealOutFirstHand() {
         dealerHand = [];
         buildDeck();
         shuffleDeck(fullDeck);
+        
         //push this card into the playerHand array & DISPLAY IT
         playerHand.push(drawCard(fullDeck));
+            displayPlayerCard(drawCard(fullDeck));
         dealerHand.push(drawCard(fullDeck));
+
         playerHand.push(drawCard(fullDeck));
+            displayPlayerCard(drawCard(fullDeck));
         dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
+
+
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
-        // #dealer-cards 
-        // #player-cards
+
 
     });
 }

@@ -14,11 +14,16 @@ body {
     margin: 10px;
     background-color: rgb(202, 205, 201);
     box-shadow: 5px 6px 3px rgb(49, 19, 19);
-
 }
 
 .red {
     color: red;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #dealer-cards {
