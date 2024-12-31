@@ -12,8 +12,15 @@ let fullDeck = [];
 dealOutFirstHand();
 
 function displayCard() {
-    const card = 
-}
+    const card = ;
+
+    
+        if (card.suit === "♥" || card.suit === "♦") {
+            // call the red class
+        }
+    }
+
+
 
 
 function dealOutFirstHand() {
