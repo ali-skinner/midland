@@ -11,6 +11,10 @@ let fullDeck = [];
 
 dealOutFirstHand();
 
+function displayCard() {
+    const card = 
+}
+
 
 function dealOutFirstHand() {
     document.getElementById("startButton").addEventListener("click", () => {

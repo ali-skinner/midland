@@ -17,6 +17,10 @@ body {
 
 }
 
+.red {
+    color: red;
+}
+
 #dealer-cards {
     display: flex;
     justify-content: center;
