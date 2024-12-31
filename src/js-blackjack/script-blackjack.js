@@ -16,7 +16,7 @@ drawCard(fullDeck);
 
 
 //grab a card from the deck;
-function drawCard(deck) {``
+function drawCard(deck) {
     if (deck.length > 0) {
         const randomDraw = Math.floor(Math.random() * deck.length);
         return deck.splice(randomDraw, 1) [0];
