@@ -17,15 +17,14 @@ dealOutFirstHand();
 // dev area
 function displayPlayerCard(card) {
     const viewCard = document.createElement("div");
+    viewCard.className = "card";
     viewCard.innerHTML = card.suit + card.value;
     if (card.suit === "♥" || card.suit === "♦") {
-        // call the red class
+       viewCard.style.color = "red";
     }
     document.getElementById("player-cards").appendChild(viewCard);
     // #dealer-cards is the html id
     // #player-cards is the html id
-
-
     return viewCard;
 }
 
@@ -54,7 +53,7 @@ function dealOutFirstHand() {
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
-
+// REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
 
     });
 }
