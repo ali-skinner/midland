@@ -12,14 +12,16 @@ let fullDeck = [];
 
 //step #1
 dealOutFirstHand();
+hitMe();
 
 
 // dev area
 function hitMe() {
     const giveMeCard = document.getElementById("hitMeButton").addEventListener("click", ()=> {
-        //get a card
-        //display card
-        //add to playerHand array
+        const newCard = drawCard(fullDeck); //get a card
+        displayPlayerCard(newCard); //display card
+        playerHand.push(newCard); //add to playerHand array
+        console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
     });
 }
 
@@ -31,6 +33,7 @@ function hitMe() {
 }
 
 //looks gd area
+
 function displayDealerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";
