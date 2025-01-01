@@ -13,19 +13,20 @@ let fullDeck = [];
 //step #1
 dealOutFirstHand();
 hitMe();
+putValuesInSumArrays();
 
 
 // dev area
-function putValuesInSumArrays {
+function putValuesInSumArrays (card) {
     const popValueOut= playerHand.pop(card.value);
-    console.log(`This is the pop out call: ${popValueOut}`);
+    console.log(`This is the pop out card called: ${JSON.stringify(popValueOut)}`);
     const putValuesIn = playerSum.push(popValueOut);
-    console.log(`This is the push in call: ${putValuesIn}`);
+    console.log(`This is the push card called: ${JSON.stringify(putValuesIn)}`);
 } 
 
 
 
-function calcPlayerSum {
+function calcPlayerSum () {
     // add the card.values in the playerHand array and push these values to playerSum
     // call the aceValue funct
     // call the cardValue funct
