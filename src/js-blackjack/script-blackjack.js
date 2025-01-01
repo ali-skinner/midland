@@ -15,6 +15,35 @@ dealOutFirstHand();
 
 
 // dev area
+
+function displayDealerCard(card) {
+    const viewCard = document.createElement("div");
+    viewCard.className = "card";
+    // viewCard.innerHTML = card.suit + card.value;
+
+    const upperCardValue = document.createElement("div");
+    upperCardValue.textContent = card.suit + card.value;
+    upperCardValue.style.textAlign = "left";
+
+    const lowerCardValue = document.createElement("div");
+    lowerCardValue.textContent = card.suit + card.value;
+    lowerCardValue.style.textAlign = "right";
+
+    if (card.suit === "♥" || card.suit === "♦") {
+        viewCard.style.color = "red";
+    }
+
+    viewCard.appendChild(upperCardValue);
+    viewCard.appendChild(lowerCardValue);
+
+    document.getElementById("dealer-cards").appendChild(viewCard);
+    // #dealer-cards is the html id
+    // #player-cards is the html id
+    return viewCard;
+}
+
+
+
 function displayPlayerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";
@@ -54,14 +83,16 @@ function dealOutFirstHand() {
         shuffleDeck(fullDeck);
 
         //NEED TIMING to slow down the show of cards - setTimout funct?
-        //push random card into the array & DISPLAY IT
+       
         playerHand.push(drawCard(fullDeck));
         displayPlayerCard(playerHand[0]);
         dealerHand.push(drawCard(fullDeck));
+        displayDealerCard(dealerHand [0]);
 
         playerHand.push(drawCard(fullDeck));
         displayPlayerCard(playerHand[1]);
         dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
+        displayDealerCard(dealerHand [1]);
 
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
