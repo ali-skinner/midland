@@ -15,7 +15,22 @@ dealOutFirstHand();
 
 
 // dev area
+function hitMe() {
+    const giveMeCard = document.getElementById("hitMeButton").addEventListener("click", ()=> {
+        //get a card
+        //display card
+        //add to playerHand array
+    });
+}
 
+ function stayButton() {
+    const stayPut = document.getElementById("stayButton").addEventListener("click", ()=> {
+        //call the dealersTurn function
+    });
+
+}
+
+//looks gd area
 function displayDealerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";

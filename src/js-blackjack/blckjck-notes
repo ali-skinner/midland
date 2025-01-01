@@ -18,6 +18,7 @@ DONE -- startGame - use a start button? use window event? on this event, deal 2 
 
 // annimate shuffling?
 // add a blank card view before hit start button activated
+// style the round and results divs
 
 need to clear out each funct / reset to 0 / []
 print cards on screen - use the pngs for the cards??
