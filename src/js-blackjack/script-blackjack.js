@@ -18,10 +18,23 @@ dealOutFirstHand();
 function displayPlayerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";
-    viewCard.innerHTML = card.suit + card.value;
+    // viewCard.innerHTML = card.suit + card.value;
+
+    const upperCardValue = document.createElement("div");
+    upperCardValue.textContent = card.suit + card.value;
+    upperCardValue.style.textAlign = "left";
+
+    const lowerCardValue = document.createElement("div");
+    lowerCardValue.textContent = card.suit + card.value;
+    lowerCardValue.style.textAlign = "right";
+
     if (card.suit === "♥" || card.suit === "♦") {
-       viewCard.style.color = "red";
+        viewCard.style.color = "red";
     }
+
+    viewCard.appendChild(upperCardValue);
+    viewCard.appendChild(lowerCardValue);
+
     document.getElementById("player-cards").appendChild(viewCard);
     // #dealer-cards is the html id
     // #player-cards is the html id
@@ -39,21 +52,21 @@ function dealOutFirstHand() {
         dealerHand = [];
         buildDeck();
         shuffleDeck(fullDeck);
-        
+
         //NEED TIMING to slow down the show of cards - setTimout funct?
         //push random card into the array & DISPLAY IT
         playerHand.push(drawCard(fullDeck));
-            displayPlayerCard(playerHand [0]);
+        displayPlayerCard(playerHand[0]);
         dealerHand.push(drawCard(fullDeck));
 
         playerHand.push(drawCard(fullDeck));
-            displayPlayerCard(playerHand [1]);
+        displayPlayerCard(playerHand[1]);
         dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
 
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
-// REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
+        // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
 
     });
 }

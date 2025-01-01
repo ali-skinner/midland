@@ -5,12 +5,14 @@ body {
 }
 
 .card {
-    display: flex;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 150px;
     width: 125px;
     border: 1px solid black;
     border-radius: 12px;
-    padding: 2px;
+    padding: 5px;
     margin: 10px;
     background-color: rgb(202, 205, 201);
     box-shadow: 5px 6px 3px rgb(49, 19, 19);
@@ -25,6 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #dealer-cards {
@@ -35,8 +38,8 @@ body {
 
 #player-cards {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .button {
