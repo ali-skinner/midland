@@ -16,6 +16,31 @@ hitMe();
 
 
 // dev area
+function putValuesInSumArrays {
+    const popValueOut= playerHand.pop(card.value);
+    console.log(`This is the pop out call: ${popValueOut}`);
+    const putValuesIn = playerSum.push(popValueOut);
+    console.log(`This is the push in call: ${putValuesIn}`);
+} 
+
+
+
+function calcPlayerSum {
+    // add the card.values in the playerHand array and push these values to playerSum
+    // call the aceValue funct
+    // call the cardValue funct
+ }
+
+
+
+function stayButton() {
+    const stayPut = document.getElementById("stayButton").addEventListener("click", ()=> {
+        //call the dealersTurn function
+    });
+}
+
+
+//looks gd area
 function hitMe() {
     const giveMeCard = document.getElementById("hitMeButton").addEventListener("click", ()=> {
         const newCard = drawCard(fullDeck); //get a card
@@ -24,16 +49,6 @@ function hitMe() {
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
     });
 }
-
- function stayButton() {
-    const stayPut = document.getElementById("stayButton").addEventListener("click", ()=> {
-        //call the dealersTurn function
-    });
-
-}
-
-//looks gd area
-
 function displayDealerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";
