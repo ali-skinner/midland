@@ -41,13 +41,14 @@ function dealOutFirstHand() {
         buildDeck();
         shuffleDeck(fullDeck);
         
-        //push this card into the playerHand array & DISPLAY IT
+        //NEED TIMING to slow down the show of cards - setTimout funct?
+        //push random card into the array & DISPLAY IT
         playerHand.push(drawCard(fullDeck));
-            displayPlayerCard(drawCard(fullDeck));
+            displayPlayerCard(playerHand [0]);
         dealerHand.push(drawCard(fullDeck));
 
         playerHand.push(drawCard(fullDeck));
-            displayPlayerCard(drawCard(fullDeck));
+            displayPlayerCard(playerHand [1]);
         dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
 
 
