@@ -12,31 +12,29 @@ let fullDeck = [];
 //step #1
 dealOutFirstHand();
 hitMe();
+calcHandSum(playerHand);
 
 
 // dev area
-// need to make sure numbers are calc for card values - call the card value function?
-//how to use pop correctly
-//do i need a temp playerhand array so I can manipulate it in put vals in funct
 
 function calcHandSum(hand) {
-    const needTheDigits = [];
+    const handTotal = [];
 
     for (let i = 0; i < hand.length; i++) {
-        const gotTheDigit = (Number(hand[i].value))
-        getCardValue(gotTheDigit);
-        aceValue(gotTheDigit);
-        needTheDigits.push(gotTheDigit);
-        console.log(`This is the PUSH card: ${gotTheDigit}`);
+        const cardValue = (getCardValue(hand[i]));
+        handTotal.push(cardValue);
+        console.log(`This is the PUSH card: ${cardValue}`);
     }
-    return needTheDigits;
+    console.log(`This is the HAND TOTAL: ${handTotal}`);
+    return handTotal;
+    ;
 }
 
 
 function getCardValue(card) {
     if (isNaN(card.value)) {
         if (card.value === "A") {
-            return 11;
+           calcAceValue()
         } else {
             return 10;
         }
@@ -44,7 +42,7 @@ function getCardValue(card) {
     return parseInt(card.value);
 }
 
-function aceValue(card, playerSum) {
+function calcAceValue(card, playerSum) {
     if (card.value === "A") {
         if (playerSum > 21) {
             return 1;
