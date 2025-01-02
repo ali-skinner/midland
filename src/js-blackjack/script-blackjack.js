@@ -16,6 +16,12 @@ calcHandSum(playerHand);
 
 
 // dev area
+// calc the hand sum needs to be a number.
+//this numb is the sum of all card values pushed into the "hand" array.
+// this TOTAL numb (1 value) should be pushed into the "sum" variable
+// the sum variables are calculated against each other to determin W L D.
+// can this be done.
+//sooooo frustrated with this %^&$%^$ step
 
 function calcHandSum(hand) {
     const handTotal = [];
@@ -25,6 +31,7 @@ function calcHandSum(hand) {
         handTotal.push(cardValue);
         console.log(`This is the PUSH card: ${cardValue}`);
     }
+
     console.log(`This is the HAND TOTAL: ${handTotal}`);
     return handTotal;
     ;
@@ -34,8 +41,7 @@ function calcHandSum(hand) {
 function getCardValue(card) {
     if (isNaN(card.value)) {
         if (card.value === "A") {
-           calcAceValue(card, )
-        } else {
+           calcAceValue(card, playerSum) //need a 2nd parameter here for playerSum. Claude says make a funct)
             return 10;
         }
     }
