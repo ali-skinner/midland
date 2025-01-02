@@ -9,19 +9,12 @@ let dealerSum = [];
 let fullDeck = [];
 
 
-
 //step #1
 dealOutFirstHand();
 hitMe();
 
 
-
 // dev area
-
-
-
-
-
 // need to make sure numbers are calc for card values - call the card value function?
 //how to use pop correctly
 //do i need a temp playerhand array so I can manipulate it in put vals in funct
@@ -69,6 +62,15 @@ function aceValue(card, playerSum) {
 function stayButton() {
     const stayPut = document.getElementById("stayButton").addEventListener("click", () => {
         //call the dealersTurn function
+        //eval dealerSum
+        //if DealerSum < 16; call hitMe funct
+        //continue to call hitMe until dealerSum > 17
+        //stop the hitMe loop when dealerSum > 21;
+        //call whoWon fun to compare playerSum vs DealerSum
+        //whoWon should display alert/message for Winner/Loser/Draw
+        //whoWon should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
+        //whoWon should reactivate the startButton clickListener
+        //clear out all necessary arrays to reset game
     });
 }
 
@@ -82,6 +84,7 @@ function hitMe() {
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
     });
 }
+
 function displayDealerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";
