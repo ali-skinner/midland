@@ -13,29 +13,42 @@ let fullDeck = [];
 //step #1
 dealOutFirstHand();
 hitMe();
-putValuesInSumArrays();
+convertRankToNumeric(playerHand);
 
 
 // dev area
-function putValuesInSumArrays (card) {
-    const popValueOut= playerHand.pop(card.value);
-    console.log(`This is the pop out card called: ${JSON.stringify(popValueOut)}`);
-    const putValuesIn = playerSum.push(popValueOut);
-    console.log(`This is the push card called: ${JSON.stringify(putValuesIn)}`);
-} 
 
 
 
-function calcPlayerSum () {
+
+
+// need to make sure numbers are calc for card values - call the card value function?
+//how to use pop correctly
+//do i need a temp playerhand array so I can manipulate it in put vals in funct
+
+function convertRankToNumeric(hand) {
+    const needTheDigits = [];
+    
+    for (let i = 0; i < hand.length; i++) {
+        const gotTheDigit = Number(hand[i].value)
+        needTheDigits.push(gotTheDigit);
+        console.log(`This is the PUSH card: ${gotTheDigit}`);
+    }
+    return needTheDigits;
+}
+
+
+
+function calcPlayerSum() {
     // add the card.values in the playerHand array and push these values to playerSum
     // call the aceValue funct
     // call the cardValue funct
- }
+}
 
 
 
 function stayButton() {
-    const stayPut = document.getElementById("stayButton").addEventListener("click", ()=> {
+    const stayPut = document.getElementById("stayButton").addEventListener("click", () => {
         //call the dealersTurn function
     });
 }
@@ -43,7 +56,7 @@ function stayButton() {
 
 //looks gd area
 function hitMe() {
-    const giveMeCard = document.getElementById("hitMeButton").addEventListener("click", ()=> {
+    const giveMeCard = document.getElementById("hitMeButton").addEventListener("click", () => {
         const newCard = drawCard(fullDeck); //get a card
         displayPlayerCard(newCard); //display card
         playerHand.push(newCard); //add to playerHand array
@@ -117,16 +130,16 @@ function dealOutFirstHand() {
         shuffleDeck(fullDeck);
 
         //NEED TIMING to slow down the show of cards - setTimout funct?
-       
+
         playerHand.push(drawCard(fullDeck));
         displayPlayerCard(playerHand[0]);
         dealerHand.push(drawCard(fullDeck));
-        displayDealerCard(dealerHand [0]);
+        displayDealerCard(dealerHand[0]);
 
         playerHand.push(drawCard(fullDeck));
         displayPlayerCard(playerHand[1]);
         dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
-        displayDealerCard(dealerHand [1]);
+        displayDealerCard(dealerHand[1]);
 
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
