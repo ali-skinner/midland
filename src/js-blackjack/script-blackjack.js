@@ -16,12 +16,17 @@ calcHandSum(playerHand);
 
 
 // dev area
-// calc the hand sum needs to be a number.
+// calc the hand sum needs to return a number.
 //this numb is the sum of all card values pushed into the "hand" array.
 // this TOTAL numb (1 value) should be pushed into the "sum" variable
 // the sum variables are calculated against each other to determin W L D.
 // can this be done.
 //sooooo frustrated with this %^&$%^$ step
+
+// need to add/SUM
+// need to give faces cards values
+// need to caculate aces 1 and 11 conditional
+// need to stay sane 
 
 function calcHandSum(hand) {
     const handTotal = [];
