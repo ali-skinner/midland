@@ -28,8 +28,17 @@ calcHandSum(playerHand);
 // need to caculate aces 1 and 11 conditional
 // need to stay sane 
 
+function getCurrentSum() {
+// this function should be a number
+// the sum of digits before passing to calcHandSum???
+//calc handSum is gonna add the aces values
+//can/should i strip out some of the code below into this funt?
+// i cant fig out how to put all in 1 funct.
+// hate this feeling. why am i even coding.
+}
+
 function calcHandSum(hand) {
-    const handTotal = [];
+    const handTotal = []; //goal is for this to be ONE value
 
     for (let i = 0; i < hand.length; i++) {
         const cardValue = (getCardValue(hand[i]));
@@ -46,7 +55,9 @@ function calcHandSum(hand) {
 function getCardValue(card) {
     if (isNaN(card.value)) {
         if (card.value === "A") {
-           calcAceValue(card, playerSum) //need a 2nd parameter here for playerSum. Claude says make a funct)
+           return calcAceValue(card, playerSum);
+           //need a 2nd parameter here for playerSum. Claude says make a funct)
+        } else {
             return 10;
         }
     }
