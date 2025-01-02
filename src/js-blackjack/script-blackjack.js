@@ -30,10 +30,9 @@ function calcHandSum(hand) {
     const needTheDigits = [];
 
     for (let i = 0; i < hand.length; i++) {
-        const gotTheDigit = (Number(hand[i].value)) => {
-            getCardValue(hand);
-            aceValue(hand);
-        };
+        const gotTheDigit = (Number(hand[i].value))
+        getCardValue(gotTheDigit);
+        aceValue(gotTheDigit);
         needTheDigits.push(gotTheDigit);
         console.log(`This is the PUSH card: ${gotTheDigit}`);
     }
@@ -41,9 +40,6 @@ function calcHandSum(hand) {
 }
 
 
-
-function calcHandSum()
-// add the card.values in the playerHand array and push these values to playerSum
 function getCardValue(card) {
     if (isNaN(card.value)) {
         if (card.value === "A") {
@@ -144,41 +140,39 @@ function displayPlayerCard(card) {
 
 
 function dealOutFirstHand() {
-    document.getElementById("startButton").addEventListener("click", () => {
+    const startButton = document.getElementById("startButton");
 
-        const dealHandler = () => {
-            playerSum = [];  // or should this be the first step in another funct?
-            dealerSum = [];  // or should this be the first step in another funct?
-            playerHand = [];
-            dealerHand = [];
-            buildDeck();
-            shuffleDeck(fullDeck);
+    const dealHandler = () => {
+        playerSum = [];  // or should this be the first step in another funct?
+        dealerSum = [];  // or should this be the first step in another funct?
+        playerHand = [];
+        dealerHand = [];
+        buildDeck();
+        shuffleDeck(fullDeck);
 
-            //NEED TIMING to slow down the show of cards - setTimout funct?
+        //NEED TIMING to slow down the show of cards - setTimout funct?
 
-            playerHand.push(drawCard(fullDeck));
-            displayPlayerCard(playerHand[0]);
-            dealerHand.push(drawCard(fullDeck));
-            displayDealerCard(dealerHand[0]);
+        playerHand.push(drawCard(fullDeck));
+        displayPlayerCard(playerHand[0]);
+        dealerHand.push(drawCard(fullDeck));
+        displayDealerCard(dealerHand[0]);
 
-            playerHand.push(drawCard(fullDeck));
-            displayPlayerCard(playerHand[1]);
-            dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
-            displayDealerCard(dealerHand[1]);
+        playerHand.push(drawCard(fullDeck));
+        displayPlayerCard(playerHand[1]);
+        dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
+        displayDealerCard(dealerHand[1]);
 
 
-            playerSum = calcHandSum(playerHand);
-            dealerSum = calcHandSum(dealerHand);
+        playerSum = calcHandSum(playerHand);
+        dealerSum = calcHandSum(dealerHand);
 
-            console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
-            console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
-            // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
-            startButton.removeEventListener("click", dealHandler);
-        }
-
-    });
+        console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
+        console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
+        // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
+        startButton.removeEventListener("click", dealHandler);
+    }
     startButton.addEventListener("click", dealHandler);
-}
+};
 
 
 
