@@ -34,7 +34,7 @@ function calcHandSum(hand) {
 function getCardValue(card) {
     if (isNaN(card.value)) {
         if (card.value === "A") {
-           calcAceValue()
+           calcAceValue(card, )
         } else {
             return 10;
         }
