@@ -13,7 +13,7 @@ let fullDeck = [];
 //step #1
 dealOutFirstHand();
 hitMe();
-convertRankToNumeric(playerHand);
+
 
 
 // dev area
@@ -28,9 +28,12 @@ convertRankToNumeric(playerHand);
 
 function convertRankToNumeric(hand) {
     const needTheDigits = [];
-    
+
     for (let i = 0; i < hand.length; i++) {
-        const gotTheDigit = Number(hand[i].value)
+        const gotTheDigit = (Number(hand[i].value)) => {
+            getCardValue(hand);
+            aceValue(hand);
+        };
         needTheDigits.push(gotTheDigit);
         console.log(`This is the PUSH card: ${gotTheDigit}`);
     }
@@ -41,8 +44,28 @@ function convertRankToNumeric(hand) {
 
 function calcPlayerSum() {
     // add the card.values in the playerHand array and push these values to playerSum
-    // call the aceValue funct
-    // call the cardValue funct
+    function getCardValue(card) {
+        if (isNaN(card.value)) {
+            if (card.value === "A") {
+                return 11;
+            } else {
+                return 10;
+            }
+        }
+        return parseInt(card.value);
+    }
+    
+    function aceValue(card, playerSum) {
+        if (card.value === "A") {
+            if (playerSum > 21) {
+                return 1;
+            } else {
+                return 11;
+            }
+        }
+        return parseInt(card.value);
+    }
+    
 }
 
 
@@ -142,6 +165,9 @@ function dealOutFirstHand() {
         displayDealerCard(dealerHand[1]);
 
 
+        playerSum = convertRankToNumeric(playerHand);
+        dealerSum = convertRankToNumeric(dealerHand);
+
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
         // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
@@ -192,25 +218,4 @@ function buildDeck() {
     // console.log(fullDeck);
 }
 
-function getCardValue(card) {
-    if (isNaN(card.value)) {
-        if (card.value === "A") {
-            return 11;
-        } else {
-            return 10;
-        }
-    }
-    return parseInt(card.value);
-}
-
-function aceValue(card, playerSum) {
-    if (card.value === "A") {
-        if (playerSum > 21) {
-            return 1;
-        } else {
-            return 11;
-        }
-    }
-    return parseInt(card.value);
-}
 
