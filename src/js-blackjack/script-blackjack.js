@@ -16,34 +16,42 @@ calcHandSum(playerHand);
 
 
 // dev area
-// calc the hand sum needs to return a number.
-//this numb is the sum of all card values pushed into the "hand" array.
-// this TOTAL numb (1 value) should be pushed into the "sum" variable
-// the sum variables are calculated against each other to determin W L D.
-// can this be done.
-//sooooo frustrated with this %^&$%^$ step
-
+// consider that we may need track ace count
 // need to add/SUM
 // need to give faces cards values
 // need to caculate aces 1 and 11 conditional
 // need to stay sane 
 
 function getCurrentSum() {
-// this function should be a number
-// the sum of digits before passing to calcHandSum???
-//calc handSum is gonna add the aces values
-//can/should i strip out some of the code below into this funt?
-// i cant fig out how to put all in 1 funct.
-// hate this feeling. why am i even coding.
+    // this function should be a number
+    // the sum of digits before passing to calcHandSum???
+    // calc handSum is gonna add the aces values
+    // can/should i strip out some of the code below into this funct?
+    // i cant fig out how to put all in 1 funct.
+    // hate this feeling. why am i even coding.
 }
 
+// ------------------------------------------------------------
+// funct calc the hand sum needs to return a number.
+// this numb is the sum of all card values pushed into the "hand" array.
+// this TOTAL numb (1 value) should be pushed into the "sum" variable
+// the sum variables are calculated against each other to determin W L D.
+// can this be done.
+// sooooo frustrated with this %^&$%^$ step
+
+
 function calcHandSum(hand) {
+
     const handTotal = []; //goal is for this to be ONE value
+    let handSum = 0;
 
     for (let i = 0; i < hand.length; i++) {
-        const cardValue = (getCardValue(hand[i]));
+        const cardValue = (getCardValue(hand[i], handSum));
         handTotal.push(cardValue);
+        handSum += cardValue;
         console.log(`This is the PUSH card: ${cardValue}`);
+        console.log(`This is the HANDSUM VALUE: ${handSum}`);
+
     }
 
     console.log(`This is the HAND TOTAL: ${handTotal}`);
@@ -52,11 +60,13 @@ function calcHandSum(hand) {
 }
 
 
-function getCardValue(card) {
+function getCardValue(card, playerSum) {
+    console.log("from getCardValue:", playerSum);
     if (isNaN(card.value)) {
         if (card.value === "A") {
-           return calcAceValue(card, playerSum);
-           //need a 2nd parameter here for playerSum. Claude says make a funct)
+            //    return 11;
+            return calcAceValue(card, playerSum);
+            //need a 2nd parameter here for playerSum. Claude says make a funct)
         } else {
             return 10;
         }
@@ -65,6 +75,7 @@ function getCardValue(card) {
 }
 
 function calcAceValue(card, playerSum) {
+    console.log("from calcAceValue:", playerSum)
     if (card.value === "A") {
         if (playerSum > 21) {
             return 1;
@@ -76,7 +87,7 @@ function calcAceValue(card, playerSum) {
 }
 
 
-
+// ------------------------------------------------------------
 
 
 function stayButton() {
@@ -94,7 +105,7 @@ function stayButton() {
     });
 }
 
-
+// ------------------------------------------------------------
 //looks gd area
 function hitMe() {
     const giveMeCard = document.getElementById("hitMeButton").addEventListener("click", () => {
@@ -102,6 +113,7 @@ function hitMe() {
         displayPlayerCard(newCard); //display card
         playerHand.push(newCard); //add to playerHand array
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
+        calcHandSum(playerHand);
     });
 }
 
@@ -187,7 +199,7 @@ function dealOutFirstHand() {
 
 
         playerSum = calcHandSum(playerHand);
-        dealerSum = calcHandSum(dealerHand);
+        // dealerSum = calcHandSum(dealerHand); //UNCOMMENT ME!!!! UNCOMMENT ME!!!!
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
