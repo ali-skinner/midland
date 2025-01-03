@@ -13,12 +13,21 @@ let fullDeck = [];
 dealOutFirstHand();
 hitMe();
 calcHandSum(playerHand);
+playerBusted(playerSum);
+dealerHits();
 
+
+// document.getElementById("stayButton").addEventListener("click", dealersTurn(dealerSum));console.log("here I am");
 
 // dev area --------------->
 
 function playerBusted (handTotal) {
 if (handTotal > 21) {
+    const playerBustMessage = document.createElement("div");
+    playerBustMessage.textContent = ("BUST! You Lose!");
+    document.getElementById("player-message").appendChild(playerBustMessage);
+    console.log(playerBustMessage);
+    return playerBustMessage;
     // alert: "BUST! You Lose!"
     // Print to player div
     // diplay hidden card
@@ -29,6 +38,11 @@ if (handTotal > 21) {
 }
 function dealerBusted (handTotal) {
     if (handTotal > 21) {
+        const dealerBustMessage = document.createElement("div");
+    dealerBustMessage.textContent = "BUST! You Lose!";
+    document.getElementById("dealer-message").appendChild(dealerBustMessage);
+    console.log(dealerBustMessage);
+    return dealerBustMessage;
         // alert: "BUST! You Lose!"
         // Print to dealer div
         // diplay hidden card
@@ -39,16 +53,17 @@ function dealerBusted (handTotal) {
     }
 
 //--->---needs work >-------------------->------------------>---------------->
-function dealersTurn() {
+function dealersTurn(dealerTotal) {
+    
     // i need to loop this
-    if (dealerSum < 17) {
+    if (dealerTotal < 17) {
         dealerHits();
-    } else if ((dealerSum > 16) && (dealerSum < 22)){
+    } else if ((dealerTotal > 16) && (dealerTotal < 22)){
         //dealer STAYS [17-21]
-        didYouWin ();
+        didYouWin();
     } else {
         //dealer BUSTS
-        dealerBusted ();
+        dealerBusted();
     }
 }
        //dealersTurn
@@ -63,11 +78,11 @@ function dealersTurn() {
         
     
 //--->---needs work >-------------------->------------------>---------------->
-function stayButton() {
-    document.getElementById("hitMeButton").removeEventListener("click");
-    document.getElementById("stayButton").removeEventListener("click");
-    dealersTurn();
-}
+// function stayButton() {
+    // document.getElementById("hitMeButton").removeEventListener("click");
+//     document.getElementById("stayButton").addEventListener("click", dealersTurn());
+
+// }
  //player stays = activate stayButtion function
             //deactivate hitMe button
             //deactivate stay button
@@ -174,13 +189,15 @@ function getCardValue(card, playerSum) {
 // --->----looks gd area------->-------------->------------------>-------------->
 
 function dealerHits() {
+    document.getElementById("stayButton").addEventListener("click", () => {
         const newCard = drawCard(fullDeck); //get a card
         displayDealerCard(newCard); //display dealer card
         dealerHand.push(newCard); //add to dealer Hand array
         console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
         calcHandSum(dealerHand);
-    }
-
+    });
+}
+//player hits
 function hitMe() {
     document.getElementById("hitMeButton").addEventListener("click", () => {
         const newCard = drawCard(fullDeck); //get a card
@@ -190,7 +207,7 @@ function hitMe() {
         calcHandSum(playerHand);
     });
 }
-
+//dealer card display
 function displayDealerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";
@@ -218,7 +235,7 @@ function displayDealerCard(card) {
 }
 
 
-
+//Player card display
 function displayPlayerCard(card) {
     const viewCard = document.createElement("div");
     viewCard.className = "card";
@@ -246,8 +263,7 @@ function displayPlayerCard(card) {
 }
 
 
-
-
+//start the game and deal first hand
 function dealOutFirstHand() {
     const startButton = document.getElementById("startButton");
 
@@ -281,13 +297,13 @@ function dealOutFirstHand() {
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
         // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
         startButton.removeEventListener("click", dealHandler);
-        document.getElementById("stayButton").addEventListener("click");
+    
     }
     startButton.addEventListener("click", dealHandler);
 };
 
 
-
+//draw a new card
 function drawCard(deck) {
     if (deck.length > 0) {
         const randomDraw = Math.floor(Math.random() * deck.length);
@@ -306,6 +322,7 @@ function drawCard(deck) {
     }
 }
 
+//shuffle the deck
 function shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
         const random = Math.floor(Math.random() * (i + 1));
@@ -314,6 +331,7 @@ function shuffleDeck(deck) {
     }
 }
 
+//build deck
 function buildDeck() {
     fullDeck = []; //to reset deck each hand
     suits.forEach((suit) => {
