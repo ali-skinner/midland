@@ -17,10 +17,26 @@ calcHandSum(playerHand);
 
 // dev area --------------->
 
-function youBusted (handTotal) {
-
+function playerBusted (handTotal) {
+if (handTotal > 21) {
+    // alert: "BUST! You Lose!"
+    // Print to player div
+    // diplay hidden card
+    // display totals 
+    // enable start, hit buttons
+    // reset game
 }
-
+}
+function dealerBusted (handTotal) {
+    if (handTotal > 21) {
+        // alert: "BUST! You Lose!"
+        // Print to dealer div
+        // diplay hidden card
+        // display totals 
+        // enable start, hit buttons
+        // reset game
+    }
+    }
 
 //--->---needs work >-------------------->------------------>---------------->
 function dealersTurn() {
@@ -32,7 +48,7 @@ function dealersTurn() {
         didYouWin ();
     } else {
         //dealer BUSTS
-        youBusted ();
+        dealerBusted ();
     }
 }
        //dealersTurn
@@ -94,6 +110,7 @@ function didYouWin(playerTotal, dealerTotal) {
 //--->---needs work >-------------------->------------------>---------------->
 
 // consider that we may need track ace count
+ // --> if ace value = 1 or greater; recalcuate playerSum each loop
 // need to add/SUM
 // need to give faces cards values
 // need to caculate aces 1 and 11 conditional
@@ -103,6 +120,7 @@ function calcHandSum(hand) {
 
     const handTotal = []; //goal is for this to be ONE value
     let handSum = 0;
+    let aces = 0;
 
     for (let i = 0; i < hand.length; i++) {
         const cardValue = (getCardValue(hand[i], handSum));
@@ -121,7 +139,7 @@ function getCardValue(card, playerSum) {
     console.log("from getCardValue:", playerSum);
     if (isNaN(card.value)) {
         console.log("ace functions", card.value);
-        if (card.value === "A" || card.value === 11) {
+        if (card.value === "A" || acesInMyHand > 0) {
             console.log("here", card.value);
             if (playerSum > 21) {
                 return 1;
