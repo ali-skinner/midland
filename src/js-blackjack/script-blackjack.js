@@ -14,51 +14,83 @@ dealOutFirstHand();
 hitMe();
 calcHandSum(playerHand);
 playerBusted(playerSum);
-dealerHits();
-dealersTurn()
+dealerHits(); //activated by STAY button
+dealersTurn(dealerSum);
 
 
 // dev area --------------->
+// endGame()
+// --> diplay hidden card
+// --> display totals 
+// --> enable start, hit buttons
+// --> clear arrays
+// --> reset game
 
-function playerBusted(handTotal) {
-    if (handTotal > 21) {
+
+// blackjack()
+//calc player and dealer hands on 1st deal
+//display BLACKJACK WINNER message
+
+function blackJack(playerSum, dealerSum) {
+    if (playerSum === 21) {
+        const playerBlackJackMessage = document.createElement("div");
+        playerBlackJackMessage.textContent = ("BLACKJACK! You WIN!");
+        document.getElementById("player-message").appendChild(playerBlackJackMessage);
+        console.log(playerBlackJackMessage );
+        return playerBlackJackMessage;
+        // endGame();
+
+    } else if (dealerSum === 21) {
+        const dealerBlackJackMessage = document.createElement("div");
+        dealerBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
+        document.getElementById("dealer-message").appendChild(dealerBlackJackMessage);
+        console.log(dealerBlackJackMessage );
+        return dealerBlackJackMessage;
+        // endGame();
+    } else {
+        //continue with game
+    }
+}
+
+function playerBusted(playerHandTotal) {
+    if (playerHandTotal > 21) {
         const playerBustMessage = document.createElement("div");
         playerBustMessage.textContent = ("BUST! You Lose!");
         document.getElementById("player-message").appendChild(playerBustMessage);
         console.log(playerBustMessage);
         return playerBustMessage;
-        // alert: "BUST! You Lose!"
-        // Print to player div
-        // diplay hidden card
-        // display totals 
-        // enable start, hit buttons
-        // reset game
+
+        // endGame()
+        // --> diplay hidden card
+        // -->display totals 
+        // --> enable start, hit buttons
+        // --> reset game
     }
 }
-function dealerBusted(handTotal) {
-    if (handTotal > 21) {
+function dealerBusted(dealerHand) {
+    if (dealerHand > 21) {
         const dealerBustMessage = document.createElement("div");
         dealerBustMessage.textContent = "BUST! You Lose!";
         document.getElementById("dealer-message").appendChild(dealerBustMessage);
         console.log(dealerBustMessage);
         return dealerBustMessage;
-        // alert: "BUST! You Lose!"
-        // Print to dealer div
-        // diplay hidden card
-        // display totals 
-        // enable start, hit buttons
-        // reset game
+
+        // endGame()
+        // --> diplay hidden card
+        // -->display totals 
+        // --> enable start, hit buttons
+        // --> reset game
     }
 }
 
 //--->---needs work >-------------------->------------------>---------------->
-function dealersTurn(dealerTotal) {
-    if ((dealerTotal > 16) && (dealerTotal < 22)) {
-    //dealer STAYS [17-21]
-    didYouWin();
+function dealersTurn(dealerHand) {
+    if ((dealerHand > 16) && (dealerHand < 22)) {
+        //dealer STAYS [17-21]
+        didYouWin();
     } else {
-    //dealer BUSTS
-    dealerBusted();
+        //dealer BUSTS
+        dealerBusted();
     }
 }
 
@@ -70,16 +102,6 @@ function dealersTurn(dealerTotal) {
 //Dealer stays in the range: [17-21]
 //call Bust function
 //call didYouWinfun to compare playerSum vs DealerSum
-
-
-
-//--->---needs work >-------------------->------------------>---------------->
-
-//player stays = activate stayButtion function
-//deactivate hitMe button
-//deactivate stay button
-//eval playerSum
-//call the dealersTurn function
 
 
 //--->---needs work >-------------------->------------------>---------------->
@@ -111,7 +133,7 @@ function didYouWin(playerTotal, dealerTotal) {
     //             print; display score of dealer hand total in dealer hand div / html;
     //         }
     //     }
-    // }
+    // } //endgame();
 }
 
 //--->---needs work >-------------------->------------------>---------------->
@@ -284,14 +306,16 @@ function dealOutFirstHand() {
 
 
         playerSum = calcHandSum(playerHand);
-        // dealerSum = calcHandSum(dealerHand); //UNCOMMENT ME!!!! UNCOMMENT ME!!!!
-
-        //call blackJack function to see if anyone won on first deal
+        dealerSum = calcHandSum(dealerHand); //UNCOMMENT ME!!!! UNCOMMENT ME!!!!
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
+
         // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
         startButton.removeEventListener("click", dealHandler);
+
+        //call blackJack function to see if anyone won on first deal;
+        blackJack(playerSum, dealerSum);
 
     }
     startButton.addEventListener("click", dealHandler);
