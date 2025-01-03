@@ -15,34 +15,33 @@ hitMe();
 calcHandSum(playerHand);
 playerBusted(playerSum);
 dealerHits();
+dealersTurn()
 
-
-// document.getElementById("stayButton").addEventListener("click", dealersTurn(dealerSum));console.log("here I am");
 
 // dev area --------------->
 
-function playerBusted (handTotal) {
-if (handTotal > 21) {
-    const playerBustMessage = document.createElement("div");
-    playerBustMessage.textContent = ("BUST! You Lose!");
-    document.getElementById("player-message").appendChild(playerBustMessage);
-    console.log(playerBustMessage);
-    return playerBustMessage;
-    // alert: "BUST! You Lose!"
-    // Print to player div
-    // diplay hidden card
-    // display totals 
-    // enable start, hit buttons
-    // reset game
+function playerBusted(handTotal) {
+    if (handTotal > 21) {
+        const playerBustMessage = document.createElement("div");
+        playerBustMessage.textContent = ("BUST! You Lose!");
+        document.getElementById("player-message").appendChild(playerBustMessage);
+        console.log(playerBustMessage);
+        return playerBustMessage;
+        // alert: "BUST! You Lose!"
+        // Print to player div
+        // diplay hidden card
+        // display totals 
+        // enable start, hit buttons
+        // reset game
+    }
 }
-}
-function dealerBusted (handTotal) {
+function dealerBusted(handTotal) {
     if (handTotal > 21) {
         const dealerBustMessage = document.createElement("div");
-    dealerBustMessage.textContent = "BUST! You Lose!";
-    document.getElementById("dealer-message").appendChild(dealerBustMessage);
-    console.log(dealerBustMessage);
-    return dealerBustMessage;
+        dealerBustMessage.textContent = "BUST! You Lose!";
+        document.getElementById("dealer-message").appendChild(dealerBustMessage);
+        console.log(dealerBustMessage);
+        return dealerBustMessage;
         // alert: "BUST! You Lose!"
         // Print to dealer div
         // diplay hidden card
@@ -50,82 +49,75 @@ function dealerBusted (handTotal) {
         // enable start, hit buttons
         // reset game
     }
-    }
+}
 
 //--->---needs work >-------------------->------------------>---------------->
 function dealersTurn(dealerTotal) {
-    
-    // i need to loop this
-    if (dealerTotal < 17) {
-        dealerHits();
-    } else if ((dealerTotal > 16) && (dealerTotal < 22)){
-        //dealer STAYS [17-21]
-        didYouWin();
+    if ((dealerTotal > 16) && (dealerTotal < 22)) {
+    //dealer STAYS [17-21]
+    didYouWin();
     } else {
-        //dealer BUSTS
-        dealerBusted();
+    //dealer BUSTS
+    dealerBusted();
     }
 }
-       //dealersTurn
-            //eval dealerSum (in START, call a black jack funct)
-            //Dealer HITS on 16 / STAYS on 17
-            //if DealerSum < 17; call dealerHits funct
-            //continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
-            //Dealer stays in the range: [17-21]
-            //call Bust function
-            //call didYouWinfun to compare playerSum vs DealerSum
 
-        
-    
+//dealersTurn
+//eval dealerSum (in START, call a black jack funct)
+//Dealer HITS on 16 / STAYS on 17
+//if DealerSum < 17; call dealerHits funct
+//continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
+//Dealer stays in the range: [17-21]
+//call Bust function
+//call didYouWinfun to compare playerSum vs DealerSum
+
+
+
 //--->---needs work >-------------------->------------------>---------------->
-// function stayButton() {
-    // document.getElementById("hitMeButton").removeEventListener("click");
-//     document.getElementById("stayButton").addEventListener("click", dealersTurn());
 
-// }
- //player stays = activate stayButtion function
-            //deactivate hitMe button
-            //deactivate stay button
-            //eval playerSum
-            //call the dealersTurn function
+//player stays = activate stayButtion function
+//deactivate hitMe button
+//deactivate stay button
+//eval playerSum
+//call the dealersTurn function
 
 
 //--->---needs work >-------------------->------------------>---------------->
 //didYouWin function
-            //didYouWin should display alert/message for Winner/Loser/Draw
-            //didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
-            //didYouWin should reactivate the startButton clickListener
-            //didYouWin should reactivate the hitMe clickListener
-            //clear out all necessary arrays to reset game
+//didYouWin should display alert/message for Winner/Loser/Draw
+//didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
+//didYouWin should reactivate the startButton clickListener
+//didYouWin should reactivate the hitMe clickListener
+//clear out all necessary arrays to reset game
 function didYouWin(playerTotal, dealerTotal) {
-//     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
-//         alert: You Win! Player Wins!;
-//         print: add you "WIN" div to the player id / html;
-//         print: add you "LOSE" div to the dealer id / html;
-//         print; display score of player hand total in the player hand div / html;
-//         print; display score of dealer hand total in dealer hand div / html;
-//     } else if ((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)){
-//         alert: "DRAW!" Dealer wins!;
-//         print: add you "LOSE" div to the player id / html;
-//         print: add you "WIN" div to the dealer id / html;
-//         print; display score of player hand total in the player hand div / html;
-//         print; display score of dealer hand total in dealer hand div / html;
-//     } else ((dealerTotal > playerTotal) && (dealerTotal < 22)){
-//
-//             alert: Dealer Wins!;
-//             print: add you "LOSE" div to the player id / html;
-//             print: add you "WIN" div to the dealer id / html;
-//             print; display score of player hand total in the player hand div / html;
-//             print; display score of dealer hand total in dealer hand div / html;
-//         }
-//     }
-// }
+    //     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
+    //         alert: You Win! Player Wins!;
+    //         print: add you "WIN" div to the player id / html;
+    //         print: add you "LOSE" div to the dealer id / html;
+    //         print; display score of player hand total in the player hand div / html;
+    //         print; display score of dealer hand total in dealer hand div / html;
+    //     } else if ((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)){
+    //         alert: "DRAW!" Dealer wins!;
+    //         print: add you "LOSE" div to the player id / html;
+    //         print: add you "WIN" div to the dealer id / html;
+    //         print; display score of player hand total in the player hand div / html;
+    //         print; display score of dealer hand total in dealer hand div / html;
+    //     } else ((dealerTotal > playerTotal) && (dealerTotal < 22)){
+    //
+    //             alert: Dealer Wins!;
+    //             print: add you "LOSE" div to the player id / html;
+    //             print: add you "WIN" div to the dealer id / html;
+    //             print; display score of player hand total in the player hand div / html;
+    //             print; display score of dealer hand total in dealer hand div / html;
+    //         }
+    //     }
+    // }
 }
 
 //--->---needs work >-------------------->------------------>---------------->
 
 // consider that we may need track ace count
- // --> if ace value = 1 or greater; recalcuate playerSum each loop
+// --> if ace value = 1 or greater; recalcuate playerSum each loop
 // need to add/SUM
 // need to give faces cards values
 // need to caculate aces 1 and 11 conditional
@@ -188,13 +180,16 @@ function getCardValue(card, playerSum) {
 
 // --->----looks gd area------->-------------->------------------>-------------->
 
+//dealer hits
 function dealerHits() {
     document.getElementById("stayButton").addEventListener("click", () => {
-        const newCard = drawCard(fullDeck); //get a card
-        displayDealerCard(newCard); //display dealer card
-        dealerHand.push(newCard); //add to dealer Hand array
-        console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
-        calcHandSum(dealerHand);
+        while (dealerHand < 17) {
+            const newCard = drawCard(fullDeck); //get a card
+            displayDealerCard(newCard); //display dealer card
+            dealerHand.push(newCard); //add to dealer Hand array
+            console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
+            calcHandSum(dealerHand);
+        }
     });
 }
 //player hits
@@ -297,7 +292,7 @@ function dealOutFirstHand() {
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
         // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
         startButton.removeEventListener("click", dealHandler);
-    
+
     }
     startButton.addEventListener("click", dealHandler);
 };
