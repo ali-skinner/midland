@@ -17,7 +17,7 @@ calcHandSum(playerHand);
 
 // dev area --------------->
 
-function didYouWin(playerTotal, dealerTotal) {
+function areYouTheWinner(playerTotal, dealerTotal) {
     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
         alert: You Win! Player Wins!;
         print: add you "WIN" div to the player id / html;
@@ -109,16 +109,27 @@ function getCardValue(card, playerSum) {
 
 function stayButton() {
     const stayPut = document.getElementById("stayButton").addEventListener("click", () => {
-        //call the dealersTurn function
-        //eval dealerSum
-        //if DealerSum < 16; call hitMe funct
-        //continue to call hitMe until dealerSum > 17
-        //stop the hitMe loop when dealerSum > 21;
-        //call whoWon fun to compare playerSum vs DealerSum
-        //whoWon should display alert/message for Winner/Loser/Draw
-        //whoWon should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
-        //whoWon should reactivate the startButton clickListener
-        //clear out all necessary arrays to reset game
+
+       //player stay
+            //deactivate hitMe button
+            //eval playerSum
+            //call the dealersTurn function
+       
+       
+       //dealersTurn
+            //eval dealerSum (in START, call a black jack funct)
+            //if DealerSum < 16; call hitMe funct
+            //continue to call hitMe until dealerSum > 16 && dealerSum < 22 [17-21]
+            //Dealer stays in the range: [17-21]
+            //call Bust function
+            //call areYouTheWinner fun to compare playerSum vs DealerSum
+
+        //areYouTheWinner function
+            //areYouTheWinner should display alert/message for Winner/Loser/Draw
+            //areYouTheWinner should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
+            //areYouTheWinner should reactivate the startButton clickListener
+            //areYouTheWinner should reactivate the hitMe clickListener
+            //clear out all necessary arrays to reset game
     });
 }
 
