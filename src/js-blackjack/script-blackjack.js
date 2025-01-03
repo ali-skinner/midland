@@ -17,6 +17,34 @@ calcHandSum(playerHand);
 
 // dev area --------------->
 
+function stayButton() {
+    const stayPut = document.getElementById("stayButton").addEventListener("click", () => {
+
+       //player stay
+            //deactivate hitMe button
+            //eval playerSum
+            //call the dealersTurn function
+       
+       
+       //dealersTurn
+            //eval dealerSum (in START, call a black jack funct)
+            //if DealerSum < 16; call hitMe funct
+            //continue to call hitMe until dealerSum > 16 && dealerSum < 22 [17-21]
+            //Dealer stays in the range: [17-21]
+            //call Bust function
+            //call areYouTheWinner fun to compare playerSum vs DealerSum
+
+        //areYouTheWinner function
+            //areYouTheWinner should display alert/message for Winner/Loser/Draw
+            //areYouTheWinner should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
+            //areYouTheWinner should reactivate the startButton clickListener
+            //areYouTheWinner should reactivate the hitMe clickListener
+            //clear out all necessary arrays to reset game
+    });
+}
+
+//--->---needs work >-------------------->------------------>---------------->
+
 function areYouTheWinner(playerTotal, dealerTotal) {
     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
         alert: You Win! Player Wins!;
@@ -43,7 +71,7 @@ function areYouTheWinner(playerTotal, dealerTotal) {
 }
 }
 
-
+//--->---needs work >-------------------->------------------>---------------->
 
 // consider that we may need track ace count
 // need to add/SUM
@@ -68,7 +96,7 @@ function calcHandSum(hand) {
     return handTotal;
 }
 
-
+//--->---needs work >-------------------->------------------>---------------->
 function getCardValue(card, playerSum) {
     console.log("from getCardValue:", playerSum);
     if (isNaN(card.value)) {
@@ -104,37 +132,9 @@ function getCardValue(card, playerSum) {
 // }
 
 
-// ------------------------------------------------------------
 
+// --->----looks gd area------->-------------->------------------>-------------->
 
-function stayButton() {
-    const stayPut = document.getElementById("stayButton").addEventListener("click", () => {
-
-       //player stay
-            //deactivate hitMe button
-            //eval playerSum
-            //call the dealersTurn function
-       
-       
-       //dealersTurn
-            //eval dealerSum (in START, call a black jack funct)
-            //if DealerSum < 16; call hitMe funct
-            //continue to call hitMe until dealerSum > 16 && dealerSum < 22 [17-21]
-            //Dealer stays in the range: [17-21]
-            //call Bust function
-            //call areYouTheWinner fun to compare playerSum vs DealerSum
-
-        //areYouTheWinner function
-            //areYouTheWinner should display alert/message for Winner/Loser/Draw
-            //areYouTheWinner should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
-            //areYouTheWinner should reactivate the startButton clickListener
-            //areYouTheWinner should reactivate the hitMe clickListener
-            //clear out all necessary arrays to reset game
-    });
-}
-
-// ------------------------------------------------------------
-//looks gd area
 function hitMe() {
     document.getElementById("hitMeButton").addEventListener("click", () => {
         const newCard = drawCard(fullDeck); //get a card
