@@ -16,16 +16,30 @@ calcHandSum(playerHand);
 
 
 // dev area --------------->
+
+function youBusted (handTotal) {
+
+}
+
+
+//--->---needs work >-------------------->------------------>---------------->
 function dealersTurn() {
-    if (dealerSum < 16) {
+    // i need to loop this
+    if (dealerSum < 17) {
         dealerHits();
-        calcHandSum();
+    } else if ((dealerSum > 16) && (dealerSum < 22)){
+        //dealer STAYS [17-21]
+        didYouWin ();
+    } else {
+        //dealer BUSTS
+        youBusted ();
     }
 }
        //dealersTurn
             //eval dealerSum (in START, call a black jack funct)
-            //if DealerSum < 16; call hitMe funct
-            //continue to call hitMe until dealerSum > 16 && dealerSum < 22 [17-21]
+            //Dealer HITS on 16 / STAYS on 17
+            //if DealerSum < 17; call dealerHits funct
+            //continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
             //Dealer stays in the range: [17-21]
             //call Bust function
             //call didYouWinfun to compare playerSum vs DealerSum
@@ -53,29 +67,28 @@ function stayButton() {
             //didYouWin should reactivate the hitMe clickListener
             //clear out all necessary arrays to reset game
 function didYouWin(playerTotal, dealerTotal) {
-    if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
-        alert: You Win! Player Wins!;
-        print: add you "WIN" div to the player id / html;
-        print: add you "LOSE" div to the dealer id / html;
-        print; display score of player hand total in the player hand div / html;
-        print; display score of dealer hand total in dealer hand div / html;
-    } else if {
-        if((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)) {
-        alert: "DRAW!" Dealer wins!;
-        print: add you "LOSE" div to the player id / html;
-        print: add you "WIN" div to the dealer id / html;
-        print; display score of player hand total in the player hand div / html;
-        print; display score of dealer hand total in dealer hand div / html;
-    } else {
-        if ((dealerTotal > playerTotal) && (dealerTotal < 22)) {
-            alert: Dealer Wins!;
-            print: add you "LOSE" div to the player id / html;
-            print: add you "WIN" div to the dealer id / html;
-            print; display score of player hand total in the player hand div / html;
-            print; display score of dealer hand total in dealer hand div / html;
-        }
-    }
-}
+//     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
+//         alert: You Win! Player Wins!;
+//         print: add you "WIN" div to the player id / html;
+//         print: add you "LOSE" div to the dealer id / html;
+//         print; display score of player hand total in the player hand div / html;
+//         print; display score of dealer hand total in dealer hand div / html;
+//     } else if ((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)){
+//         alert: "DRAW!" Dealer wins!;
+//         print: add you "LOSE" div to the player id / html;
+//         print: add you "WIN" div to the dealer id / html;
+//         print; display score of player hand total in the player hand div / html;
+//         print; display score of dealer hand total in dealer hand div / html;
+//     } else ((dealerTotal > playerTotal) && (dealerTotal < 22)){
+//
+//             alert: Dealer Wins!;
+//             print: add you "LOSE" div to the player id / html;
+//             print: add you "WIN" div to the dealer id / html;
+//             print; display score of player hand total in the player hand div / html;
+//             print; display score of dealer hand total in dealer hand div / html;
+//         }
+//     }
+// }
 }
 
 //--->---needs work >-------------------->------------------>---------------->
