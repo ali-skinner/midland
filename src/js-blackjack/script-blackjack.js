@@ -16,16 +16,12 @@ calcHandSum(playerHand);
 
 
 // dev area --------------->
-
-function stayButton() {
-    const stayPut = document.getElementById("stayButton").addEventListener("click", () => {
-
-       //player stay
-            //deactivate hitMe button
-            //eval playerSum
-            //call the dealersTurn function
-       
-       
+function dealersTurn() {
+    if (dealerSum < 16) {
+        dealerHits();
+        calcHandSum();
+    }
+}
        //dealersTurn
             //eval dealerSum (in START, call a black jack funct)
             //if DealerSum < 16; call hitMe funct
@@ -34,17 +30,28 @@ function stayButton() {
             //call Bust function
             //call didYouWinfun to compare playerSum vs DealerSum
 
-        //didYouWin function
+        
+    
+//--->---needs work >-------------------->------------------>---------------->
+function stayButton() {
+    document.getElementById("hitMeButton").removeEventListener("click");
+    document.getElementById("stayButton").removeEventListener("click");
+    dealersTurn();
+}
+ //player stays = activate stayButtion function
+            //deactivate hitMe button
+            //deactivate stay button
+            //eval playerSum
+            //call the dealersTurn function
+
+
+//--->---needs work >-------------------->------------------>---------------->
+//didYouWin function
             //didYouWin should display alert/message for Winner/Loser/Draw
             //didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
             //didYouWin should reactivate the startButton clickListener
             //didYouWin should reactivate the hitMe clickListener
             //clear out all necessary arrays to reset game
-    });
-}
-
-//--->---needs work >-------------------->------------------>---------------->
-
 function didYouWin(playerTotal, dealerTotal) {
     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
         alert: You Win! Player Wins!;
@@ -53,7 +60,7 @@ function didYouWin(playerTotal, dealerTotal) {
         print; display score of player hand total in the player hand div / html;
         print; display score of dealer hand total in dealer hand div / html;
     } else if {
-        if ((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)) {
+        if((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)) {
         alert: "DRAW!" Dealer wins!;
         print: add you "LOSE" div to the player id / html;
         print: add you "WIN" div to the dealer id / html;
@@ -67,7 +74,7 @@ function didYouWin(playerTotal, dealerTotal) {
             print; display score of player hand total in the player hand div / html;
             print; display score of dealer hand total in dealer hand div / html;
         }
-    } 
+    }
 }
 }
 
@@ -134,6 +141,14 @@ function getCardValue(card, playerSum) {
 
 
 // --->----looks gd area------->-------------->------------------>-------------->
+
+function dealerHits() {
+        const newCard = drawCard(fullDeck); //get a card
+        displayDealerCard(newCard); //display dealer card
+        dealerHand.push(newCard); //add to dealer Hand array
+        console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
+        calcHandSum(dealerHand);
+    }
 
 function hitMe() {
     document.getElementById("hitMeButton").addEventListener("click", () => {
@@ -229,10 +244,13 @@ function dealOutFirstHand() {
         playerSum = calcHandSum(playerHand);
         // dealerSum = calcHandSum(dealerHand); //UNCOMMENT ME!!!! UNCOMMENT ME!!!!
 
+        //call blackJack function to see if anyone won on first deal
+
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
         // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
         startButton.removeEventListener("click", dealHandler);
+        document.getElementById("stayButton").addEventListener("click");
     }
     startButton.addEventListener("click", dealHandler);
 };
