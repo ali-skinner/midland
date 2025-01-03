@@ -4,8 +4,8 @@ const suits = ["♥", "♦", "♣", "♠"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 let playerHand = [];
 let dealerHand = [];
-let playerSum = [];
-let dealerSum = [];
+let playerSum = []; //feed to didYouWin()
+let dealerSum = []; //feed to didYouWin()
 let fullDeck = [];
 
 
@@ -16,6 +16,35 @@ calcHandSum(playerHand);
 
 
 // dev area --------------->
+
+function didYouWin(playerTotal, dealerTotal) {
+    if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
+        alert: You Win! Player Wins!;
+        print: add you "WIN" div to the player id / html;
+        print: add you "LOSE" div to the dealer id / html;
+        print; display score of player hand total in the player hand div / html;
+        print; display score of dealer hand total in dealer hand div / html;
+    } else if {
+        if ((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)) {
+        alert: "DRAW!" Dealer wins!;
+        print: add you "LOSE" div to the player id / html;
+        print: add you "WIN" div to the dealer id / html;
+        print; display score of player hand total in the player hand div / html;
+        print; display score of dealer hand total in dealer hand div / html;
+    } else {
+        if ((dealerTotal > playerTotal) && (dealerTotal < 22)) {
+            alert: Dealer Wins!;
+            print: add you "LOSE" div to the player id / html;
+            print: add you "WIN" div to the dealer id / html;
+            print; display score of player hand total in the player hand div / html;
+            print; display score of dealer hand total in dealer hand div / html;
+        }
+    } 
+}
+}
+
+
+
 // consider that we may need track ace count
 // need to add/SUM
 // need to give faces cards values
@@ -47,10 +76,10 @@ function getCardValue(card, playerSum) {
         if (card.value === "A" || card.value === 11) {
             console.log("here", card.value);
             if (playerSum > 21) {
-                    return 1;
-                } else {
-                    return 11;
-                }
+                return 1;
+            } else {
+                return 11;
+            }
             //    return 11;
             // return calcAceValue(card, playerSum);
             //need a 2nd parameter here for playerSum.
