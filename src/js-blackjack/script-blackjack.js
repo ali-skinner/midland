@@ -49,6 +49,8 @@ function blackJack(playerSum, dealerSum) {
         // endGame();
     } else {
         //continue with game
+        hitMe();
+        dealerHits();
     }
 }
 
