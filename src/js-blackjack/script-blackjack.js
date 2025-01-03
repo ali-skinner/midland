@@ -32,20 +32,20 @@ function stayButton() {
             //continue to call hitMe until dealerSum > 16 && dealerSum < 22 [17-21]
             //Dealer stays in the range: [17-21]
             //call Bust function
-            //call areYouTheWinner fun to compare playerSum vs DealerSum
+            //call didYouWinfun to compare playerSum vs DealerSum
 
-        //areYouTheWinner function
-            //areYouTheWinner should display alert/message for Winner/Loser/Draw
-            //areYouTheWinner should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
-            //areYouTheWinner should reactivate the startButton clickListener
-            //areYouTheWinner should reactivate the hitMe clickListener
+        //didYouWin function
+            //didYouWin should display alert/message for Winner/Loser/Draw
+            //didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
+            //didYouWin should reactivate the startButton clickListener
+            //didYouWin should reactivate the hitMe clickListener
             //clear out all necessary arrays to reset game
     });
 }
 
 //--->---needs work >-------------------->------------------>---------------->
 
-function areYouTheWinner(playerTotal, dealerTotal) {
+function didYouWin(playerTotal, dealerTotal) {
     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
         alert: You Win! Player Wins!;
         print: add you "WIN" div to the player id / html;
