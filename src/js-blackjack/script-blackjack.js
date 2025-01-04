@@ -4,20 +4,20 @@
 // add click event listeners
 // make func for initial deal
 // eval if blackjack
-    // yes = end game
-    // no = start game  --> hit me needs to check a global variable if the game has been started---> currently will deal two cards 1030am 1/04
+// yes = end game
+// no = start game  --> hit me needs to check a global variable if the game has been started---> currently will deal two cards 1030am 1/04
 //check hit me button funct (remove event listener)
 //check stay button funct (remove event listener)
-    // - end players turn & starts the dealers turn
+// - end players turn & starts the dealers turn
 //check did you win - buid this funct (notes below)
-    //run end game to diplay scores/results/flip over hidden cards.
+//run end game to diplay scores/results/flip over hidden cards.
 
 const suits = ["♥", "♦", "♣", "♠"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 let playerHand = [];
 let dealerHand = [];
 let playerSum = 0; //feed to didYouWin()
-let dealerSum = 0 ; //feed to didYouWin()
+let dealerSum = 0; //feed to didYouWin()
 let fullDeck = [];
 let gameStarted = false;
 
@@ -27,15 +27,22 @@ const stayButton = document.getElementById("stayButton");
 
 
 startButton.addEventListener("click", () => {
-    console.log("what up tarts");
+    if (gameStarted === false) {
+        console.log("what up tarts");
+        gameStarted = true;
+    }
 });
 
 hitMeButton.addEventListener("click", () => {
-    console.log("what up hits");
+    if (gameStarted === true) {
+        console.log("what up hits");
+    }
 });
 
 stayButton.addEventListener("click", () => {
-    console.log("what up stay");
+    if (gameStarted === true) {
+        console.log("what up stay");
+    }
 });
 
 //step #1
@@ -48,15 +55,19 @@ dealersTurn(dealerSum);
 
 
 // dev area --------------->
+
+//hiddenCard - add a hidden card class during 1st deal.
+
 // endGame()
-// --> diplay hidden card
+// --> diplay hidden card by removing class on the div/variable
+    // hideCard.className = "card";
 // --> display score / hand totals
 // --> enable start, hit buttons /reactivate clickListeners
 // --> resets game
 
 
 // blackJack() ------------------------------->
-    //calc player and dealer hands on 1st deal  
+//calc player and dealer hands on 1st deal  
 
 function blackJack(playerFirstHand, dealerFirstHand) {
     console.log("I made it to the blackJack function!!");
@@ -66,23 +77,23 @@ function blackJack(playerFirstHand, dealerFirstHand) {
         playerWinBlackJackMessage.textContent = ("BLACKJACK! You WIN!");
         document.getElementById("player-message").appendChild(playerWinBlackJackMessage);
         console.log(playerWinBlackJackMessage);
-         const dealerLoseBlackJackMessage = document.createElement("div");
+        const dealerLoseBlackJackMessage = document.createElement("div");
 
         //dealer Lose hits21 message
         dealerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
         console.log(dealerLoseBlackJackMessage);
         // endGame();
-        return playerWinBlackJackMessage,dealerLoseBlackJackMessage;
-        
+        return playerWinBlackJackMessage, dealerLoseBlackJackMessage;
 
-    } else if (dealerFirstHand === 21){
+
+    } else if (dealerFirstHand === 21) {
         //dealer hits21 message
         const dealerWinBlackJackMessage = document.createElement("div");
         dealerWinBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
         document.getElementById("dealer-message").appendChild(dealerWinBlackJackMessage);
         console.log(dealerWinBlackJackMessage);
-   
+
         //player Lose hits21 message
         const playerLoseBlackJackMessage = document.createElement("div");
         playerLoseBlackJackMessage.textContent = ("LOSE");
@@ -95,7 +106,7 @@ function blackJack(playerFirstHand, dealerFirstHand) {
         // play the game! calling hit me causes double cards to be dealt. shrug.
     }
 }
-   
+
 
 function playerBusted(playerHandTotal) {
     if (playerHandTotal > 21) {
@@ -133,24 +144,24 @@ function dealersTurn(dealerHand) {
 }
 
 //dealersTurn
-    //eval dealerSum (in START, call a black jack funct)
-    //Dealer HITS on 16 / STAYS on 17
-    //if DealerSum < 17; call dealerHits funct --> MOVED TO START FUNCT
-    //continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
-    //Dealer stays in the range: [17-21]
-    //call Bust function 
-    //call didYouWinfun to compare playerSum vs DealerSum
+//eval dealerSum (in START, call a black jack funct)
+//Dealer HITS on 16 / STAYS on 17
+//if DealerSum < 17; call dealerHits funct --> MOVED TO START FUNCT
+//continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
+//Dealer stays in the range: [17-21]
+//call Bust function 
+//call didYouWinfun to compare playerSum vs DealerSum
 
 
 //--->---needs work >-------------------->------------------>---------------->
 //didYouWin function
-    //didYouWin should display alert/message for Winner/Loser/Draw
-    //didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
-    //didYouWin should reactivate the startButton clickListener
-    //didYouWin should reactivate the hitMe clickListener
-    
+//didYouWin should display alert/message for Winner/Loser/Draw
+//didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
+//didYouWin should reactivate the startButton clickListener
+//didYouWin should reactivate the hitMe clickListener
 
-    
+
+
 function didYouWin(playerTotal, dealerTotal) {
     //     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
     //         alert: (in Results heading below buttons) Player Wins!;
@@ -293,6 +304,32 @@ function displayDealerCard(card) {
     return viewCard;
 }
 
+//HIDDEN dealer card 
+function hideDealerCard(card) {
+    const hideCard = document.createElement("div");
+    hideCard.className = "hidden-card";
+    // viewCard.innerHTML = card.suit + card.value;
+
+    const upperCardValue = document.createElement("div");
+    upperCardValue.textContent = card.suit + card.value;
+    upperCardValue.style.textAlign = "left";
+
+    const lowerCardValue = document.createElement("div");
+    lowerCardValue.textContent = card.suit + card.value;
+    lowerCardValue.style.textAlign = "right";
+
+    if (card.suit === "♥" || card.suit === "♦") {
+        viewCard.style.color = "red";
+    }
+
+    hideCard.appendChild(upperCardValue);
+    hideCard.appendChild(lowerCardValue);
+
+    document.getElementById("dealer-cards").appendChild(hideCard);
+    // #dealer-cards is the html id
+    // #player-cards is the html id
+    return hideCard;
+}
 
 //Player card display
 function displayPlayerCard(card) {
@@ -324,10 +361,10 @@ function displayPlayerCard(card) {
 
 //start the game and deal first hand
 function dealOutFirstHand() {
-    
+
     const dealHandler = () => {
         playerSum = 0;
-        dealerSum = 0 ;
+        dealerSum = 0;
         playerHand = [];
         dealerHand = [];
         buildDeck();
@@ -342,8 +379,8 @@ function dealOutFirstHand() {
 
         playerHand.push(drawCard(fullDeck));
         displayPlayerCard(playerHand[1]);
-        dealerHand.push(drawCard(fullDeck));//this card needs to be hidden
-        displayDealerCard(dealerHand[1]);
+        dealerHand.push(drawCard(fullDeck));
+        hideDealerCard(dealerHand[1]); //this card needs to be hidden
 
 
         playerSum = calcHandSum(playerHand);
