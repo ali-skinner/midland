@@ -2,8 +2,8 @@
 
 // DONE - set up global state
 // DONE - add click event listeners
-// make func for initial deal
-// eval if blackjack
+// DONE -make func for initial deal
+// DONE - eval if blackjack
 // yes = end game
 // no = start game  --> hit me needs to check a global variable if the game has been started---> currently will deal two cards 1030am 1/04
 //check hit me button funct (remove event listener)
@@ -24,14 +24,6 @@ let gameStarted = false;
 const startButton = document.getElementById("startButton");
 const hitMeButton = document.getElementById("hitMeButton");
 const stayButton = document.getElementById("stayButton");
-
-//step #1
-// hitMe(); //activate hitMebutton
-// calcHandSum(playerHand);
-// playerBusted(playerSum);
-// dealerHits(); //activated by STAY button -- FUNCT NOT WORKING NOW UGH 1/04 10a
-// dealersTurn(dealerSum);
-
 
 
 //start the game and deal first hand >-------------->---------------->----------
@@ -84,7 +76,13 @@ startButton.addEventListener("click", () => {
 hitMeButton.addEventListener("click", () => {
     if (gameStarted === true) {
         console.log("what up hits");
-
+        hitMe();
+        calcHandSum(playerHand);
+        //TODO display player score here;
+        const didPlayerBust = playerBusted();
+        if (didPlayerBust = true) {
+            endgame();
+        }
         //add card to player hand and display
         //calcHandSum
         //update score display
@@ -117,8 +115,6 @@ stayButton.addEventListener("click", () => {
 
 
 // blackJack() ------------------------------->
-//calc player and dealer hands on 1st deal  
-
 function blackJack() {
     console.log("I made it to the blackJack function!!");
     if (playerSum === 21) {
@@ -160,7 +156,7 @@ function blackJack() {
 }
 
 // busted ()------------------------------->
-function busted() {
+function playerBusted() {
     if (playerSum > 21) {
         //Player busted
         const playerBustMessage = document.createElement("div");
@@ -173,23 +169,29 @@ function busted() {
         playerBustDealerWonMessage.textContent = ("Dealer Wins!");
         document.getElementById("dealer-message").appendChild(playerBustDealerWonMessage);
         console.log(playerBustDealerWonMessage);
-        // endGame()
-        // return playerBustMessage;
 
-    } else if (dealerSum > 21) {
+        return true;
+    }
+    return false;
+}
+
+function dealerBusted() {
+    if (dealerSum > 21) {
         //Dealer busted
         const dealerBustMessage = document.createElement("div");
         dealerBustMessage.textContent = "BUST! You Lose!";
         document.getElementById("dealer-message").appendChild(dealerBustMessage);
         console.log(dealerBustMessage);
-       
-         //PLAYER WINS/Dealer bust bust message
-         const dealererBustPlayerWonMessage = document.createElement("div");
-         dealererBustPlayerWonMessage.textContent = ("YOU Win!");
-         document.getElementById("player-message").appendChild(dealererBustPlayerWonMessage);
-         console.log(dealererBustPlayerWonMessage);// endGame()
-        // return dealerBustMessage;
+
+        //PLAYER WINS/Dealer bust bust message
+        const dealererBustPlayerWonMessage = document.createElement("div");
+        dealererBustPlayerWonMessage.textContent = ("YOU Win!");
+        document.getElementById("player-message").appendChild(dealererBustPlayerWonMessage);
+        console.log(dealererBustPlayerWonMessage);
+
+        return true;
     }
+    return false;
 }
 
 //--->---needs work >-------------------->------------------>---------------->
@@ -199,7 +201,7 @@ function dealersTurn(dealerHand) {
         didYouWin();
     } else {
         //dealer BUSTS
-        dealerBusted();
+        busted();
     }
 }
 
@@ -316,7 +318,7 @@ function dealerHits() {
     stayButton.addEventListener("click", () => {
         while (dealerHand < 17) {
             const newCard = drawCard(fullDeck); //get a card
-            displayDealerCard(newCard); //display dealer card
+            displayCard(newCard, "dealer-cards", false); //display dealer card
             dealerHand.push(newCard); //add to dealer Hand array
             console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
             calcHandSum(dealerHand);
@@ -325,13 +327,10 @@ function dealerHits() {
 }
 //player hits
 function hitMe() {
-    hitMeButton.addEventListener("click", () => {
-        const newCard = drawCard(fullDeck); //get a card
-        displayPlayerCard(newCard); //display card
-        playerHand.push(newCard); //add to playerHand array
-        console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
-        calcHandSum(playerHand);
-    });
+    const newCard = drawCard(fullDeck); //get a card
+    displayCard(newCard, "player-cards", false); //display card
+    playerHand.push(newCard); //add to playerHand array
+    console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
 }
 
 
