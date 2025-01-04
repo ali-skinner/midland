@@ -22,10 +22,21 @@ let fullDeck = [];
 let gameStarted = false;
 
 const startButton = document.getElementById("startButton");
+const hitMeButton = document.getElementById("hitMeButton");
+const stayButton = document.getElementById("stayButton");
+
+
 startButton.addEventListener("click", () => {
-    console.log("what up yo");
+    console.log("what up tarts");
 });
 
+hitMeButton.addEventListener("click", () => {
+    console.log("what up hits");
+});
+
+stayButton.addEventListener("click", () => {
+    console.log("what up stay");
+});
 
 //step #1
 dealOutFirstHand();
@@ -235,7 +246,7 @@ function getCardValue(card, playerSum, acesInMyHand) {
 
 //dealer hits
 function dealerHits() {
-    document.getElementById("stayButton").addEventListener("click", () => {
+    stayButton.addEventListener("click", () => {
         while (dealerHand < 17) {
             const newCard = drawCard(fullDeck); //get a card
             displayDealerCard(newCard); //display dealer card
@@ -247,7 +258,7 @@ function dealerHits() {
 }
 //player hits
 function hitMe() {
-    document.getElementById("hitMeButton").addEventListener("click", () => {
+    hitMeButton.addEventListener("click", () => {
         const newCard = drawCard(fullDeck); //get a card
         displayPlayerCard(newCard); //display card
         playerHand.push(newCard); //add to playerHand array
@@ -313,8 +324,7 @@ function displayPlayerCard(card) {
 
 //start the game and deal first hand
 function dealOutFirstHand() {
-    const startButton = document.getElementById("startButton");
-
+    
     const dealHandler = () => {
         playerSum = 0;
         dealerSum = 0 ;
