@@ -9,12 +9,14 @@ let dealerSum = []; //feed to didYouWin()
 let fullDeck = [];
 
 
+
+
 //step #1
 dealOutFirstHand();
-hitMe();
+hitMe(); //activate hitMebutton
 calcHandSum(playerHand);
 playerBusted(playerSum);
-dealerHits(); //activated by STAY button
+dealerHits(); //activated by STAY button -- FUNCT NOT WORKING NOW UGH 1/04 10a
 dealersTurn(dealerSum);
 
 
@@ -26,9 +28,8 @@ dealersTurn(dealerSum);
 // --> resets game
 
 
-// blackjack()
-//calc player and dealer hands on 1st deal
-//display BLACKJACK WINNER message = 21
+// blackJack() ------------------------------->
+    //calc player and dealer hands on 1st deal  
 
 function blackJack(playerFirstHand, dealerFirstHand) {
     if (playerFirstHand === 21) {
@@ -61,18 +62,12 @@ function blackJack(playerFirstHand, dealerFirstHand) {
         console.log(playerLoseBlackJackMessage);
         // endGame();
         return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
+
     } else {
-        // hitMe();
+        // play the game! calling hit me causes double cards to be dealt. shrug.
     }
 }
-        
-  
-    // } else {
-    //     //continue with game
-    //     hitMe(); //enables hitMebutton
-    //     dealerHits(); //enables staybutton
-    
-
+   
 
 function playerBusted(playerHandTotal) {
     if (playerHandTotal > 21) {
@@ -80,13 +75,10 @@ function playerBusted(playerHandTotal) {
         playerBustMessage.textContent = ("BUST! You Lose!");
         document.getElementById("player-message").appendChild(playerBustMessage);
         console.log(playerBustMessage);
+        //add a message for the Dealer to say DEALR WINS/Player bust
+        // endGame()
         return playerBustMessage;
 
-        // endGame()
-        // --> diplay hidden card
-        // --> display score / hand totals (didYouWin does this)
-        // --> enable start, hit buttons
-        // --> resets game
     }
 }
 function dealerBusted(dealerHand) {
@@ -95,13 +87,9 @@ function dealerBusted(dealerHand) {
         dealerBustMessage.textContent = "BUST! You Lose!";
         document.getElementById("dealer-message").appendChild(dealerBustMessage);
         console.log(dealerBustMessage);
-        return dealerBustMessage;
-
+        //add a message for the Player to say PLAYER WINS/Dealer bust
         // endGame()
-        // --> diplay hidden card
-        // --> display score / hand totals (didYouWin does this)
-        // --> enable start, hit buttons
-        // --> resets game
+        return dealerBustMessage;
     }
 }
 
