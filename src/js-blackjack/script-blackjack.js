@@ -62,7 +62,7 @@ function blackJack(playerFirstHand, dealerFirstHand) {
         // endGame();
         return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
     } else {
-        hitMe();
+        // hitMe();
     }
 }
         
