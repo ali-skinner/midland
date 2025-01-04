@@ -55,7 +55,7 @@ startButton.addEventListener("click", () => {
         playerHand.push(drawCard(fullDeck));
         displayCard(playerHand[1], "player-cards", false);
         dealerHand.push(drawCard(fullDeck));
-        displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
+        displayCard(dealerHand[1], "dealer-cards", false); //this card needs to be hidden
 
         playerSum = calcHandSum(playerHand);
         dealerSum = calcHandSum(dealerHand);
@@ -73,6 +73,7 @@ startButton.addEventListener("click", () => {
     }
 });
 
+//hitMe - Player's Turn
 hitMeButton.addEventListener("click", () => {
     if (gameStarted === true) {
         console.log("what up hits");
@@ -83,24 +84,22 @@ hitMeButton.addEventListener("click", () => {
         if (didPlayerBust = true) {
             endgame();
         }
-        //add card to player hand and display
-        //calcHandSum
-        //update score display
-        //eval if blackjack or bust
-
     }
 });
 
+//Player stay - Dealer's turn
 stayButton.addEventListener("click", () => {
     if (gameStarted === true) {
         console.log("what up stay");
-        //add card to dealer hand and display (if >16)
-        //calcHandSum
-        //update score display
-        //eval blackjack or bust
-
-    }
-});
+        while (dealerSum < 17) {
+            dealerHits();
+           dealerSum = calcHandSum(dealerHand);
+            //add card to dealer hand and display (if >16)
+            //calcHandSum
+            //update score display
+            //eval blackjack or bust
+        }
+    }});
 
 
 
@@ -194,25 +193,6 @@ function dealerBusted() {
     return false;
 }
 
-//--->---needs work >-------------------->------------------>---------------->
-function dealersTurn(dealerHand) {
-    if ((dealerHand > 16) && (dealerHand < 22)) {
-        //dealer STAYS [17-21]
-        didYouWin();
-    } else {
-        //dealer BUSTS
-        busted();
-    }
-}
-
-//dealersTurn
-//eval dealerSum (in START, call a black jack funct)
-//Dealer HITS on 16 / STAYS on 17
-//if DealerSum < 17; call dealerHits funct --> MOVED TO START FUNCT
-//continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
-//Dealer stays in the range: [17-21]
-//call Bust function 
-//call didYouWinfun to compare playerSum vs DealerSum
 
 
 //--->---needs work >-------------------->------------------>---------------->
@@ -315,16 +295,22 @@ function getCardValue(card, playerSum, acesInMyHand) {
 
 //dealer hits
 function dealerHits() {
-    stayButton.addEventListener("click", () => {
-        while (dealerHand < 17) {
-            const newCard = drawCard(fullDeck); //get a card
-            displayCard(newCard, "dealer-cards", false); //display dealer card
-            dealerHand.push(newCard); //add to dealer Hand array
-            console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
-            calcHandSum(dealerHand);
-        }
-    });
+    const newCard = drawCard(fullDeck); //get a card
+    displayCard(newCard, "dealer-cards", false); //display dealer card
+    dealerHand.push(newCard); //add to dealer Hand array
+    console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
 }
+
+function dealersTurn(dealerSum) {
+    if ((dealerSum > 16) && (dealerSum < 22)) {
+        //dealer STAYS [17-21]
+        didYouWin();
+    } else {
+        //dealer BUSTS
+        busted();
+    }
+}
+
 //player hits
 function hitMe() {
     const newCard = drawCard(fullDeck); //get a card
