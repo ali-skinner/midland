@@ -331,7 +331,6 @@ function displayCard(card, id, shouldHideCard) {
     const viewCard = document.createElement("div");
     if (shouldHideCard === true) {
         viewCard.className = "hidden-card";
-
     } else {
         viewCard.className = "card";
         // viewCard.innerHTML = card.suit + card.value;
@@ -344,7 +343,7 @@ function displayCard(card, id, shouldHideCard) {
     lowerCardValue.textContent = card.suit + card.value;
     lowerCardValue.style.textAlign = "right";
 
-    if (card.suit === "♥" || card.suit === "♦") {
+    if ((card.suit === "♥" || card.suit === "♦") && (shouldHideCard === false)){
         viewCard.style.color = "red";
     }
 
