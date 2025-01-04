@@ -43,8 +43,8 @@ startButton.addEventListener("click", () => {
         //populate player/dealer hands with cards
         //write helper function, params (handArray, elementId, t/f )and it will push and display the card. Can accept an optional third param for "hideCardValue".
         // calcHandSum for each player (review current function)
-        // display player score
-        // display dealer score
+        // display player score (keep here or use in winner funct?)
+        // display dealer score (keep here or use in winner funct?)
         // eval if blackjack
         playerSum = 0;
         dealerSum = 0;
@@ -71,7 +71,10 @@ startButton.addEventListener("click", () => {
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
 
-        blackJack(playerSum, dealerSum); //this is broken
+        const playerBlackJack = false;
+        const dealerBlackJack = false;
+
+        blackJack();
         gameStarted = true;
 
 
@@ -116,41 +119,43 @@ stayButton.addEventListener("click", () => {
 // blackJack() ------------------------------->
 //calc player and dealer hands on 1st deal  
 
-function blackJack(playerFirstHand, dealerFirstHand) {
+function blackJack() {
     console.log("I made it to the blackJack function!!");
-    if (playerFirstHand === 21) {
+    if (playerSum === 21) {
         //player hits21 message
         const playerWinBlackJackMessage = document.createElement("div");
-        playerWinBlackJackMessage.textContent = ("BLACKJACK! You WIN!");
+        playerWinBlackJackMessage.textContent = "BLACKJACK! You WIN!";
         document.getElementById("player-message").appendChild(playerWinBlackJackMessage);
         console.log(playerWinBlackJackMessage);
-        const dealerLoseBlackJackMessage = document.createElement("div");
+        
 
-        //dealer Lose hits21 message
+        //dealer Lose didnt hits21 message
+        const dealerLoseBlackJackMessage = document.createElement("div");
         dealerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
         console.log(dealerLoseBlackJackMessage);
         // endGame();
-        return playerWinBlackJackMessage, dealerLoseBlackJackMessage;
+        // return playerWinBlackJackMessage, dealerLoseBlackJackMessage;
 
 
-    } else if (dealerFirstHand === 21) {
+    } else if (dealerSum === 21) {
         //dealer hits21 message
         const dealerWinBlackJackMessage = document.createElement("div");
         dealerWinBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
         document.getElementById("dealer-message").appendChild(dealerWinBlackJackMessage);
         console.log(dealerWinBlackJackMessage);
 
-        //player Lose hits21 message
+        //player Lose didnt hits21 message
         const playerLoseBlackJackMessage = document.createElement("div");
         playerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("player-message").appendChild(playerLoseBlackJackMessage);
         console.log(playerLoseBlackJackMessage);
         // endGame();
-        return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
+        // return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
 
     } else {
         // play the game! calling hit me causes double cards to be dealt. shrug.
+        console.log("nobody hit blackjack");
     }
 }
 
@@ -246,21 +251,17 @@ function didYouWin(playerTotal, dealerTotal) {
 // need to stay sane 
 
 function calcHandSum(hand) {
-
-    const handTotal = []; //goal is for this to be ONE value
-    let handSum = 0;
+    let handSum = 0; //goal is for this to be ONE value
     let aces = 0; //need this to count up? or does that happen in getCardValue bc added the aces calc funct there?
 
     for (let i = 0; i < hand.length; i++) {
         const cardValue = (getCardValue(hand[i], handSum, aces)); //give this a 3rd parameter to count aces?
-        handTotal.push(cardValue);
         handSum += cardValue;
         console.log(`This is the PUSH card: ${cardValue}`);
         console.log(`This is the HANDSUM VALUE: ${handSum}`);
     }
 
-    console.log(`This is the HAND TOTAL: ${handTotal}`);
-    return handTotal;
+    return handSum;
 }
 
 //--->---ACE VALUE needs work >-------------------->------------------>---------------->
