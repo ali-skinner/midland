@@ -1,5 +1,17 @@
 "use strict";
 
+// set up global state
+// add click event listeners
+// make func for initial deal
+// eval if blackjack
+    // yes = end game
+    // no = start game  --> hit me needs to check a global variable if the game has been started---> currently will deal two cards 1030am 1/04
+//check hit me button funct (remove event listener)
+//check stay button funct (remove event listener)
+    // - end players turn & starts the dealers turn
+//check did you win - buid this funct (notes below)
+    //run end game to diplay scores/results/flip over hidden cards.
+
 const suits = ["♥", "♦", "♣", "♠"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 let playerHand = [];
@@ -8,7 +20,10 @@ let playerSum = []; //feed to didYouWin()
 let dealerSum = []; //feed to didYouWin()
 let fullDeck = [];
 
-
+const startButton = document.getElementById("startButton");
+startButton.addEventListener("click", () => {
+    console.log("what up yo");
+});
 
 
 //step #1
@@ -32,6 +47,7 @@ dealersTurn(dealerSum);
     //calc player and dealer hands on 1st deal  
 
 function blackJack(playerFirstHand, dealerFirstHand) {
+    console.log("I made it to the blackJack function!!");
     if (playerFirstHand === 21) {
         //player hits21 message
         const playerWinBlackJackMessage = document.createElement("div");
