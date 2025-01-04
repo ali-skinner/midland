@@ -127,7 +127,7 @@ function blackJack() {
         playerWinBlackJackMessage.textContent = "BLACKJACK! You WIN!";
         document.getElementById("player-message").appendChild(playerWinBlackJackMessage);
         console.log(playerWinBlackJackMessage);
-        
+
 
         //dealer Lose didnt hits21 message
         const dealerLoseBlackJackMessage = document.createElement("div");
@@ -160,27 +160,35 @@ function blackJack() {
 }
 
 // busted ()------------------------------->
-function playerBusted(playerHandTotal) {
-    if (playerHandTotal > 21) {
+function busted() {
+    if (playerSum > 21) {
+        //Player busted
         const playerBustMessage = document.createElement("div");
         playerBustMessage.textContent = ("BUST! You Lose!");
         document.getElementById("player-message").appendChild(playerBustMessage);
         console.log(playerBustMessage);
-        //add a message for the Dealer to say DEALR WINS/Player bust
-        // endGame()
-        return playerBustMessage;
 
-    }
-}
-function dealerBusted(dealerHand) {
-    if (dealerHand > 21) {
+        //dealer WINS/Player bust message
+        const playerBustDealerWonMessage = document.createElement("div");
+        playerBustDealerWonMessage.textContent = ("Dealer Wins!");
+        document.getElementById("dealer-message").appendChild(playerBustDealerWonMessage);
+        console.log(playerBustDealerWonMessage);
+        // endGame()
+        // return playerBustMessage;
+
+    } else if (dealerSum > 21) {
+        //Dealer busted
         const dealerBustMessage = document.createElement("div");
         dealerBustMessage.textContent = "BUST! You Lose!";
         document.getElementById("dealer-message").appendChild(dealerBustMessage);
         console.log(dealerBustMessage);
-        //add a message for the Player to say PLAYER WINS/Dealer bust
-        // endGame()
-        return dealerBustMessage;
+       
+         //PLAYER WINS/Dealer bust bust message
+         const dealererBustPlayerWonMessage = document.createElement("div");
+         dealererBustPlayerWonMessage.textContent = ("YOU Win!");
+         document.getElementById("player-message").appendChild(dealererBustPlayerWonMessage);
+         console.log(dealererBustPlayerWonMessage);// endGame()
+        // return dealerBustMessage;
     }
 }
 
@@ -344,7 +352,7 @@ function displayCard(card, id, shouldHideCard) {
     lowerCardValue.textContent = card.suit + card.value;
     lowerCardValue.style.textAlign = "right";
 
-    if ((card.suit === "♥" || card.suit === "♦") && (shouldHideCard === false)){
+    if ((card.suit === "♥" || card.suit === "♦") && (shouldHideCard === false)) {
         viewCard.style.color = "red";
     }
 
