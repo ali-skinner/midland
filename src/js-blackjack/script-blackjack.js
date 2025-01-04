@@ -21,15 +21,14 @@ dealersTurn(dealerSum);
 // dev area --------------->
 // endGame()
 // --> diplay hidden card
-// --> display totals 
+// --> display score / hand totals (didYouWin does this)
 // --> enable start, hit buttons
-// --> clear arrays
-// --> reset game
+// --> resets game
 
 
 // blackjack()
 //calc player and dealer hands on 1st deal
-//display BLACKJACK WINNER message
+//display BLACKJACK WINNER message = 21
 
 function blackJack(playerSum, dealerSum) {
     if (playerSum === 21) {
@@ -49,8 +48,8 @@ function blackJack(playerSum, dealerSum) {
         // endGame();
     } else {
         //continue with game
-        hitMe();
-        dealerHits();
+        hitMe(); //enables hitMebutton
+        dealerHits(); //enables staybutton
     }
 }
 
@@ -154,7 +153,7 @@ function calcHandSum(hand) {
     let aces = 0;
 
     for (let i = 0; i < hand.length; i++) {
-        const cardValue = (getCardValue(hand[i], handSum));
+        const cardValue = (getCardValue(hand[i], handSum)); //give this a 3rd parameter to count aces?
         handTotal.push(cardValue);
         handSum += cardValue;
         console.log(`This is the PUSH card: ${cardValue}`);
@@ -165,26 +164,25 @@ function calcHandSum(hand) {
     return handTotal;
 }
 
-//--->---needs work >-------------------->------------------>---------------->
+//--->---ACE VALUE needs work >-------------------->------------------>---------------->
 function getCardValue(card, playerSum) {
+    let acesInMyHand = 0;
     console.log("from getCardValue:", playerSum);
     if (isNaN(card.value)) {
-        console.log("ace functions", card.value);
+       if (card.value === "A") {
+        acesInMyHand++;}
         if (card.value === "A" || acesInMyHand > 0) {
-            console.log("here", card.value);
+            console.log("ace functions", card.value); 
+            //somehow use acesInMyHand to loop through an evaluation to determine 1 or 11 value for EACH ace
             if (playerSum > 21) {
                 return 1;
             } else {
                 return 11;
             }
-            //    return 11;
-            // return calcAceValue(card, playerSum);
-            //need a 2nd parameter here for playerSum.
         } else {
             return 10;
         }
     }
-
     return parseInt(card.value);
 }
 
@@ -287,8 +285,8 @@ function dealOutFirstHand() {
     const startButton = document.getElementById("startButton");
 
     const dealHandler = () => {
-        playerSum = [];  // or should this be the first step in another funct?
-        dealerSum = [];  // or should this be the first step in another funct?
+        playerSum = [];  
+        dealerSum = [];
         playerHand = [];
         dealerHand = [];
         buildDeck();
@@ -308,12 +306,12 @@ function dealOutFirstHand() {
 
 
         playerSum = calcHandSum(playerHand);
-        dealerSum = calcHandSum(dealerHand); //UNCOMMENT ME!!!! UNCOMMENT ME!!!!
+        dealerSum = calcHandSum(dealerHand); //UNCOMMENT ME!!!! UNCOMMENT ME!!!!; used for ace troublsehooting on playerhand
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
 
-        // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUD CARDS AT ONCE? hmmm
+        // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUS CARDS AT ONCE?
         startButton.removeEventListener("click", dealHandler);
 
         //call blackJack function to see if anyone won on first deal;
