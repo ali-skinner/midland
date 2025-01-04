@@ -1,7 +1,7 @@
 "use strict";
 
 // DONE - set up global state
-// add click event listeners
+// DONE - add click event listeners
 // make func for initial deal
 // eval if blackjack
 // yes = end game
@@ -25,42 +25,89 @@ const startButton = document.getElementById("startButton");
 const hitMeButton = document.getElementById("hitMeButton");
 const stayButton = document.getElementById("stayButton");
 
+//step #1
+// hitMe(); //activate hitMebutton
+// calcHandSum(playerHand);
+// playerBusted(playerSum);
+// dealerHits(); //activated by STAY button -- FUNCT NOT WORKING NOW UGH 1/04 10a
+// dealersTurn(dealerSum);
+
+
+
+//start the game and deal first hand >-------------->---------------->----------
 
 startButton.addEventListener("click", () => {
     if (gameStarted === false) {
         console.log("what up tarts");
+        //create fullDeck (build and Shuffle)
+        //populate player/dealer hands with cards
+        //write helper function, params (handArray, elementId, t/f )and it will push and display the card. Can accept an optional third param for "hideCardValue".
+        // calcHandSum for each player (review current function)
+        // display player score
+        // display dealer score
+        // eval if blackjack
+        playerSum = 0;
+        dealerSum = 0;
+        playerHand = [];
+        dealerHand = [];
+        buildDeck();
+        shuffleDeck(fullDeck);
+
+        //NEED TIMING to slow down the show of cards - setTimout funct?
+
+        playerHand.push(drawCard(fullDeck));
+        displayCard(playerHand[0], "player-cards", false);
+        dealerHand.push(drawCard(fullDeck));
+        displayCard(dealerHand[0], "dealer-cards", false);
+
+        playerHand.push(drawCard(fullDeck));
+        displayCard(playerHand[1], "player-cards", false);
+        dealerHand.push(drawCard(fullDeck));
+        displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
+
+        playerSum = calcHandSum(playerHand);
+        dealerSum = calcHandSum(dealerHand);
+
+        console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
+        console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
+
+        blackJack(playerSum, dealerSum); //this is broken
         gameStarted = true;
+
+
     }
 });
 
 hitMeButton.addEventListener("click", () => {
     if (gameStarted === true) {
         console.log("what up hits");
+
+        //add card to player hand and display
+        //calcHandSum
+        //update score display
+        //eval if blackjack or bust
+
     }
 });
 
 stayButton.addEventListener("click", () => {
     if (gameStarted === true) {
         console.log("what up stay");
+        //add card to dealer hand and display (if >16)
+        //calcHandSum
+        //update score display
+        //eval blackjack or bust
+
     }
 });
 
-//step #1
-dealOutFirstHand();
-hitMe(); //activate hitMebutton
-calcHandSum(playerHand);
-playerBusted(playerSum);
-dealerHits(); //activated by STAY button -- FUNCT NOT WORKING NOW UGH 1/04 10a
-dealersTurn(dealerSum);
+
 
 
 // dev area --------------->
-
-//hiddenCard - add a hidden card class during 1st deal.
-
 // endGame()
 // --> diplay hidden card by removing class on the div/variable
-    // hideCard.className = "card";
+// hideCard.className = "card";
 // --> display score / hand totals
 // --> enable start, hit buttons /reactivate clickListeners
 // --> resets game
@@ -107,7 +154,7 @@ function blackJack(playerFirstHand, dealerFirstHand) {
     }
 }
 
-
+// busted ()------------------------------->
 function playerBusted(playerHandTotal) {
     if (playerHandTotal > 21) {
         const playerBustMessage = document.createElement("div");
@@ -277,12 +324,18 @@ function hitMe() {
         calcHandSum(playerHand);
     });
 }
-//dealer card display
-function displayDealerCard(card) {
-    const viewCard = document.createElement("div");
-    viewCard.className = "card";
-    // viewCard.innerHTML = card.suit + card.value;
 
+
+//Display a card
+function displayCard(card, id, shouldHideCard) {
+    const viewCard = document.createElement("div");
+    if (shouldHideCard === true) {
+        viewCard.className = "hidden-card";
+
+    } else {
+        viewCard.className = "card";
+        // viewCard.innerHTML = card.suit + card.value;
+    }
     const upperCardValue = document.createElement("div");
     upperCardValue.textContent = card.suit + card.value;
     upperCardValue.style.textAlign = "left";
@@ -298,106 +351,11 @@ function displayDealerCard(card) {
     viewCard.appendChild(upperCardValue);
     viewCard.appendChild(lowerCardValue);
 
-    document.getElementById("dealer-cards").appendChild(viewCard);
+    document.getElementById(id).appendChild(viewCard);
     // #dealer-cards is the html id
     // #player-cards is the html id
     return viewCard;
 }
-
-//HIDDEN dealer card 
-function hideDealerCard(card) {
-    const hideCard = document.createElement("div");
-    hideCard.className = "hidden-card";
-    // viewCard.innerHTML = card.suit + card.value;
-
-    const upperCardValue = document.createElement("div");
-    upperCardValue.textContent = card.suit + card.value;
-    upperCardValue.style.textAlign = "left";
-
-    const lowerCardValue = document.createElement("div");
-    lowerCardValue.textContent = card.suit + card.value;
-    lowerCardValue.style.textAlign = "right";
-
-    if (card.suit === "♥" || card.suit === "♦") {
-        viewCard.style.color = "red";
-    }
-
-    hideCard.appendChild(upperCardValue);
-    hideCard.appendChild(lowerCardValue);
-
-    document.getElementById("dealer-cards").appendChild(hideCard);
-    // #dealer-cards is the html id
-    // #player-cards is the html id
-    return hideCard;
-}
-
-//Player card display
-function displayPlayerCard(card) {
-    const viewCard = document.createElement("div");
-    viewCard.className = "card";
-    // viewCard.innerHTML = card.suit + card.value;
-
-    const upperCardValue = document.createElement("div");
-    upperCardValue.textContent = card.suit + card.value;
-    upperCardValue.style.textAlign = "left";
-
-    const lowerCardValue = document.createElement("div");
-    lowerCardValue.textContent = card.suit + card.value;
-    lowerCardValue.style.textAlign = "right";
-
-    if (card.suit === "♥" || card.suit === "♦") {
-        viewCard.style.color = "red";
-    }
-
-    viewCard.appendChild(upperCardValue);
-    viewCard.appendChild(lowerCardValue);
-
-    document.getElementById("player-cards").appendChild(viewCard);
-    // #dealer-cards is the html id
-    // #player-cards is the html id
-    return viewCard;
-}
-
-
-//start the game and deal first hand
-function dealOutFirstHand() {
-
-    const dealHandler = () => {
-        playerSum = 0;
-        dealerSum = 0;
-        playerHand = [];
-        dealerHand = [];
-        buildDeck();
-        shuffleDeck(fullDeck);
-
-        //NEED TIMING to slow down the show of cards - setTimout funct?
-
-        playerHand.push(drawCard(fullDeck));
-        displayPlayerCard(playerHand[0]);
-        dealerHand.push(drawCard(fullDeck));
-        displayDealerCard(dealerHand[0]);
-
-        playerHand.push(drawCard(fullDeck));
-        displayPlayerCard(playerHand[1]);
-        dealerHand.push(drawCard(fullDeck));
-        hideDealerCard(dealerHand[1]); //this card needs to be hidden
-
-
-        playerSum = calcHandSum(playerHand);
-        dealerSum = calcHandSum(dealerHand); //UNCOMMENT ME!!!! UNCOMMENT ME!!!!; used for ace troublsehooting on playerhand
-
-        console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
-        console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
-
-        // REMOVE EVENT LISTENER on click start button TO PREVENT LOADING NUMEROUS CARDS AT ONCE?
-        startButton.removeEventListener("click", dealHandler);
-
-        //call blackJack function to see if anyone won on first deal;
-        blackJack(playerSum, dealerSum);
-
-    }
-    startButton.addEventListener("click", dealHandler);
-};
 
 
 //draw a new card
@@ -411,7 +369,7 @@ function drawCard(deck) {
         // do i need to add a display card function here?
     } else {
         buildDeck();
-        shuffleDeck();
+        shuffleDeck(deck);
         const showMethisOtherCard = drawCard(deck);
         console.log(showMethisOtherCard);
         return showMethisOtherCard;
