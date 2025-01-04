@@ -21,8 +21,8 @@ dealersTurn(dealerSum);
 // dev area --------------->
 // endGame()
 // --> diplay hidden card
-// --> display score / hand totals (didYouWin does this)
-// --> enable start, hit buttons
+// --> display score / hand totals
+// --> enable start, hit buttons /reactivate clickListeners
 // --> resets game
 
 
@@ -32,26 +32,43 @@ dealersTurn(dealerSum);
 
 function blackJack(playerSum, dealerSum) {
     if (playerSum === 21) {
-        const playerBlackJackMessage = document.createElement("div");
-        playerBlackJackMessage.textContent = ("BLACKJACK! You WIN!");
-        document.getElementById("player-message").appendChild(playerBlackJackMessage);
-        console.log(playerBlackJackMessage );
-        return playerBlackJackMessage;
+        //player hits21 message
+        const playerWinBlackJackMessage = document.createElement("div");
+        playerWinBlackJackMessage.textContent = ("BLACKJACK! You WIN!");
+        document.getElementById("player-message").appendChild(playerWinBlackJackMessage);
+        console.log(playerWinBlackJackMessage);
+         const dealerLoseBlackJackMessage = document.createElement("div");
+
+        //dealer Lose hits21 message
+        dealerLoseBlackJackMessage.textContent = ("LOSE");
+        document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
+        console.log(dealerLoseBlackJackMessage);
+        return playerWinBlackJackMessage,dealerLoseBlackJackMessage;
         // endGame();
 
-    } else if (dealerSum === 21) {
-        const dealerBlackJackMessage = document.createElement("div");
-        dealerBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
-        document.getElementById("dealer-message").appendChild(dealerBlackJackMessage);
-        console.log(dealerBlackJackMessage );
-        return dealerBlackJackMessage;
+    } else (dealerSum === 21) {
+        //dealer hits21 message
+        const dealerWinBlackJackMessage = document.createElement("div");
+        dealerWinBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
+        document.getElementById("dealer-message").appendChild(dealerWinBlackJackMessage);
+        console.log(dealerWinBlackJackMessage);
+   
+        //player Lose hits21 message
+        const playerLoseBlackJackMessage = document.createElement("div");
+        playerLoseBlackJackMessage.textContent = ("LOSE");
+        document.getElementById("player-message").appendChild(playerLoseBlackJackMessage);
+        console.log(playerLoseBlackJackMessage);
+        return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
+
         // endGame();
-    } else {
-        //continue with game
-        hitMe(); //enables hitMebutton
-        dealerHits(); //enables staybutton
+        }
+  
+    // } else {
+    //     //continue with game
+    //     hitMe(); //enables hitMebutton
+    //     dealerHits(); //enables staybutton
     }
-}
+
 
 function playerBusted(playerHandTotal) {
     if (playerHandTotal > 21) {
@@ -63,9 +80,9 @@ function playerBusted(playerHandTotal) {
 
         // endGame()
         // --> diplay hidden card
-        // -->display totals 
+        // --> display score / hand totals (didYouWin does this)
         // --> enable start, hit buttons
-        // --> reset game
+        // --> resets game
     }
 }
 function dealerBusted(dealerHand) {
@@ -78,9 +95,9 @@ function dealerBusted(dealerHand) {
 
         // endGame()
         // --> diplay hidden card
-        // -->display totals 
+        // --> display score / hand totals (didYouWin does this)
         // --> enable start, hit buttons
-        // --> reset game
+        // --> resets game
     }
 }
 
@@ -96,42 +113,46 @@ function dealersTurn(dealerHand) {
 }
 
 //dealersTurn
-//eval dealerSum (in START, call a black jack funct)
-//Dealer HITS on 16 / STAYS on 17
-//if DealerSum < 17; call dealerHits funct
-//continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
-//Dealer stays in the range: [17-21]
-//call Bust function
-//call didYouWinfun to compare playerSum vs DealerSum
+    //eval dealerSum (in START, call a black jack funct)
+    //Dealer HITS on 16 / STAYS on 17
+    //if DealerSum < 17; call dealerHits funct --> MOVED TO START FUNCT
+    //continue to call dealerHits until dealerSum > 16 && dealerSum < 22 [17-21]
+    //Dealer stays in the range: [17-21]
+    //call Bust function 
+    //call didYouWinfun to compare playerSum vs DealerSum
 
 
 //--->---needs work >-------------------->------------------>---------------->
 //didYouWin function
-//didYouWin should display alert/message for Winner/Loser/Draw
-//didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
-//didYouWin should reactivate the startButton clickListener
-//didYouWin should reactivate the hitMe clickListener
-//clear out all necessary arrays to reset game
+    //didYouWin should display alert/message for Winner/Loser/Draw
+    //didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
+    //didYouWin should reactivate the startButton clickListener
+    //didYouWin should reactivate the hitMe clickListener
+    
+
+    
 function didYouWin(playerTotal, dealerTotal) {
     //     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
-    //         alert: You Win! Player Wins!;
+    //         alert: (in Results heading below buttons) Player Wins!;
     //         print: add you "WIN" div to the player id / html;
     //         print: add you "LOSE" div to the dealer id / html;
-    //         print; display score of player hand total in the player hand div / html;
-    //         print; display score of dealer hand total in dealer hand div / html;
+    //         move to endGame() print; display score of player hand total in the player hand div / html;
+    //         move to endGame()print; display score of dealer hand total in dealer hand div / html;
+
     //     } else if ((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)){
     //         alert: "DRAW!" Dealer wins!;
     //         print: add you "LOSE" div to the player id / html;
     //         print: add you "WIN" div to the dealer id / html;
-    //         print; display score of player hand total in the player hand div / html;
-    //         print; display score of dealer hand total in dealer hand div / html;
+    //         move to endGame()print; display score of player hand total in the player hand div / html;
+    //         move to endGame()print; display score of dealer hand total in dealer hand div / html;
+
     //     } else ((dealerTotal > playerTotal) && (dealerTotal < 22)){
     //
     //             alert: Dealer Wins!;
     //             print: add you "LOSE" div to the player id / html;
     //             print: add you "WIN" div to the dealer id / html;
-    //             print; display score of player hand total in the player hand div / html;
-    //             print; display score of dealer hand total in dealer hand div / html;
+    //             move to endGame()print; display score of player hand total in the player hand div / html;
+    //             move to endGame()print; display score of dealer hand total in dealer hand div / html;
     //         }
     //     }
     // } //endgame();
@@ -150,10 +171,10 @@ function calcHandSum(hand) {
 
     const handTotal = []; //goal is for this to be ONE value
     let handSum = 0;
-    let aces = 0;
+    let aces = 0; //need this to count up? or does that happen in getCardValue bc added the aces calc funct there?
 
     for (let i = 0; i < hand.length; i++) {
-        const cardValue = (getCardValue(hand[i], handSum)); //give this a 3rd parameter to count aces?
+        const cardValue = (getCardValue(hand[i], handSum, aces)); //give this a 3rd parameter to count aces?
         handTotal.push(cardValue);
         handSum += cardValue;
         console.log(`This is the PUSH card: ${cardValue}`);
@@ -165,14 +186,15 @@ function calcHandSum(hand) {
 }
 
 //--->---ACE VALUE needs work >-------------------->------------------>---------------->
-function getCardValue(card, playerSum) {
-    let acesInMyHand = 0;
+function getCardValue(card, playerSum, acesInMyHand) {
+    // let acesInMyHand = 0;
     console.log("from getCardValue:", playerSum);
     if (isNaN(card.value)) {
-       if (card.value === "A") {
-        acesInMyHand++;}
+        if (card.value === "A") {
+            acesInMyHand++;
+        }
         if (card.value === "A" || acesInMyHand > 0) {
-            console.log("ace functions", card.value); 
+            console.log("ace functions", card.value);
             //somehow use acesInMyHand to loop through an evaluation to determine 1 or 11 value for EACH ace
             if (playerSum > 21) {
                 return 1;
@@ -285,7 +307,7 @@ function dealOutFirstHand() {
     const startButton = document.getElementById("startButton");
 
     const dealHandler = () => {
-        playerSum = [];  
+        playerSum = [];
         dealerSum = [];
         playerHand = [];
         dealerHand = [];
