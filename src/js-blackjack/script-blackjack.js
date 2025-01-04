@@ -30,8 +30,8 @@ dealersTurn(dealerSum);
 //calc player and dealer hands on 1st deal
 //display BLACKJACK WINNER message = 21
 
-function blackJack(playerSum, dealerSum) {
-    if (playerSum === 21) {
+function blackJack(playerFirstHand, dealerFirstHand) {
+    if (playerFirstHand === 21) {
         //player hits21 message
         const playerWinBlackJackMessage = document.createElement("div");
         playerWinBlackJackMessage.textContent = ("BLACKJACK! You WIN!");
@@ -43,10 +43,11 @@ function blackJack(playerSum, dealerSum) {
         dealerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
         console.log(dealerLoseBlackJackMessage);
-        return playerWinBlackJackMessage,dealerLoseBlackJackMessage;
         // endGame();
+        return playerWinBlackJackMessage,dealerLoseBlackJackMessage;
+        
 
-    } else (dealerSum === 21) {
+    } else if (dealerFirstHand === 21){
         //dealer hits21 message
         const dealerWinBlackJackMessage = document.createElement("div");
         dealerWinBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
@@ -58,16 +59,19 @@ function blackJack(playerSum, dealerSum) {
         playerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("player-message").appendChild(playerLoseBlackJackMessage);
         console.log(playerLoseBlackJackMessage);
-        return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
-
         // endGame();
-        }
+        return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
+    } else {
+        hitMe();
+    }
+}
+        
   
     // } else {
     //     //continue with game
     //     hitMe(); //enables hitMebutton
     //     dealerHits(); //enables staybutton
-    }
+    
 
 
 function playerBusted(playerHandTotal) {
@@ -387,5 +391,3 @@ function buildDeck() {
     });
     // console.log(fullDeck);
 }
-
-
