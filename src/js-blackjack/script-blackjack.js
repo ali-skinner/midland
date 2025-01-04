@@ -1,6 +1,6 @@
 "use strict";
 
-// set up global state
+// DONE - set up global state
 // add click event listeners
 // make func for initial deal
 // eval if blackjack
@@ -16,9 +16,10 @@ const suits = ["♥", "♦", "♣", "♠"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 let playerHand = [];
 let dealerHand = [];
-let playerSum = []; //feed to didYouWin()
-let dealerSum = []; //feed to didYouWin()
+let playerSum = 0; //feed to didYouWin()
+let dealerSum = 0 ; //feed to didYouWin()
 let fullDeck = [];
+let gameStarted = false;
 
 const startButton = document.getElementById("startButton");
 startButton.addEventListener("click", () => {
@@ -315,8 +316,8 @@ function dealOutFirstHand() {
     const startButton = document.getElementById("startButton");
 
     const dealHandler = () => {
-        playerSum = [];
-        dealerSum = [];
+        playerSum = 0;
+        dealerSum = 0 ;
         playerHand = [];
         dealerHand = [];
         buildDeck();
