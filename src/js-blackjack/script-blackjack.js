@@ -14,6 +14,10 @@ const hitMeButton = document.getElementById("hitMeButton");
 const stayButton = document.getElementById("stayButton");
 
 //TODO age alert
+//TODO set timeouts
+
+
+
 //start the game and deal first hand >-------------->---------------->----------
 
 startButton.addEventListener("click", () => {
@@ -115,7 +119,7 @@ function displayDealerScore() {
 }
 
 //display Results for Both
-//PRINT: Player score is:  Dealer score is:
+//PRINT in Results Heading: "Player score is:  Dealer score is:"
 function displayResults() {
     const newResult = document.createElement("div");
     newResult.textContent = `Player Score: ${playerSum}, Dealer Score: ${dealerSum}`;
@@ -154,7 +158,7 @@ function blackJack() {
         document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
         console.log(dealerLoseBlackJackMessage);
         endGame();
-        // return playerWinBlackJackMessage, dealerLoseBlackJackMessage;
+       
 
 
     } else if (dealerSum === 21) {
@@ -170,10 +174,9 @@ function blackJack() {
         document.getElementById("player-message").appendChild(playerLoseBlackJackMessage);
         console.log(playerLoseBlackJackMessage);
         endGame();
-        // return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
 
     } else {
-        // play the game! calling hit me causes double cards to be dealt. shrug.
+        // play the game! calling hit me causes double cards to be dealt.
         console.log("nobody hit blackjack");
     }
 }
@@ -226,28 +229,56 @@ console.log("Welcome to the winner eval");
     if ((playerSum > dealerSum) && (playerSum < 22)) {
             displayDealerScore();
             displayPlayerScore();
-            // alert: (in Results div heading below buttons) Player Wins!;
-            // print: add you "WIN" div to the player id / html;
-            // print: add you "LOSE" div to the dealer id / html;
-           
+            
+        //player wins message
+        const playerWinMessage = document.createElement("div");
+        playerWinMessage.textContent = "PLAYER WIN!";
+        document.getElementById("player-message").appendChild(playerWinMessage);
+        console.log(playerWinMessage);
+
+
+        //dealer lose message
+        const dealerLoseMessage = document.createElement("div");
+        dealerLoseMessage.textContent = ("Dealer LOSE!");
+        document.getElementById("dealer-message").appendChild(dealerLoseMessage);
+        console.log(dealerLoseMessage);
+
 // DRAW! Dealer Wins!
         } else if ((playerSum === dealerSum) && (playerSum < 22) && (dealerSum < 22)){
             displayDealerScore();
             displayPlayerScore();
-            // alert: (in Results div) "DRAW!" Dealer wins!;
-            // print: add you "LOSE" div to the player id / html;
-            // print: add you "WIN" div to the dealer id / html;
-            
+
+        //Draw - dealer wins game message
+        const dealerDrawMessage = document.createElement("div");
+        dealerDrawMessage.textContent = ("Its a DRAW! Dealer WINS!");
+        document.getElementById("dealer-message").appendChild(dealerDrawMessage);
+        console.log(dealerDrawMessage);
+
+        //Draw - player lose game message
+        const playerDrawMessage = document.createElement("div");
+        playerDrawMessage.textContent = ("Its a DRAW! Player LOSE!");
+        document.getElementById("player-message").appendChild(playerDrawMessage);
+        console.log(playerDrawMessage);
+           
 //Dealer Wins!
         } else if ((dealerSum > playerSum) && (dealerSum < 22)){
     
             displayDealerScore();
             displayPlayerScore();
-            // alert: (in Results div) Dealer Wins!;
-            // print: add you "LOSE" div to the player id / html;
-            // print: add you "WIN" div to the dealer id / html;
+
+        //dealer wins game message
+        const dealerWinGameMessage = document.createElement("div");
+        dealerWinGameMessage.textContent = ("Dealer WINS!");
+        document.getElementById("dealer-message").appendChild(dealerWinGameMessage);
+        console.log(dealerWinGameMessage);
+
+        //player lose game message
+        const playerLoseGameMessage = document.createElement("div");
+        playerLoseGameMessage.textContent = ("Player LOSE");
+        document.getElementById("player-message").appendChild(playerLoseGameMessage);
+        console.log(playerLoseGameMessage);
             }
-      endGame();  // } True / False and set a variable to call diplay score and endgame?
+      endGame(); 
     } 
     
 
