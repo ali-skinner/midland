@@ -74,21 +74,36 @@ startButton.addEventListener("click", () => {
         //NEED TIMING to slow down the show of cards - setTimout funct?
 
         playerHand.push(drawCard(fullDeck));
-        // playerHand.push(cheater[0]);
-        displayCard(playerHand[0], "player-cards", false);
         dealerHand.push(drawCard(fullDeck));
-        displayCard(dealerHand[0], "dealer-cards", false);
-
         playerHand.push(drawCard(fullDeck));
-        // playerHand.push(cheater[1]);
-        displayCard(playerHand[1], "player-cards", false);
         dealerHand.push(drawCard(fullDeck));
-        displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
+        // playerHand.push(cheater[0]);
+        setTimeout(()=>{
+
+            displayCard(playerHand[0], "player-cards", false);
+        },0)
+        setTimeout(()=>{
+
+            displayCard(dealerHand[0], "dealer-cards", false);
+        },500)
+        setTimeout(()=>{
+
+            displayCard(playerHand[1], "player-cards", false);
+        },1000)
+        setTimeout(()=>{
+
+            displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
+            displayPlayerScore();
+        },1500)
+        
+
+        // playerHand.push(cheater[1]);
+
+
 
         playerSum = calcHandSum(playerHand);
         dealerSum = calcHandSum(dealerHand);
 
-        displayPlayerScore();
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
@@ -104,10 +119,14 @@ hitMeButton.addEventListener("click", () => {
         console.log("what up hits");
         hitMe();
         playerSum = calcHandSum(playerHand);
+        if (playerSum === 21) {
+            endGame();
+        }
         displayPlayerScore();
 
         const didPlayerBust = playerBusted();
         if (didPlayerBust === true) {
+            // displayDealerScore();
             endGame();
         }
     }
@@ -131,6 +150,7 @@ stayButton.addEventListener("click", () => {
         const didDealerBust = dealerBusted();
         if (didDealerBust === true) {
             console.log("Dealer is busted.")
+            displayDealerScore();
             endGame();
         }
 
@@ -151,6 +171,15 @@ function displayPlayerScore() {
     // div id = player-message
 }
 
+// function displayDealerMessage(message) {
+//     const messageDiv = document.createElement("div");
+//     messageDiv.textContent = message;
+//     const playerMessageElement = document.getElementById("dealer-message")
+//     playerMessageElement.innerHTML = '';
+//     playerMessageElement.appendChild(messageDiv);
+//     console.log(message);
+// }
+
 //display Dealer Score
 function displayDealerScore() {
     //display Dealer Sum in the dealer hand banner
@@ -161,6 +190,8 @@ function displayDealerScore() {
     dealerMessageElement.appendChild(dealerScore);
     console.log("Dealer Score:", dealerScore);
     // div id = dealer-message   
+
+    // displayDealerMessage(`Dealer Score: ${dealerSum}.`)
 }
 
 //display Results for Both
@@ -183,6 +214,8 @@ function endGame() {
         hidingHere[0].className = "card";
     }
 }
+
+
 
 
 // blackJack() ------------------------------->
@@ -244,7 +277,8 @@ function playerBusted() {
 
         //dealer WINS/Player bust message
         const playerBustDealerWonMessage = document.createElement("div");
-        playerBustDealerWonMessage.textContent = ("Dealer Wins!");
+        playerBustDealerWonMessage.textContent = (`Dealer Wins! 
+            Dealer Score: ${dealerSum}`);
         document.getElementById("dealer-message").appendChild(playerBustDealerWonMessage);
         console.log(playerBustDealerWonMessage);
 
@@ -372,10 +406,10 @@ function getCardValue(card) {
     if (isNaN(card.value)) {
         if (card.value === "A") {
             return 11;
-        }else {
+        } else {
             return 10;
         }
-    } 
+    }
 
     return parseInt(card.value);
 }
