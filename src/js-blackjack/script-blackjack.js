@@ -8,6 +8,7 @@ let playerSum = 0; //feed to didYouWin()
 let dealerSum = 0; //feed to didYouWin()
 let fullDeck = [];
 let gameStarted = false;
+let ageAllowed = false;
 
 const startButton = document.getElementById("startButton");
 const hitMeButton = document.getElementById("hitMeButton");
@@ -19,11 +20,24 @@ const stayButton = document.getElementById("stayButton");
 //TODO end game not resetting start button and clearing card in didYOuWIn
 
 
+function promptForAge() {
+    let userInput = prompt("Enter your age:");
+    if (userInput >= 16) {
+        ageAllowed = true;
+        alert("Welcome to BLACKJACK!");
+
+    } else {
+        alert("BYE BYE youngin. Come back when you're 16 or older. Peace!✌️")
+    }
+    console.log("Welcome GAMER you are of age to play this amazing game of jacks on black!");
+}
+
+promptForAge();
 
 //start the game and deal first hand >-------------->---------------->----------
 
 startButton.addEventListener("click", () => {
-    if (gameStarted === false) {
+    if ((gameStarted === false) && (ageAllowed === true)) {
         console.log("what up gamers");
 
         playerSum = 0;
@@ -311,11 +325,11 @@ function calcHandSum(hand) {
 }
 
 //--- Card Value --> ACE VALUE broken --->
-    // need to give faces cards values
-    // need to caculate aces 1 and 11 conditional
-    // consider that we may need track ace count
-    // if ace value = 1 or greater; recalcuate playerSum each loop
-   
+// need to give faces cards values
+// need to caculate aces 1 and 11 conditional
+// consider that we may need track ace count
+// if ace value = 1 or greater; recalcuate playerSum each loop
+
 function getCardValue(card, playerSum, acesInMyHand) {
     // let acesInMyHand = 0;
     console.log("from getCardValue:", playerSum);
