@@ -78,6 +78,10 @@ startButton.addEventListener("click", () => {
         playerHand.push(drawCard(fullDeck));
         dealerHand.push(drawCard(fullDeck));
         // playerHand.push(cheater[0]);
+        // playerHand.push(cheater[1]);
+
+
+        //Sets card display delays on firt hand
         setTimeout(()=>{
 
             displayCard(playerHand[0], "player-cards", false);
@@ -96,11 +100,7 @@ startButton.addEventListener("click", () => {
             displayPlayerScore();
         },1500)
         
-
-        // playerHand.push(cheater[1]);
-
-
-
+        
         playerSum = calcHandSum(playerHand);
         dealerSum = calcHandSum(dealerHand);
 
@@ -143,7 +143,7 @@ stayButton.addEventListener("click", () => {
         while (dealerSum < 17) {
             dealerHits();
             dealerSum = calcHandSum(dealerHand);
-            //TODO need set time outs
+            //TODO need set time out
 
         }
         displayDealerScore();
@@ -153,7 +153,6 @@ stayButton.addEventListener("click", () => {
             displayDealerScore();
             endGame();
         }
-
         didYouWin();
     }
 });
@@ -214,9 +213,6 @@ function endGame() {
         hidingHere[0].className = "card";
     }
 }
-
-
-
 
 // blackJack() ------------------------------->
 //add if both players hit blackjack scenario
