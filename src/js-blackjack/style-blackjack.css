@@ -5,8 +5,9 @@ body {
 }
 
 h2 {
-    padding: 5px;
+    padding: 3px;
 }
+
 .card {
     display: inline-flex;
     flex-direction: column;

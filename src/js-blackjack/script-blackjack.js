@@ -63,7 +63,7 @@ hitMeButton.addEventListener("click", () => {
         hitMe();
         playerSum = calcHandSum(playerHand);
         displayPlayerScore();
-        
+
         const didPlayerBust = playerBusted();
         if (didPlayerBust === true) {
             endGame();
@@ -126,9 +126,9 @@ function displayDealerScore() {
 function displayResults() {
     const newResult = document.createElement("div");
     newResult.textContent = `Player Score: ${playerSum}, Dealer Score: ${dealerSum}`;
-   const finalResults = document.getElementById("results");
-   finalResults.innerHTML = ""; 
-   finalResults.appendChild(newResult);
+    const finalResults = document.getElementById("results");
+    finalResults.innerHTML = "";
+    finalResults.appendChild(newResult);
     console.log("Final Results:", newResult);
 }
 
@@ -140,7 +140,7 @@ function endGame() {
     if (hidingHere.length > 0) {
         hidingHere[0].className = "card";
     }
-    
+
 }
 
 
@@ -161,7 +161,7 @@ function blackJack() {
         document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
         console.log(dealerLoseBlackJackMessage);
         endGame();
-       
+
 
 
     } else if (dealerSum === 21) {
@@ -226,13 +226,13 @@ function dealerBusted() {
 
 //Winner/Loser/Draw
 function didYouWin() {
-console.log("Welcome to the winner eval");
+    console.log("Welcome to the winner eval");
 
-// Player Wins!
+    // Player Wins!
     if ((playerSum > dealerSum) && (playerSum < 22)) {
-            displayDealerScore();
-            displayPlayerScore();
-            
+        displayDealerScore();
+        displayPlayerScore();
+
         //player wins message
         const playerWinMessage = document.createElement("div");
         playerWinMessage.textContent = "PLAYER WIN!";
@@ -248,10 +248,10 @@ console.log("Welcome to the winner eval");
 
         endGame();
 
-// DRAW! Dealer Wins!
-        } else if ((playerSum === dealerSum) && (playerSum < 22) && (dealerSum < 22)){
-            displayDealerScore();
-            displayPlayerScore();
+        // DRAW! Dealer Wins!
+    } else if ((playerSum === dealerSum) && (playerSum < 22) && (dealerSum < 22)) {
+        displayDealerScore();
+        displayPlayerScore();
 
         //Draw - dealer wins game message
         const dealerDrawMessage = document.createElement("div");
@@ -266,12 +266,12 @@ console.log("Welcome to the winner eval");
         console.log(playerDrawMessage);
 
         endGame();
-           
-//Dealer Wins!
-        } else if ((dealerSum > playerSum) && (dealerSum < 22)){
-    
-            displayDealerScore();
-            displayPlayerScore();
+
+        //Dealer Wins!
+    } else if ((dealerSum > playerSum) && (dealerSum < 22)) {
+
+        displayDealerScore();
+        displayPlayerScore();
 
         //dealer wins game message
         const dealerWinGameMessage = document.createElement("div");
@@ -286,20 +286,14 @@ console.log("Welcome to the winner eval");
         console.log(playerLoseGameMessage);
 
         endGame();
-            }
-       
-    } 
-    
+    }
 
-//--->---needs work >-------------------->------------------>---------------->
+}
 
-// consider that we may need track ace count
-// --> if ace value = 1 or greater; recalcuate playerSum each loop
-// need to add/SUM
-// need to give faces cards values
-// need to caculate aces 1 and 11 conditional
-// need to stay sane 
 
+//--->---< needs work for Aces conditional >------>
+
+//Hand Total
 function calcHandSum(hand) {
     let handSum = 0; //goal is for this to be ONE value
     let aces = 0; //need this to count up? or does that happen in getCardValue bc added the aces calc funct there?
@@ -314,7 +308,12 @@ function calcHandSum(hand) {
     return handSum;
 }
 
-//--->---ACE VALUE needs work >-------------------->------------------>---------------->
+//--- Card Value --> ACE VALUE broken --->
+    // need to give faces cards values
+    // need to caculate aces 1 and 11 conditional
+    // consider that we may need track ace count
+    // if ace value = 1 or greater; recalcuate playerSum each loop
+   
 function getCardValue(card, playerSum, acesInMyHand) {
     // let acesInMyHand = 0;
     console.log("from getCardValue:", playerSum);
@@ -351,8 +350,6 @@ function getCardValue(card, playerSum, acesInMyHand) {
 
 
 
-// --->----looks gd area------->-------------->------------------>-------------->
-
 //dealer hits
 function dealerHits() {
     const newCard = drawCard(fullDeck); //get a card
@@ -361,15 +358,17 @@ function dealerHits() {
     console.log(`The dealer's hand is: ${JSON.stringify(dealerHand)}`);
 }
 
-function dealersTurn(dealerSum) {
-    if ((dealerSum > 16) && (dealerSum < 22)) {
-        //dealer STAYS [17-21]
-        didYouWin();
-    } else {
-        //dealer BUSTS
-        busted();
-    }
-}
+
+// function dealersTurn(dealerSum) {
+//     if ((dealerSum > 16) && (dealerSum < 22)) {
+//         //dealer STAYS [17-21]
+//         didYouWin();
+//     } else {
+//         //dealer BUSTS
+//         busted();
+//     }
+// }
+
 
 //player hits
 function hitMe() {
