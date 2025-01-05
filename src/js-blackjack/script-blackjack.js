@@ -16,10 +16,7 @@ const stayButton = document.getElementById("stayButton");
 
 //TODO set timeouts
 //TODO aces
-//TODO end game not resetting start button and clearing card in didYOuWIn
-//TODO if both players hit blackjack scenario; check blackjack clearing out
-
-
+//TODO check blackjack clearing out
 
 //Age prompt
 // function promptForAge() {
@@ -61,23 +58,30 @@ function resetGame() {
 
 }
 
-
+const cheater = [{
+    suit: "♥",
+    value: "10"
+}, {
+    suit: "♥",
+    value: "A"
+}]
 //start the game and deal first hand >-------------->---------------->----------
 
 startButton.addEventListener("click", () => {
     if ((gameStarted === false) && (ageAllowed === true)) {
         console.log("what up gamers");
-
         resetGame();
 
         //NEED TIMING to slow down the show of cards - setTimout funct?
 
         playerHand.push(drawCard(fullDeck));
+        // playerHand.push(cheater[0]);
         displayCard(playerHand[0], "player-cards", false);
         dealerHand.push(drawCard(fullDeck));
         displayCard(dealerHand[0], "dealer-cards", false);
 
         playerHand.push(drawCard(fullDeck));
+        // playerHand.push(cheater[1]);
         displayCard(playerHand[1], "player-cards", false);
         dealerHand.push(drawCard(fullDeck));
         displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
@@ -90,8 +94,8 @@ startButton.addEventListener("click", () => {
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
 
-        blackJack();
         gameStarted = true;
+        blackJack();
     }
 });
 
@@ -186,7 +190,7 @@ function endGame() {
 //add if both players hit blackjack scenario
 function blackJack() {
     console.log("I made it to the blackJack function!!");
-    if (playerSum === 21 && dealerSum == 21) {
+    if (playerSum === 21 && dealerSum !== 21) {
         //player hits21 message
         const playerWinBlackJackMessage = document.createElement("div");
         playerWinBlackJackMessage.textContent = "BLACKJACK! You WIN!";
@@ -196,13 +200,13 @@ function blackJack() {
 
         //dealer Lose didnt hits21 message
         const dealerLoseBlackJackMessage = document.createElement("div");
-        dealerLoseBlackJackMessage.textContent = ("LOSE");
+        dealerLoseBlackJackMessage.textContent = ("Dealer LOSE!");
         document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
         console.log(dealerLoseBlackJackMessage);
         endGame();
 
 
-    } else if (dealerSum === 21 && playerSum == 21) {
+    } else if (dealerSum === 21 && playerSum !== 21) {
         //dealer hits21 message
         const dealerWinBlackJackMessage = document.createElement("div");
         dealerWinBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
@@ -211,7 +215,7 @@ function blackJack() {
 
         //player Lose didnt hits21 message
         const playerLoseBlackJackMessage = document.createElement("div");
-        playerLoseBlackJackMessage.textContent = ("LOSE");
+        playerLoseBlackJackMessage.textContent = ("Player LOSE!");
         document.getElementById("player-message").appendChild(playerLoseBlackJackMessage);
         console.log(playerLoseBlackJackMessage);
         endGame();
