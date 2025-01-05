@@ -94,11 +94,11 @@ stayButton.addEventListener("click", () => {
 function displayPlayerScore() {
     //display playerSum in the player hand banner
     const playerScore = document.createElement("div");
-    playerScore.textContent = `${playerSum}`;
+    playerScore.textContent = `Player Score: ${playerSum}`;
     const playerMessageElement = document.getElementById("player-message");
     playerMessageElement.innerHTML = "";
     playerMessageElement.appendChild(playerScore);
-    console.log("Player Score", playerScore);
+    console.log("Player Score:", playerScore);
     // div id = player-message
 }
 
@@ -106,11 +106,11 @@ function displayPlayerScore() {
 function displayDealerScore() {
     //display Dealer Sum in the dealer hand banner
     const dealerScore = document.createElement("div");
-    dealerScore.textContent = `${dealerSum}`;
+    dealerScore.textContent = `Dealer Score: ${dealerSum}`;
     const dealerMessageElement = document.getElementById("dealer-message");
     dealerMessageElement.innerHTML = "";
     dealerMessageElement.appendChild(dealerScore);
-    console.log("Dealer Score", dealerScore);
+    console.log("Dealer Score:", dealerScore);
     // div id = dealer-message   
 }
 
@@ -125,8 +125,7 @@ function displayResults() {
     console.log("Final Results:", newResult);
 }
 
-//Reset Game
-//TODO reset html divs
+//End Game - Reset Game
 function endGame() {
     displayResults();
     gameStarted = false;
@@ -219,32 +218,34 @@ function dealerBusted() {
 }
 
 
-
-//>-------------------->------------------>---------------->
-//didYouWin function
-
+//Winner/Loser/Draw
 function didYouWin() {
-        if ((playerSum > dealerSum) && (playerSum < 22)) {
+console.log("Welcome to the winner eval");
+
+// Player Wins!
+    if ((playerSum > dealerSum) && (playerSum < 22)) {
+            displayDealerScore();
+            displayPlayerScore();
             // alert: (in Results div heading below buttons) Player Wins!;
             // print: add you "WIN" div to the player id / html;
             // print: add you "LOSE" div to the dealer id / html;
-            // move to endGame() print; display score of player hand total in the player hand div / html;
-            // move to endGame()print; display score of dealer hand total in dealer hand div / html;
-
+           
+// DRAW! Dealer Wins!
         } else if ((playerSum === dealerSum) && (playerSum < 22) && (dealerSum < 22)){
+            displayDealerScore();
+            displayPlayerScore();
             // alert: (in Results div) "DRAW!" Dealer wins!;
             // print: add you "LOSE" div to the player id / html;
             // print: add you "WIN" div to the dealer id / html;
-            // move to endGame()print; display score of player hand total in the player hand div / html;
-            // move to endGame()print; display score of dealer hand total in dealer hand div / html;
-
+            
+//Dealer Wins!
         } else if ((dealerSum > playerSum) && (dealerSum < 22)){
     
-                // alert: (in Results div) Dealer Wins!;
-                // print: add you "LOSE" div to the player id / html;
-                // print: add you "WIN" div to the dealer id / html;
-                // move to endGame()print; display score of player hand total in the player hand div / html;
-                // move to endGame()print; display score of dealer hand total in dealer hand div / html;
+            displayDealerScore();
+            displayPlayerScore();
+            // alert: (in Results div) Dealer Wins!;
+            // print: add you "LOSE" div to the player id / html;
+            // print: add you "WIN" div to the dealer id / html;
             }
       endGame();  // } True / False and set a variable to call diplay score and endgame?
     } 
