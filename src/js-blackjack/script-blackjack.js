@@ -30,7 +30,7 @@ const stayButton = document.getElementById("stayButton");
 
 startButton.addEventListener("click", () => {
     if (gameStarted === false) {
-        console.log("what up tarts");
+        console.log("what up gamers");
         //create fullDeck (build and Shuffle)
         //populate player/dealer hands with cards
         //write helper function, params (handArray, elementId, t/f )and it will push and display the card. Can accept an optional third param for "hideCardValue".
@@ -60,6 +60,8 @@ startButton.addEventListener("click", () => {
         playerSum = calcHandSum(playerHand);
         dealerSum = calcHandSum(dealerHand);
 
+        displayPlayerScore();
+
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
 
@@ -78,11 +80,11 @@ hitMeButton.addEventListener("click", () => {
     if (gameStarted === true) {
         console.log("what up hits");
         hitMe();
-        calcHandSum(playerHand);
-        //TODO display player score here;
+        playerSum = calcHandSum(playerHand);
+        displayPlayerScore();
         const didPlayerBust = playerBusted();
         if (didPlayerBust = true) {
-            endgame();
+            endgame(); // this might just need to reset game state and set gameStarted back to false.
         }
     }
 });
@@ -94,17 +96,27 @@ stayButton.addEventListener("click", () => {
         while (dealerSum < 17) {
             dealerHits();
             dealerSum = calcHandSum(dealerHand);
+            //need set time outs
             //add card to dealer hand and display (if >16)
             //calcHandSum
             //update score display
-            //eval blackjack or bust
         }
+        displayDealerScore();
+        const didDealerBust = dealerBusted();
+        if (didDealerBust = true) {
+            console.log("Dealer is busted.")
+            endgame(); // this might just need to reset game state and set gameStarted back to false.
+        }
+        //dealer busted?
+        // yes - player win
+        // no - calculate final score and end game
+
     }
 });
 
 
 //display Player Score
-displayPlayerScore() {
+function displayPlayerScore() {
     //display playerSum in the player hand banner
     const playerScore = document.createElement("div");
     playerScore.textContent = `${playerSum}`;
@@ -114,7 +126,7 @@ displayPlayerScore() {
 }
 
 //display Dealer Score
-displayDealerScore() {
+function displayDealerScore() {
     //display Dealer Sum in the dealer hand banner
     const dealerScore = document.createElement("div");
     dealerScore.textContent = `${dealerSum}`;
@@ -125,7 +137,7 @@ displayDealerScore() {
 
 //display Results for Both
 //PRINT: Player score is:  Dealer score is:
-displayResults() {
+function displayResults() {
     const newResult = document.createElement("div");
     newResult.textContent = `Player Score: ${playerSum}, Dealer Score: ${dealerSum}`;
     document.getElementById("results").appendChild(newResult);
