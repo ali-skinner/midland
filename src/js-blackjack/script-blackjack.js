@@ -95,7 +95,9 @@ function displayPlayerScore() {
     //display playerSum in the player hand banner
     const playerScore = document.createElement("div");
     playerScore.textContent = `${playerSum}`;
-    document.getElementById("player-message").appendChild(playerScore);
+    const playerMessageElement = document.getElementById("player-message");
+    playerMessageElement.innerHTML = "";
+    playerMessageElement.appendChild(playerScore);
     console.log("Player Score", playerScore);
     // div id = player-message
 }
@@ -105,7 +107,9 @@ function displayDealerScore() {
     //display Dealer Sum in the dealer hand banner
     const dealerScore = document.createElement("div");
     dealerScore.textContent = `${dealerSum}`;
-    document.getElementById("dealer-message").appendChild(dealerScore);
+    const dealerMessageElement = document.getElementById("dealer-message");
+    dealerMessageElement.innerHTML = "";
+    dealerMessageElement.appendChild(dealerScore);
     console.log("Dealer Score", dealerScore);
     // div id = dealer-message   
 }
@@ -115,7 +119,9 @@ function displayDealerScore() {
 function displayResults() {
     const newResult = document.createElement("div");
     newResult.textContent = `Player Score: ${playerSum}, Dealer Score: ${dealerSum}`;
-    document.getElementById("results").appendChild(newResult);
+   const finalResults = document.getElementById("results");
+   finalResults.innerHTML = ""; 
+   finalResults.appendChild(newResult);
     console.log("Final Results:", newResult);
 }
 
