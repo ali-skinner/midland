@@ -1,17 +1,5 @@
 "use strict";
 
-// DONE - set up global state
-// DONE - add click event listeners
-// DONE -make func for initial deal
-// DONE - eval if blackjack
-// yes = end game
-// no = start game  --> hit me needs to check a global variable if the game has been started---> currently will deal two cards 1030am 1/04
-//check hit me button funct (remove event listener)
-//check stay button funct (remove event listener)
-// - end players turn & starts the dealers turn
-//check did you win - buid this funct (notes below)
-//run end game to diplay scores/results/flip over hidden cards.
-
 const suits = ["♥", "♦", "♣", "♠"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 let playerHand = [];
@@ -25,19 +13,13 @@ const startButton = document.getElementById("startButton");
 const hitMeButton = document.getElementById("hitMeButton");
 const stayButton = document.getElementById("stayButton");
 
-
+//TODO age alert
 //start the game and deal first hand >-------------->---------------->----------
 
 startButton.addEventListener("click", () => {
     if (gameStarted === false) {
         console.log("what up gamers");
-        //create fullDeck (build and Shuffle)
-        //populate player/dealer hands with cards
-        //write helper function, params (handArray, elementId, t/f )and it will push and display the card. Can accept an optional third param for "hideCardValue".
-        // calcHandSum for each player (review current function)
-        // display player score (keep here or use in winner funct?)
-        // display dealer score (keep here or use in winner funct?)
-        // eval if blackjack
+
         playerSum = 0;
         dealerSum = 0;
         playerHand = [];
@@ -65,13 +47,8 @@ startButton.addEventListener("click", () => {
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
 
-        const playerBlackJack = false;
-        const dealerBlackJack = false;
-
         blackJack();
         gameStarted = true;
-
-
     }
 });
 
@@ -84,7 +61,7 @@ hitMeButton.addEventListener("click", () => {
         displayPlayerScore();
         const didPlayerBust = playerBusted();
         if (didPlayerBust = true) {
-            endGame(); // this might just need to reset game state and set gameStarted back to false.
+            endGame();
         }
     }
 });
@@ -93,24 +70,22 @@ hitMeButton.addEventListener("click", () => {
 stayButton.addEventListener("click", () => {
     if (gameStarted === true) {
         console.log("what up stay");
+
+        const hidingHere = document.getElementsByClassName("hidden-card");
+        hidingHere[0].className = "card";
+
         while (dealerSum < 17) {
             dealerHits();
             dealerSum = calcHandSum(dealerHand);
-            //need set time outs
-            //add card to dealer hand and display (if >16)
-            //calcHandSum
-            //update score display
+            //TODO need set time outs
+
         }
         displayDealerScore();
         const didDealerBust = dealerBusted();
         if (didDealerBust = true) {
             console.log("Dealer is busted.")
-            endGame(); // this might just need to reset game state and set gameStarted back to false.
+            endGame();
         }
-        //dealer busted?
-        // yes - player win
-        // no - calculate final score and end game
-
     }
 });
 
@@ -149,7 +124,10 @@ function endGame() {
     displayResults();
     gameStarted = false;
     const hidingHere = document.getElementsByClassName("hidden-card");
-    hidingHere[0].className = "card";
+    if (hidingHere.length > 0) {
+        hidingHere[0].className = "card";
+    }
+    
 }
 
 
