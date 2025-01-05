@@ -8,27 +8,27 @@ let playerSum = 0; //feed to didYouWin()
 let dealerSum = 0; //feed to didYouWin()
 let fullDeck = [];
 let gameStarted = false;
-let ageAllowed = true; //!reset to false to ACTIVATE AFTER TESTING
+let ageAllowed = false; //!reset to false to ACTIVATE AFTER TESTING
 
 const startButton = document.getElementById("startButton");
 const hitMeButton = document.getElementById("hitMeButton");
 const stayButton = document.getElementById("stayButton");
 
 
-//Age prompt
-// function promptForAge() {
-//     let userInput = prompt("Enter your age:");
-//     if (userInput >= 16) {
-//         ageAllowed = true;
-//         alert("Welcome to BLACKJACK!");
+// Age prompt
+function promptForAge() {
+    let userInput = prompt("Enter your age:");
+    if (userInput >= 16) {
+        ageAllowed = true;
+        alert("Welcome to BLACKJACK!");
 
-//     } else {
-//         alert("BYE BYE youngin. Come back when you're 16 or older. Peace!✌️")
-//     }
-//     console.log("Welcome GAMER you are of age to play this amazing game of jacks on black!");
-// }
+    } else {
+        alert("BYE BYE youngin. Come back when you're 16 or older. Peace!✌️")
+    }
+    console.log("Welcome GAMER you are of age to play this amazing game of jacks on black!");
+}
 
-// promptForAge();
+promptForAge();
 
 
 //Reset the game
@@ -70,11 +70,15 @@ startButton.addEventListener("click", async () => {
         resetGame();
 
         playerHand.push(drawCard(fullDeck));
-        dealerHand.push(drawCard(fullDeck));
-        playerHand.push(drawCard(fullDeck));
-        dealerHand.push(drawCard(fullDeck));
         // playerHand.push(cheater[0]);
-        // playerHand.push(cheater[1]);
+        
+        dealerHand.push(drawCard(fullDeck));
+        
+        playerHand.push(drawCard(fullDeck));
+        //   playerHand.push(cheater[1]);
+        
+          dealerHand.push(drawCard(fullDeck));
+        
 
         //Sets card display delays on firt hand
             // consider adding async funct and await and promise and resolves
