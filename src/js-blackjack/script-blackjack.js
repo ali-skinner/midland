@@ -55,7 +55,7 @@ startButton.addEventListener("click", () => {
         playerHand.push(drawCard(fullDeck));
         displayCard(playerHand[1], "player-cards", false);
         dealerHand.push(drawCard(fullDeck));
-        displayCard(dealerHand[1], "dealer-cards", false); //this card needs to be hidden
+        displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
 
         playerSum = calcHandSum(playerHand);
         dealerSum = calcHandSum(dealerHand);
@@ -84,7 +84,7 @@ hitMeButton.addEventListener("click", () => {
         displayPlayerScore();
         const didPlayerBust = playerBusted();
         if (didPlayerBust = true) {
-            endgame(); // this might just need to reset game state and set gameStarted back to false.
+            endGame(); // this might just need to reset game state and set gameStarted back to false.
         }
     }
 });
@@ -105,7 +105,7 @@ stayButton.addEventListener("click", () => {
         const didDealerBust = dealerBusted();
         if (didDealerBust = true) {
             console.log("Dealer is busted.")
-            endgame(); // this might just need to reset game state and set gameStarted back to false.
+            endGame(); // this might just need to reset game state and set gameStarted back to false.
         }
         //dealer busted?
         // yes - player win
@@ -145,14 +145,12 @@ function displayResults() {
 }
 
 //Reset Game
-// endGame() {
-
-// }
-// --> diplay hidden card by removing class on the div/variable
-// hideCard.className = "card";
-// --> display score / hand totals
-// --> enable start, hit buttons /reactivate clickListeners
-// --> resets game
+function endGame() {
+    displayResults();
+    gameStarted = false;
+    const hidingHere = document.getElementsByClassName("hidden-card");
+    hidingHere[0].className = "card";
+}
 
 
 // blackJack() ------------------------------->
@@ -171,7 +169,7 @@ function blackJack() {
         dealerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("dealer-message").appendChild(dealerLoseBlackJackMessage);
         console.log(dealerLoseBlackJackMessage);
-        // endGame();
+        endGame();
         // return playerWinBlackJackMessage, dealerLoseBlackJackMessage;
 
 
@@ -187,7 +185,7 @@ function blackJack() {
         playerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("player-message").appendChild(playerLoseBlackJackMessage);
         console.log(playerLoseBlackJackMessage);
-        // endGame();
+        endGame();
         // return playerLoseBlackJackMessage, dealerWinBlackJackMessage;
 
     } else {
@@ -264,7 +262,7 @@ function didYouWin(playerSum, dealerSum) {
     //             move to endGame()print; display score of dealer hand total in dealer hand div / html;
     //         }
     //     } True / False and set a variable to call diplay score and endgame?
-    // } //endgame();
+    // } //endGame();
 }
 
 //--->---needs work >-------------------->------------------>---------------->
