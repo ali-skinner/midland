@@ -93,23 +93,46 @@ stayButton.addEventListener("click", () => {
         console.log("what up stay");
         while (dealerSum < 17) {
             dealerHits();
-           dealerSum = calcHandSum(dealerHand);
+            dealerSum = calcHandSum(dealerHand);
             //add card to dealer hand and display (if >16)
             //calcHandSum
             //update score display
             //eval blackjack or bust
         }
-    }});
+    }
+});
 
 
+//display Player Score
+displayPlayerScore() {
+    //display playerSum in the player hand banner
+    const playerScore = document.createElement("div");
+    playerScore.textContent = `${playerSum}`;
+    document.getElementById("player-message").appendChild(playerScore);
+    console.log("Player Score", playerScore);
+    // div id = player-message
+}
 
+//display Dealer Score
+displayDealerScore() {
+    //display Dealer Sum in the dealer hand banner
+    const dealerScore = document.createElement("div");
+    dealerScore.textContent = `${dealerSum}`;
+    document.getElementById("dealer-message").appendChild(dealerScore);
+    console.log("Dealer Score", dealerScore);
+    // div id = dealer-message   
+}
 
-//display Score
-// displayScore() {
+//display Results for Both
+//PRINT: Player score is:  Dealer score is:
+displayResults() {
+    const newResult = document.createElement("div");
+    newResult.textContent = `Player Score: ${playerSum}, Dealer Score: ${dealerSum}`;
+    document.getElementById("results").appendChild(newResult);
+    console.log("Final Results:", newResult);
+}
 
-// }
-
-// //Reset Game
+//Reset Game
 // endGame() {
 
 // }
@@ -205,7 +228,7 @@ function dealerBusted() {
 //>-------------------->------------------>---------------->
 //didYouWin function
 
-function didYouWin (playerSum, dealerSum) {
+function didYouWin(playerSum, dealerSum) {
     //     if ((playerSum > dealerTotal) && (playerSum < 22)) {
     //         alert: (in Results div heading below buttons) Player Wins!;
     //         print: add you "WIN" div to the player id / html;
