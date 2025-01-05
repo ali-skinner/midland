@@ -4,6 +4,9 @@ body {
     background-color: rgb(64, 165, 64);
 }
 
+h2 {
+    padding: 5px;
+}
 .card {
     display: inline-flex;
     flex-direction: column;
@@ -42,6 +45,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
     
 }
 

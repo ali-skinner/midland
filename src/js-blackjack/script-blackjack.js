@@ -104,8 +104,15 @@ stayButton.addEventListener("click", () => {
 
 
 
-// dev area --------------->
-// endGame()
+//display Score
+// displayScore() {
+
+// }
+
+// //Reset Game
+// endGame() {
+
+// }
 // --> diplay hidden card by removing class on the div/variable
 // hideCard.className = "card";
 // --> display score / hand totals
@@ -195,39 +202,33 @@ function dealerBusted() {
 
 
 
-//--->---needs work >-------------------->------------------>---------------->
+//>-------------------->------------------>---------------->
 //didYouWin function
-//didYouWin should display alert/message for Winner/Loser/Draw
-//didYouWin should advance Rouns/Counter -- when to set the counter to 0? upon refresh?
-//didYouWin should reactivate the startButton clickListener
-//didYouWin should reactivate the hitMe clickListener
 
-
-
-function didYouWin(playerTotal, dealerTotal) {
-    //     if ((playerTotal > dealerTotal) && (playerTotal < 22)) {
-    //         alert: (in Results heading below buttons) Player Wins!;
+function didYouWin (playerSum, dealerSum) {
+    //     if ((playerSum > dealerTotal) && (playerSum < 22)) {
+    //         alert: (in Results div heading below buttons) Player Wins!;
     //         print: add you "WIN" div to the player id / html;
     //         print: add you "LOSE" div to the dealer id / html;
     //         move to endGame() print; display score of player hand total in the player hand div / html;
     //         move to endGame()print; display score of dealer hand total in dealer hand div / html;
 
-    //     } else if ((playerTotal === dealerTotal) && (playerTotal < 22) && (dealerTotal < 22)){
-    //         alert: "DRAW!" Dealer wins!;
+    //     } else if ((playerSum === dealerTotal) && (playerSum < 22) && (dealerTotal < 22)){
+    //         alert: (in Results div) "DRAW!" Dealer wins!;
     //         print: add you "LOSE" div to the player id / html;
     //         print: add you "WIN" div to the dealer id / html;
     //         move to endGame()print; display score of player hand total in the player hand div / html;
     //         move to endGame()print; display score of dealer hand total in dealer hand div / html;
 
-    //     } else ((dealerTotal > playerTotal) && (dealerTotal < 22)){
+    //     } else ((dealerTotal > playerSum) && (dealerTotal < 22)){
     //
-    //             alert: Dealer Wins!;
+    //             alert: (in Results div) Dealer Wins!;
     //             print: add you "LOSE" div to the player id / html;
     //             print: add you "WIN" div to the dealer id / html;
     //             move to endGame()print; display score of player hand total in the player hand div / html;
     //             move to endGame()print; display score of dealer hand total in dealer hand div / html;
     //         }
-    //     }
+    //     } True / False and set a variable to call diplay score and endgame?
     // } //endgame();
 }
 
