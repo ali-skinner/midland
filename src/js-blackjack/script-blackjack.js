@@ -186,7 +186,7 @@ function endGame() {
 //add if both players hit blackjack scenario
 function blackJack() {
     console.log("I made it to the blackJack function!!");
-    if (playerSum === 21) {
+    if (playerSum === 21 && dealerSum == 21) {
         //player hits21 message
         const playerWinBlackJackMessage = document.createElement("div");
         playerWinBlackJackMessage.textContent = "BLACKJACK! You WIN!";
@@ -202,8 +202,7 @@ function blackJack() {
         endGame();
 
 
-
-    } else if (dealerSum === 21) {
+    } else if (dealerSum === 21 && playerSum == 21) {
         //dealer hits21 message
         const dealerWinBlackJackMessage = document.createElement("div");
         dealerWinBlackJackMessage.textContent = ("BLACKJACK! Dealer WINs!");
@@ -215,6 +214,14 @@ function blackJack() {
         playerLoseBlackJackMessage.textContent = ("LOSE");
         document.getElementById("player-message").appendChild(playerLoseBlackJackMessage);
         console.log(playerLoseBlackJackMessage);
+        endGame();
+
+    } else if (dealerSum === 21 && playerSum === 21) {
+        // both player and dealer hit blackjack
+        const drawBlackJackMessage = document.createElement("div");
+        drawBlackJackMessage.textContent = ("BLACKJACK DRAW! Wow, what are the odds of this?!?");
+        document.getElementById("dealer-message").appendChild(drawBlackJackMessage);
+        document.getElementById("player-message").appendChild(drawBlackJackMessage); console.log(drawBlackJackMessage);
         endGame();
 
     } else {
