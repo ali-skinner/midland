@@ -15,6 +15,8 @@ const stayButton = document.getElementById("stayButton");
 
 //TODO age alert
 //TODO set timeouts
+//TODO aces
+//TODO end game not resetting start button and clearing card in didYOuWIn
 
 
 
