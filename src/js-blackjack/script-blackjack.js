@@ -60,7 +60,7 @@ hitMeButton.addEventListener("click", () => {
         playerSum = calcHandSum(playerHand);
         displayPlayerScore();
         const didPlayerBust = playerBusted();
-        if (didPlayerBust = true) {
+        if (didPlayerBust === true) {
             endGame();
         }
     }
@@ -82,7 +82,7 @@ stayButton.addEventListener("click", () => {
         }
         displayDealerScore();
         const didDealerBust = dealerBusted();
-        if (didDealerBust = true) {
+        if (didDealerBust === true) {
             console.log("Dealer is busted.")
             endGame();
         }
@@ -120,6 +120,7 @@ function displayResults() {
 }
 
 //Reset Game
+//TODO reset html divs
 function endGame() {
     displayResults();
     gameStarted = false;
