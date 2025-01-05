@@ -46,6 +46,12 @@ startButton.addEventListener("click", () => {
         dealerHand = [];
         buildDeck();
         shuffleDeck(fullDeck);
+        const playerCardElementReset = document.getElementById("player-cards");
+        playerCardElementReset.innerHTML = "";
+        const dealerCardElementReset = document.getElementById("dealer-cards");
+        dealerCardElementReset.innerHTML = "";
+        const resultsElementReset = document.getElementById("results");
+        resultsElementReset.innerHTML = "";
 
         //NEED TIMING to slow down the show of cards - setTimout funct?
 
