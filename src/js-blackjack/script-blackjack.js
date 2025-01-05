@@ -8,31 +8,59 @@ let playerSum = 0; //feed to didYouWin()
 let dealerSum = 0; //feed to didYouWin()
 let fullDeck = [];
 let gameStarted = false;
-let ageAllowed = false;
+let ageAllowed = true; //!reset to false to ACTIVATE AFTER TESTING
 
 const startButton = document.getElementById("startButton");
 const hitMeButton = document.getElementById("hitMeButton");
 const stayButton = document.getElementById("stayButton");
 
-//TODO age alert
 //TODO set timeouts
 //TODO aces
 //TODO end game not resetting start button and clearing card in didYOuWIn
+//TODO if both players hit blackjack scenario; check blackjack clearing out
 
 
-function promptForAge() {
-    let userInput = prompt("Enter your age:");
-    if (userInput >= 16) {
-        ageAllowed = true;
-        alert("Welcome to BLACKJACK!");
 
-    } else {
-        alert("BYE BYE youngin. Come back when you're 16 or older. Peace!✌️")
-    }
-    console.log("Welcome GAMER you are of age to play this amazing game of jacks on black!");
+//Age prompt
+// function promptForAge() {
+//     let userInput = prompt("Enter your age:");
+//     if (userInput >= 16) {
+//         ageAllowed = true;
+//         alert("Welcome to BLACKJACK!");
+
+//     } else {
+//         alert("BYE BYE youngin. Come back when you're 16 or older. Peace!✌️")
+//     }
+//     console.log("Welcome GAMER you are of age to play this amazing game of jacks on black!");
+// }
+
+// promptForAge();
+
+
+//Reset the game
+function resetGame() {
+    playerSum = 0;
+    dealerSum = 0;
+    playerHand = [];
+    dealerHand = [];
+    buildDeck();
+    shuffleDeck(fullDeck);
+
+    //reset html
+    const playerCardElementReset = document.getElementById("player-cards");
+    playerCardElementReset.innerHTML = "";
+    const dealerCardElementReset = document.getElementById("dealer-cards");
+    dealerCardElementReset.innerHTML = "";
+    const resultsElementReset = document.getElementById("results");
+    resultsElementReset.innerHTML = "";
+
+    const playerMessageElementReset = document.getElementById("player-message");
+    playerMessageElementReset.innerHTML = "";
+    const dealerMessageElementReset = document.getElementById("dealer-message");
+    dealerMessageElementReset.innerHTML = "";
+
 }
 
-promptForAge();
 
 //start the game and deal first hand >-------------->---------------->----------
 
@@ -40,18 +68,7 @@ startButton.addEventListener("click", () => {
     if ((gameStarted === false) && (ageAllowed === true)) {
         console.log("what up gamers");
 
-        playerSum = 0;
-        dealerSum = 0;
-        playerHand = [];
-        dealerHand = [];
-        buildDeck();
-        shuffleDeck(fullDeck);
-        const playerCardElementReset = document.getElementById("player-cards");
-        playerCardElementReset.innerHTML = "";
-        const dealerCardElementReset = document.getElementById("dealer-cards");
-        dealerCardElementReset.innerHTML = "";
-        const resultsElementReset = document.getElementById("results");
-        resultsElementReset.innerHTML = "";
+        resetGame();
 
         //NEED TIMING to slow down the show of cards - setTimout funct?
 
@@ -154,7 +171,7 @@ function displayResults() {
     console.log("Final Results:", newResult);
 }
 
-//End Game - Reset Game
+//End Game
 function endGame() {
     displayResults();
     gameStarted = false;
@@ -162,11 +179,11 @@ function endGame() {
     if (hidingHere.length > 0) {
         hidingHere[0].className = "card";
     }
-
 }
 
 
 // blackJack() ------------------------------->
+//add if both players hit blackjack scenario
 function blackJack() {
     console.log("I made it to the blackJack function!!");
     if (playerSum === 21) {
