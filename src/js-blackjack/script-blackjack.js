@@ -14,8 +14,6 @@ const startButton = document.getElementById("startButton");
 const hitMeButton = document.getElementById("hitMeButton");
 const stayButton = document.getElementById("stayButton");
 
-//TODO set timeouts
-//TODO aces
 
 //Age prompt
 // function promptForAge() {
@@ -66,12 +64,10 @@ const cheater = [{
 }]
 //start the game and deal first hand >-------------->---------------->----------
 
-startButton.addEventListener("click", () => {
+startButton.addEventListener("click", async () => {
     if ((gameStarted === false) && (ageAllowed === true)) {
         console.log("what up gamers");
         resetGame();
-
-        //NEED TIMING to slow down the show of cards - setTimout funct?
 
         playerHand.push(drawCard(fullDeck));
         dealerHand.push(drawCard(fullDeck));
@@ -80,30 +76,43 @@ startButton.addEventListener("click", () => {
         // playerHand.push(cheater[0]);
         // playerHand.push(cheater[1]);
 
-
         //Sets card display delays on firt hand
-        setTimeout(()=>{
+            // consider adding async funct and await and promise and resolves
 
             displayCard(playerHand[0], "player-cards", false);
-        },0)
-        setTimeout(()=>{
+            await new Promise (resolve => setTimeout (resolve, 700));
 
-            displayCard(dealerHand[0], "dealer-cards", false);
-        },500)
-        setTimeout(()=>{
-
-            displayCard(playerHand[1], "player-cards", false);
-        },1000)
-        setTimeout(()=>{
+            displayCard(dealerHand[0], "dealer-cards", false)
+            await new Promise (resolve => setTimeout (resolve, 700));
+            
+            displayCard(playerHand[1], "player-cards", false)
+            await new Promise (resolve => setTimeout (resolve, 700));
 
             displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
-            displayPlayerScore();
-        },1500)
+            
         
-        
+        // setTimeout(()=>{
+        //     displayCard(playerHand[0], "player-cards", false);
+        // },0);
+
+        // setTimeout(()=>{
+        //     displayCard(dealerHand[0], "dealer-cards", false);
+        // },500);
+
+        // setTimeout(()=>{
+        //     displayCard(playerHand[1], "player-cards", false);
+        // },1000);
+
+        // setTimeout(()=>{
+        //     displayCard(dealerHand[1], "dealer-cards", true); //this card needs to be hidden
+        //     displayPlayerScore();
+        // },1500);
+    
+
         playerSum = calcHandSum(playerHand);
         dealerSum = calcHandSum(dealerHand);
 
+        displayPlayerScore();
 
         console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
         console.log(`The dealer hand is: ${JSON.stringify(dealerHand)}`);
@@ -133,7 +142,7 @@ hitMeButton.addEventListener("click", () => {
 });
 
 //Player stay - Dealer's turn
-stayButton.addEventListener("click", () => {
+stayButton.addEventListener("click", async () => {
     if (gameStarted === true) {
         console.log("what up stay");
 
@@ -143,7 +152,8 @@ stayButton.addEventListener("click", () => {
         while (dealerSum < 17) {
             dealerHits();
             dealerSum = calcHandSum(dealerHand);
-            //TODO need set time out
+            //TODO set time out is done thanks babe!
+            await new Promise (resolve => setTimeout (resolve, 700));
 
         }
         displayDealerScore();
