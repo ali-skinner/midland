@@ -63,6 +63,7 @@ hitMeButton.addEventListener("click", () => {
         hitMe();
         playerSum = calcHandSum(playerHand);
         displayPlayerScore();
+        
         const didPlayerBust = playerBusted();
         if (didPlayerBust === true) {
             endGame();
@@ -90,6 +91,8 @@ stayButton.addEventListener("click", () => {
             console.log("Dealer is busted.")
             endGame();
         }
+
+        didYouWin();
     }
 });
 
@@ -243,6 +246,8 @@ console.log("Welcome to the winner eval");
         document.getElementById("dealer-message").appendChild(dealerLoseMessage);
         console.log(dealerLoseMessage);
 
+        endGame();
+
 // DRAW! Dealer Wins!
         } else if ((playerSum === dealerSum) && (playerSum < 22) && (dealerSum < 22)){
             displayDealerScore();
@@ -259,6 +264,8 @@ console.log("Welcome to the winner eval");
         playerDrawMessage.textContent = ("Its a DRAW! Player LOSE!");
         document.getElementById("player-message").appendChild(playerDrawMessage);
         console.log(playerDrawMessage);
+
+        endGame();
            
 //Dealer Wins!
         } else if ((dealerSum > playerSum) && (dealerSum < 22)){
@@ -277,8 +284,10 @@ console.log("Welcome to the winner eval");
         playerLoseGameMessage.textContent = ("Player LOSE");
         document.getElementById("player-message").appendChild(playerLoseGameMessage);
         console.log(playerLoseGameMessage);
+
+        endGame();
             }
-      endGame(); 
+       
     } 
     
 
