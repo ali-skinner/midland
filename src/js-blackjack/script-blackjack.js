@@ -16,7 +16,6 @@ const stayButton = document.getElementById("stayButton");
 
 //TODO set timeouts
 //TODO aces
-//TODO check blackjack clearing out
 
 //Age prompt
 // function promptForAge() {
@@ -337,68 +336,49 @@ function didYouWin() {
 
         endGame();
     }
-
 }
 
-
-//--->---< needs work for Aces conditional >------>
-
 //Hand Total
+// caculate aces 1 and 11 conditional
 function calcHandSum(hand) {
-    let handSum = 0; //goal is for this to be ONE value
-    let aces = 0; //need this to count up? or does that happen in getCardValue bc added the aces calc funct there?
+    let handSum = 0;
+    let aceCount = 0;
 
     for (let i = 0; i < hand.length; i++) {
-        const cardValue = (getCardValue(hand[i], handSum, aces)); //give this a 3rd parameter to count aces?
+        const cardValue = (getCardValue(hand[i], handSum));
+        if (cardValue === 11) {
+            aceCount++;
+        }
         handSum += cardValue;
         console.log(`This is the PUSH card: ${cardValue}`);
         console.log(`This is the HANDSUM VALUE: ${handSum}`);
     }
-
+    if (handSum > 21) {
+        let iterator = structuredClone(aceCount);
+        while (iterator > 0 && handSum > 22) {
+            handSum -= 10;
+            iterator -= 1;
+        }
+    }
+    console.log("This is the ace eval HandSum:", handSum);
     return handSum;
 }
 
-//--- Card Value --> ACE VALUE broken --->
-// need to give faces cards values
-// need to caculate aces 1 and 11 conditional
-// consider that we may need track ace count
-// if ace value = 1 or greater; recalcuate playerSum each loop
+//Card Value 
+// give faces cards values
 
-function getCardValue(card, playerSum, acesInMyHand) {
-    // let acesInMyHand = 0;
+function getCardValue(card) {
     console.log("from getCardValue:", playerSum);
     if (isNaN(card.value)) {
         if (card.value === "A") {
-            acesInMyHand++;
-        }
-        if (card.value === "A" || acesInMyHand > 0) {
-            console.log("ace functions", card.value);
-            //somehow use acesInMyHand to loop through an evaluation to determine 1 or 11 value for EACH ace
-            if (playerSum > 21) {
-                return 1;
-            } else {
-                return 11;
-            }
-        } else {
+            return 11;
+        }else {
             return 10;
         }
-    }
+    } 
+
     return parseInt(card.value);
 }
-
-// function calcAceValue(card, playerSum) {
-//     console.log("from calcAceValue:", playerSum)
-//     if (card.value === "A") {
-//         if (playerSum > 21) {
-//             return 1;
-//         } else {
-//             return 11;
-//         }
-//     }
-//     return parseInt(card.value);
-// }
-
-
 
 //dealer hits
 function dealerHits() {
@@ -409,20 +389,13 @@ function dealerHits() {
 }
 
 
-// function dealersTurn(dealerSum) {
-//     if ((dealerSum > 16) && (dealerSum < 22)) {
-//         //dealer STAYS [17-21]
-//         didYouWin();
-//     } else {
-//         //dealer BUSTS
-//         busted();
-//     }
-// }
-
-
 //player hits
 function hitMe() {
     const newCard = drawCard(fullDeck); //get a card
+    // const newCard = {
+    //     suit: "♥",
+    //     value: "A"
+    // };
     displayCard(newCard, "player-cards", false); //display card
     playerHand.push(newCard); //add to playerHand array
     console.log(`The player hand is: ${JSON.stringify(playerHand)}`);
