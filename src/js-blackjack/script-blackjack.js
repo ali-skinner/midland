@@ -223,32 +223,32 @@ function dealerBusted() {
 //>-------------------->------------------>---------------->
 //didYouWin function
 
-function didYouWin(playerSum, dealerSum) {
-    //     if ((playerSum > dealerTotal) && (playerSum < 22)) {
-    //         alert: (in Results div heading below buttons) Player Wins!;
-    //         print: add you "WIN" div to the player id / html;
-    //         print: add you "LOSE" div to the dealer id / html;
-    //         move to endGame() print; display score of player hand total in the player hand div / html;
-    //         move to endGame()print; display score of dealer hand total in dealer hand div / html;
+function didYouWin() {
+        if ((playerSum > dealerSum) && (playerSum < 22)) {
+            // alert: (in Results div heading below buttons) Player Wins!;
+            // print: add you "WIN" div to the player id / html;
+            // print: add you "LOSE" div to the dealer id / html;
+            // move to endGame() print; display score of player hand total in the player hand div / html;
+            // move to endGame()print; display score of dealer hand total in dealer hand div / html;
 
-    //     } else if ((playerSum === dealerTotal) && (playerSum < 22) && (dealerTotal < 22)){
-    //         alert: (in Results div) "DRAW!" Dealer wins!;
-    //         print: add you "LOSE" div to the player id / html;
-    //         print: add you "WIN" div to the dealer id / html;
-    //         move to endGame()print; display score of player hand total in the player hand div / html;
-    //         move to endGame()print; display score of dealer hand total in dealer hand div / html;
+        } else if ((playerSum === dealerSum) && (playerSum < 22) && (dealerSum < 22)){
+            // alert: (in Results div) "DRAW!" Dealer wins!;
+            // print: add you "LOSE" div to the player id / html;
+            // print: add you "WIN" div to the dealer id / html;
+            // move to endGame()print; display score of player hand total in the player hand div / html;
+            // move to endGame()print; display score of dealer hand total in dealer hand div / html;
 
-    //     } else ((dealerTotal > playerSum) && (dealerTotal < 22)){
-    //
-    //             alert: (in Results div) Dealer Wins!;
-    //             print: add you "LOSE" div to the player id / html;
-    //             print: add you "WIN" div to the dealer id / html;
-    //             move to endGame()print; display score of player hand total in the player hand div / html;
-    //             move to endGame()print; display score of dealer hand total in dealer hand div / html;
-    //         }
-    //     } True / False and set a variable to call diplay score and endgame?
-    // } //endGame();
-}
+        } else if ((dealerSum > playerSum) && (dealerSum < 22)){
+    
+                // alert: (in Results div) Dealer Wins!;
+                // print: add you "LOSE" div to the player id / html;
+                // print: add you "WIN" div to the dealer id / html;
+                // move to endGame()print; display score of player hand total in the player hand div / html;
+                // move to endGame()print; display score of dealer hand total in dealer hand div / html;
+            }
+      endGame();  // } True / False and set a variable to call diplay score and endgame?
+    } 
+    
 
 //--->---needs work >-------------------->------------------>---------------->
 
