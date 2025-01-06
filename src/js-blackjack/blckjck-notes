@@ -1,0 +1,24 @@
+// need age verification prompt for 16+
+// add setTimeOut funct to slowly deal out first hand
+
+
+// dealerDrawCard funct - similiar to hit me funct; but the goal is so use the guts of this funct to eval the dealer hand too. this funct needs the ace value rendering funct, add to dealerSum, if else stmnt if dealerSum over 21 = bust alert; if under 21 just add card.value to the dealerSum array; dealer STAYS on 17; need the hidden card syntax at some point.
+
+// hiddenDealerCard - dont show the face of the first card UNTIL some one busts?
+
+// playerHitMe funct - button on click = draw a card;  this funct needs the ace value rendering funct, add to playerSum, if else stmnt if playerSum over 21 = bust alert; if under 21 just add card.value to the playerSum array.
+
+// stayButton function - playerSum array is complete; dealers turn - active dealerDrawCard funt; eval against whoWON.
+
+// whoWON funct - use to calc playerSum vs dealerSum; print on screen
+
+// countRounds - cound rounds played
+
+DONE -- startGame - use a start button? use window event? on this event, deal 2 cards to each player and dealer; player are face up; dealer first card = hidden
+
+// annimate shuffling?
+// add a blank card view before hit start button activated
+// style the round and results divs
+
+need to clear out each funct / reset to 0 / []
+print cards on screen - use the pngs for the cards??

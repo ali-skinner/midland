@@ -1,0 +1,72 @@
+body {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgb(64, 165, 64);
+}
+
+h2 {
+    padding: 3px;
+}
+
+.card {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    width: 125px;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgb(202, 205, 201);
+    box-shadow: 5px 6px 3px rgb(49, 19, 19);
+    font-size: 24px;
+}
+
+.red {
+    color: red;
+}
+
+.hidden-card {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    width: 125px;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgb(7, 0, 0);
+    box-shadow: 5px 6px 3px rgb(49, 19, 19);
+    font-size: 24px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+#dealer-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#player-cards {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.button {
+    background-color: rgb(49, 19, 19);
+    color: rgb(255, 127, 172);
+    height: 50px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 5px;
+}

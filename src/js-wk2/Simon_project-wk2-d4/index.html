@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="simon.css">
+    <title>Simon Says</title>
+</head>
+
+<body>
+    <header>
+        <h1>Who Wants To Play Simon!?!</h1>
+    </header>
+
+    <h2>It's the memory game you know and love.</h2>
+    <h3 style="text-align: center;">Ready to test your skills? Hit Start and begin the fun.</h3>
+    <div style="text-align: center; padding-bottom: 20px;">
+        <button id="startButton">Start</button> <!--this button starts the gm-->
+    </div>
+
+    <div class="flexContainerGameButton">
+        <!--lights up its color for 1-2 seconds-->
+        <!-- <div class="topRow"> -->
+            <button id="greenButton" class="gameButton">Green</button>
+            <button id="redButton" class="gameButton">Red</button>
+        <!-- </div> -->
+    </div>
+    <div class="flexContainerGameButton">
+        <!-- <div class="bottomRow"> -->
+            <button id="blueButton" class="gameButton">Blue</button>
+            <button id="yellowButton" class="gameButton">Yellow</button>
+        <!-- </div> -->
+    </div>
+
+    <div>
+        <h3 id="gameCounter" style="margin: 20px">
+            
+        </h3>
+    </div>
+    <!-- transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay]; -->
+
+    <!-- If the user clicks that button, the game repeats that button and then adds another; do we need a loop? keep this going for 5 cycles OR until player gets a button wrong -->
+
+    <!-- need a vivtory screen for 5 cycle completion -->
+    <!--  need a DEFEATED screen if push wrong button-->
+
+    <!-- b4 a button is clicked, it needs to light up, math.random maybe will pick a random color to display, should i assign the color blocks a number for math.random -->
+
+
+    <!-- <div style="padding: 100px; font-family: Arial, Helvetica, sans-serif;">
+        Build a Simon Says game. It could look similar to image simon.jpg, but it can look however you want:
+        <br>---------------
+        Create a start button that the user can click to start the game
+        Each button is a certain color
+        When the game starts, pick a button at random that lights up its color for 1-2 seconds
+        <br>--------------
+        If the user clicks that button, the game repeats that button and then adds another
+        This keeps going for 5 cycles (or whatever number you'd like), or until the player picks a wrong button
+        example: red, red-blue, red-blue-green, red-blue-green-yellow, red-blue-green-yellow-green
+    
+        <br>--------------
+        Display a victory screen/alert after the player successfully completes 5 cycles
+        Display a defeat screen/alert if the player clicks a wrong button </div> -->
+    
+
+    <script src="./simon.js">
+    </script>
+</body>
+
+</html>
